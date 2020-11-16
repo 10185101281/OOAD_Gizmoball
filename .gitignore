@@ -1,0 +1,87 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Java template
+# Compiled class file
+*.class
+
+*.iml
+**/target/
+**/.DS_Store
+**/*.log
+**/.itest/*
+**/*.html
+**/target/*.jar
+**/*.js
+**/*.html
+**/*.css
+**/*.svg
+**/*.reg
+**/*.reg.bak
+**/logs/*
+
+**/*pom.properties
+**/*.puml
+**/*.lst
+
+logs/
+
+
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+.idea
+
+.DS_Store
+*.log
+# Android generated
+bin/
+gen/
+classes/
+gen-external-apklibs/
+
+# Ant
+local.properties
+
+# Maven
+target/
+release.properties
+
+# Eclipse
+.classpath
+.project
+.externalToolBuilders/
+.metadata
+.settings
+
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+out/
+
+# Mac
+.DS_Store
+/.gitignore
+.idea
+
+*_res.yml
+*_res.yaml
