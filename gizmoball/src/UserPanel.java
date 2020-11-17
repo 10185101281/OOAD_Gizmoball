@@ -11,7 +11,7 @@ public class UserPanel extends JFrame{
     private Container contentPane;
     private JPanel boardPanel, sideBarPanel;
     private JPanel titlePanel, modeControlPanel, layoutConsolePanel;
-    private JPanel componentPanel, toolPanel;
+    private JPanel specialComponentPanel, componentPanel, toolPanel;
     private JButton bordBackgroundButton;
     private Color[] boardBackground = new Color[]{
             new Color(0x1C1C1C),
@@ -32,6 +32,12 @@ public class UserPanel extends JFrame{
         boardPanel.setPreferredSize(new Dimension(800,800));
         boardPanel.setBackground(boardBackground[0]);
     }
+
+    private String[] characterNames = new String[]{
+            "Qiqi","Jean","Amber","Lisa","Barbara","Venti",
+            "Klee","Noelle","Fischl","Sucrose","Mona","Xiao",
+            "Ningguang","Beidou","Keqing"
+    };
     /**
      * @Author BaoLiang
      * @Date 2020/11/17 16:00
@@ -42,8 +48,8 @@ public class UserPanel extends JFrame{
      * @return 随机生成的头像
      */
     private ImageIcon getRandomAvatar(int width,int height){
-        Integer randomInteger = new Random().nextInt(16);
-        ImageIcon imageIcon = new ImageIcon("src/picture/avatar/"+randomInteger+".png");
+        Integer randomInteger = new Random().nextInt(15);
+        ImageIcon imageIcon = new ImageIcon("src/picture/avatar/"+characterNames[randomInteger]+".png");
         imageIcon.setImage(imageIcon.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
         return imageIcon;
     }
@@ -61,20 +67,15 @@ public class UserPanel extends JFrame{
         titlePanel.setBackground(new Color(0xF5F5F5));
         titlePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
 
-        JLabel avatar = new JLabel(getRandomAvatar(80,80));
-        avatar.setBorder(BorderFactory.createLineBorder(new Color(0x696969),4,true));
-
         JLabel titleText = new JLabel("GIZMO BALL");
         titleText.setPreferredSize(new Dimension(300,90));
-        titleText.setFont(new Font("Dialog",Font.BOLD,30));
+        titleText.setFont(new Font("Times New Roman",Font.BOLD,40));
         titleText.setHorizontalAlignment(SwingConstants.CENTER);
         titleText.setVerticalAlignment(SwingConstants.CENTER);
-
-        titlePanel.add(avatar);
         titlePanel.add(titleText);
     }
     private void initModeControlPanel(){
-
+        
     }
     private void initComponentPanel(){
 
@@ -94,7 +95,7 @@ public class UserPanel extends JFrame{
      */
     private void initSideBarPanel(){
         sideBarPanel = new JPanel(new BorderLayout());
-        sideBarPanel.setPreferredSize(new Dimension(400, 800));
+        sideBarPanel.setPreferredSize(new Dimension(300, 700));
         sideBarPanel.setBorder(BorderFactory.createLineBorder(new Color(0xF5FFFA),2));
 
         initTitlePanel();
@@ -115,7 +116,7 @@ public class UserPanel extends JFrame{
     private void initContentPane(){
         contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
-        contentPane.setPreferredSize(new Dimension(1200,800));
+        contentPane.setPreferredSize(new Dimension(1100,800));
 
         initBoardPanel();
         initSideBarPanel();
