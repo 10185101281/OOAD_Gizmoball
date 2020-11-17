@@ -44,7 +44,6 @@ public class UserPanel extends JFrame{
     private ImageIcon getRandomAvatar(int width,int height){
         Integer randomInteger = new Random().nextInt(16);
         ImageIcon imageIcon = new ImageIcon("src/picture/avatar/"+randomInteger+".png");
-        System.out.println("src/picture/avatar/"+randomInteger+".png");
         imageIcon.setImage(imageIcon.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
         return imageIcon;
     }
@@ -66,13 +65,10 @@ public class UserPanel extends JFrame{
         avatar.setBorder(BorderFactory.createLineBorder(new Color(0x696969),4,true));
 
         JLabel titleText = new JLabel("GIZMO BALL");
-        titleText.setPreferredSize(new Dimension(200,90));
+        titleText.setPreferredSize(new Dimension(300,90));
         titleText.setFont(new Font("Dialog",Font.BOLD,30));
         titleText.setHorizontalAlignment(SwingConstants.CENTER);
         titleText.setVerticalAlignment(SwingConstants.CENTER);
-        titleText.setOpaque(true);
-        titleText.setBackground(new Color(0xF0F8FF));
-        titleText.setBorder(BorderFactory.createLineBorder(Color.BLACK,1,true));
 
         titlePanel.add(avatar);
         titlePanel.add(titleText);
@@ -98,7 +94,7 @@ public class UserPanel extends JFrame{
      */
     private void initSideBarPanel(){
         sideBarPanel = new JPanel(new BorderLayout());
-        sideBarPanel.setPreferredSize(new Dimension(300, 800));
+        sideBarPanel.setPreferredSize(new Dimension(400, 800));
         sideBarPanel.setBorder(BorderFactory.createLineBorder(new Color(0xF5FFFA),2));
 
         initTitlePanel();
@@ -119,7 +115,7 @@ public class UserPanel extends JFrame{
     private void initContentPane(){
         contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
-        contentPane.setPreferredSize(new Dimension(1100,800));
+        contentPane.setPreferredSize(new Dimension(1200,800));
 
         initBoardPanel();
         initSideBarPanel();
