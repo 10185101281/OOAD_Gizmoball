@@ -48,9 +48,9 @@ public class UserPanel extends JFrame{
      * @return 随机生成的头像
      */
     private ImageIcon getRandomAvatar(int width,int height){
-        Integer randomInteger = new Random().nextInt(15);
-        ImageIcon imageIcon = new ImageIcon("src/picture/avatar/"+characterNames[randomInteger]+".png");
-        System.out.println("src/picture/avatar/"+characterNames[randomInteger]+".png");
+        Integer randomInteger = new Random().nextInt(characterNames.length);
+        ImageIcon imageIcon = new ImageIcon("gizmoball/src/picture/avatar/"+characterNames[randomInteger]+".png");
+        //System.out.println("gizmoball/src/picture/avatar/"+characterNames[randomInteger]+".png");
         imageIcon.setImage(imageIcon.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
         return imageIcon;
     }
@@ -124,6 +124,25 @@ public class UserPanel extends JFrame{
         componentPanel.setPreferredSize(new Dimension(300,295));
         componentPanel.setBackground(new Color(0xE6E6FA));
         componentPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+
+        JRadioButton[] jrs = new JRadioButton[]{
+                new JRadioButton(), new JRadioButton(),
+                new JRadioButton(), new JRadioButton(),
+                new JRadioButton(), new JRadioButton(),
+        };
+        ButtonGroup buttonGroup = new ButtonGroup();
+        for(int i=0; i<3; i++){
+            JPanel tJPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+            tJPanel.setPreferredSize(new Dimension(componentPanel.getPreferredSize().width-5,componentPanel.getPreferredSize().height/3-5));
+            tJPanel.setBackground(new Color(0x54FF9F));
+            for(int j=0; j<2; j++){
+                buttonGroup.add(jrs[i*2+j]);
+                tJPanel.add(jrs[i*2+j]);
+                tJPanel.add(new JLabel(getRandomAvatar(80,80)));
+            }
+            componentPanel.add(tJPanel);
+        }
+        jrs[0].setSelected(true);
     }
     /**
      * @Author BaoLiang
@@ -136,6 +155,19 @@ public class UserPanel extends JFrame{
         toolPanel.setPreferredSize(new Dimension(300,195));
         toolPanel.setBackground(new Color(0xE6E6FA));
         toolPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+
+        for(int i=0; i<2; i++){
+            JPanel tJPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+            tJPanel.setPreferredSize(new Dimension(toolPanel.getPreferredSize().width-5,toolPanel.getPreferredSize().height/2-5));
+            tJPanel.setBackground(new Color(0x54FF9F));
+            for(int j=0; j<2; j++){
+                JButton tJButton = new JButton(getRandomAvatar(80,80));
+                tJButton.setPreferredSize(new Dimension(80,80));
+                tJButton.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+                tJPanel.add(tJButton);
+            }
+            toolPanel.add(tJPanel);
+        }
     }
     /**
      * @Author BaoLiang
