@@ -23,6 +23,6 @@ public class ControlSystem {
         userPanel.setVisible(true);
     }
     public static void main(String[] args){
-        createUserPanel(1100, 800);
+        createUserPanel(1105, 800);
     }
 }

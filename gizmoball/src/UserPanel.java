@@ -50,6 +50,7 @@ public class UserPanel extends JFrame{
     private ImageIcon getRandomAvatar(int width,int height){
         Integer randomInteger = new Random().nextInt(15);
         ImageIcon imageIcon = new ImageIcon("src/picture/avatar/"+characterNames[randomInteger]+".png");
+        System.out.println("src/picture/avatar/"+characterNames[randomInteger]+".png");
         imageIcon.setImage(imageIcon.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
         return imageIcon;
     }
@@ -63,9 +64,9 @@ public class UserPanel extends JFrame{
      */
     private void initTitlePanel(){
         titlePanel = new JPanel(new FlowLayout());
-        titlePanel.setPreferredSize(new Dimension(300,100));
+        titlePanel.setPreferredSize(new Dimension(300,95));
         titlePanel.setBackground(new Color(0xF5F5F5));
-        titlePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
+        titlePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
 
         JLabel titleText = new JLabel("GIZMO BALL");
         titleText.setPreferredSize(new Dimension(300,90));
@@ -83,62 +84,89 @@ public class UserPanel extends JFrame{
      * 设置两个按钮，layoutMode和playMode，控制两个模式。
      */
     private void initModeControlPanel(){
-        modeControlPanel = new JPanel(new FlowLayout());
-        modeControlPanel.setPreferredSize(new Dimension(300, 100));
+        modeControlPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        modeControlPanel.setPreferredSize(new Dimension(300, 95));
         modeControlPanel.setBackground(new Color(0xF5F5F5));
-        modeControlPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
+        modeControlPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
 
         JButton layoutMode = new JButton("Layout Mode");
-        layoutMode.setPreferredSize(new Dimension(140, 90));
+        layoutMode.setPreferredSize(new Dimension(100, 60));
         JButton playMode = new JButton("Play Mode");
-        layoutMode.setPreferredSize(new Dimension(140,90));
+        playMode.setPreferredSize(new Dimension(100,60));
         modeControlPanel.add(layoutMode);
         modeControlPanel.add(playMode);
     }
+
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/17 21:00
+     * @Version 1.0
+     * 初始化specialComponentPanel
+     */
     private void initSpecialComponentPanel(){
-        specialComponentPanel = new JPanel(new FlowLayout());
-        specialComponentPanel.setPreferredSize(new Dimension(300,100));
-        specialComponentPanel.setBackground(new Color(0xF5F5F5));
-        specialComponentPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
+        specialComponentPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        specialComponentPanel.setPreferredSize(new Dimension(300,95));
+        specialComponentPanel.setBackground(new Color(0xE6E6FA));
+        specialComponentPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
 
         JLabel avatar = new JLabel(getRandomAvatar(80,80));
+        avatar.setBorder(BorderFactory.createLineBorder(Color.RED,2));
         specialComponentPanel.add(avatar);
     }
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/17 21:00
+     * @Version 1.0
+     * 初始化componentPanel
+     */
     private void initComponentPanel(){
-        componentPanel = new JPanel(new FlowLayout());
-        componentPanel.setPreferredSize(new Dimension(300,300));
-        componentPanel.setBackground(new Color(0xF5F5F5));
-        componentPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
+        componentPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        componentPanel.setPreferredSize(new Dimension(300,295));
+        componentPanel.setBackground(new Color(0xE6E6FA));
+        componentPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
     }
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/17 21:00
+     * @Version 1.0
+     * 初始化toolPanel
+     */
     private void initToolPanel(){
-        toolPanel = new JPanel(new FlowLayout());
-        toolPanel.setPreferredSize(new Dimension(300,200));
-        toolPanel.setBackground(new Color(0xF5F5F5));
-        toolPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
+        toolPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        toolPanel.setPreferredSize(new Dimension(300,195));
+        toolPanel.setBackground(new Color(0xE6E6FA));
+        toolPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
     }
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/17 21:00
+     * @Version 1.0
+     * 初始化LayoutConsolePanel。
+     * 设置整体布局为Border布局，其中speceialComponentPanel居上，componentPanel居中，toolPanel居下。
+     */
     private void initLayoutConsolePanel(){
         layoutConsolePanel = new JPanel(new BorderLayout());
-        layoutConsolePanel.setPreferredSize(new Dimension(300, 600));
-        layoutConsolePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
+        layoutConsolePanel.setPreferredSize(new Dimension(300, 595));
+        layoutConsolePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
 
         initSpecialComponentPanel();
         initComponentPanel();
         initToolPanel();
-        sideBarPanel.add(specialComponentPanel,BorderLayout.NORTH);
-        sideBarPanel.add(componentPanel,BorderLayout.CENTER);
-        sideBarPanel.add(toolPanel,BorderLayout.SOUTH);
+        layoutConsolePanel.add(specialComponentPanel,BorderLayout.NORTH);
+        layoutConsolePanel.add(componentPanel,BorderLayout.CENTER);
+        layoutConsolePanel.add(toolPanel,BorderLayout.SOUTH);
     }
     /**
      * @Author BaoLiang
      * @Date 2020/11/17 15:45
      * @Version 1.0
-     * 初始化SideBar。
+     * 初始化SideBarPanel。
      * 设置整体布局为Border布局，其中titlePanel居上，modeControlPanel居中，layoutConsolePanel居下。
      */
     private void initSideBarPanel(){
         sideBarPanel = new JPanel(new BorderLayout());
-        sideBarPanel.setPreferredSize(new Dimension(300, 800));
-        sideBarPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
+        sideBarPanel.setPreferredSize(new Dimension(305, 800));
+        sideBarPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY,4));
 
         initTitlePanel();
         initModeControlPanel();
@@ -158,7 +186,7 @@ public class UserPanel extends JFrame{
     private void initContentPane(){
         contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
-        contentPane.setPreferredSize(new Dimension(1100,800));
+        contentPane.setPreferredSize(new Dimension(1105,800));
 
         initBoardPanel();
         initSideBarPanel();
