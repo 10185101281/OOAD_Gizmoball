@@ -109,7 +109,15 @@ public class UserPanel extends JFrame{
         specialComponentPanel.setBackground(new Color(0xE6E6FA));
         specialComponentPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
 
-        JLabel avatar = new JLabel(getRandomAvatar(80,80));
+        JLabel title = new JLabel("Special Component");
+        title.setPreferredSize(new Dimension(300, 20));
+        title.setHorizontalAlignment(SwingConstants.CENTER);
+        title.setVerticalAlignment(SwingConstants.CENTER);
+        title.setBackground(new Color(0x778899));
+        title.setOpaque(true);
+        specialComponentPanel.add(title);
+
+        JLabel avatar = new JLabel(getRandomAvatar(50,50));
         avatar.setBorder(BorderFactory.createLineBorder(Color.RED,2));
         specialComponentPanel.add(avatar);
     }
@@ -125,6 +133,14 @@ public class UserPanel extends JFrame{
         componentPanel.setBackground(new Color(0xE6E6FA));
         componentPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
 
+        JLabel title = new JLabel("Normal Component");
+        title.setPreferredSize(new Dimension(300, 20));
+        title.setHorizontalAlignment(SwingConstants.CENTER);
+        title.setVerticalAlignment(SwingConstants.CENTER);
+        title.setBackground(new Color(0x778899));
+        title.setOpaque(true);
+        componentPanel.add(title);
+
         JRadioButton[] jrs = new JRadioButton[]{
                 new JRadioButton(), new JRadioButton(),
                 new JRadioButton(), new JRadioButton(),
@@ -133,12 +149,12 @@ public class UserPanel extends JFrame{
         ButtonGroup buttonGroup = new ButtonGroup();
         for(int i=0; i<3; i++){
             JPanel tJPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            tJPanel.setPreferredSize(new Dimension(componentPanel.getPreferredSize().width-5,componentPanel.getPreferredSize().height/3-5));
+            tJPanel.setPreferredSize(new Dimension(componentPanel.getPreferredSize().width-5,(componentPanel.getPreferredSize().height-20)/3-5));
             tJPanel.setBackground(new Color(0x54FF9F));
             for(int j=0; j<2; j++){
                 buttonGroup.add(jrs[i*2+j]);
                 tJPanel.add(jrs[i*2+j]);
-                tJPanel.add(new JLabel(getRandomAvatar(80,80)));
+                tJPanel.add(new JLabel(getRandomAvatar(70,70)));
             }
             componentPanel.add(tJPanel);
         }
@@ -156,13 +172,21 @@ public class UserPanel extends JFrame{
         toolPanel.setBackground(new Color(0xE6E6FA));
         toolPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
 
+        JLabel title = new JLabel("Tool");
+        title.setPreferredSize(new Dimension(300, 20));
+        title.setHorizontalAlignment(SwingConstants.CENTER);
+        title.setVerticalAlignment(SwingConstants.CENTER);
+        title.setBackground(new Color(0x778899));
+        title.setOpaque(true);
+        toolPanel.add(title);
+
         for(int i=0; i<2; i++){
             JPanel tJPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            tJPanel.setPreferredSize(new Dimension(toolPanel.getPreferredSize().width-5,toolPanel.getPreferredSize().height/2-5));
+            tJPanel.setPreferredSize(new Dimension(toolPanel.getPreferredSize().width-5,(toolPanel.getPreferredSize().height-20)/2-5));
             tJPanel.setBackground(new Color(0x54FF9F));
             for(int j=0; j<2; j++){
-                JButton tJButton = new JButton(getRandomAvatar(80,80));
-                tJButton.setPreferredSize(new Dimension(80,80));
+                JButton tJButton = new JButton(getRandomAvatar(70,70));
+                tJButton.setPreferredSize(new Dimension(70,70));
                 tJButton.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
                 tJPanel.add(tJButton);
             }
