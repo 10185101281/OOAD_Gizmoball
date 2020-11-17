@@ -74,17 +74,59 @@ public class UserPanel extends JFrame{
         titleText.setVerticalAlignment(SwingConstants.CENTER);
         titlePanel.add(titleText);
     }
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/17 20:30
+     * @Version 1.0
+     * 初始化modeControlPanel。
+     * 设置为流布局。
+     * 设置两个按钮，layoutMode和playMode，控制两个模式。
+     */
     private void initModeControlPanel(){
-        
+        modeControlPanel = new JPanel(new FlowLayout());
+        modeControlPanel.setPreferredSize(new Dimension(300, 100));
+        modeControlPanel.setBackground(new Color(0xF5F5F5));
+        modeControlPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
+
+        JButton layoutMode = new JButton("Layout Mode");
+        layoutMode.setPreferredSize(new Dimension(140, 90));
+        JButton playMode = new JButton("Play Mode");
+        layoutMode.setPreferredSize(new Dimension(140,90));
+        modeControlPanel.add(layoutMode);
+        modeControlPanel.add(playMode);
+    }
+    private void initSpecialComponentPanel(){
+        specialComponentPanel = new JPanel(new FlowLayout());
+        specialComponentPanel.setPreferredSize(new Dimension(300,100));
+        specialComponentPanel.setBackground(new Color(0xF5F5F5));
+        specialComponentPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
+
+        JLabel avatar = new JLabel(getRandomAvatar(80,80));
+        specialComponentPanel.add(avatar);
     }
     private void initComponentPanel(){
-
+        componentPanel = new JPanel(new FlowLayout());
+        componentPanel.setPreferredSize(new Dimension(300,300));
+        componentPanel.setBackground(new Color(0xF5F5F5));
+        componentPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
     }
     private void initToolPanel(){
-
+        toolPanel = new JPanel(new FlowLayout());
+        toolPanel.setPreferredSize(new Dimension(300,200));
+        toolPanel.setBackground(new Color(0xF5F5F5));
+        toolPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
     }
     private void initLayoutConsolePanel(){
+        layoutConsolePanel = new JPanel(new BorderLayout());
+        layoutConsolePanel.setPreferredSize(new Dimension(300, 600));
+        layoutConsolePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
 
+        initSpecialComponentPanel();
+        initComponentPanel();
+        initToolPanel();
+        sideBarPanel.add(specialComponentPanel,BorderLayout.NORTH);
+        sideBarPanel.add(componentPanel,BorderLayout.CENTER);
+        sideBarPanel.add(toolPanel,BorderLayout.SOUTH);
     }
     /**
      * @Author BaoLiang
@@ -95,15 +137,15 @@ public class UserPanel extends JFrame{
      */
     private void initSideBarPanel(){
         sideBarPanel = new JPanel(new BorderLayout());
-        sideBarPanel.setPreferredSize(new Dimension(300, 700));
-        sideBarPanel.setBorder(BorderFactory.createLineBorder(new Color(0xF5FFFA),2));
+        sideBarPanel.setPreferredSize(new Dimension(300, 800));
+        sideBarPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
 
         initTitlePanel();
         initModeControlPanel();
         initLayoutConsolePanel();
         sideBarPanel.add(titlePanel,BorderLayout.NORTH);
-        //sideBarPanel.add(modeControlPanel,BorderLayout.CENTER);
-        //sideBarPanel.add(layoutConsolePanel,BorderLayout.SOUTH);
+        sideBarPanel.add(modeControlPanel,BorderLayout.CENTER);
+        sideBarPanel.add(layoutConsolePanel,BorderLayout.SOUTH);
     }
 
     /**
