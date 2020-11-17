@@ -2,7 +2,7 @@ import java.util.*;
 import javax.swing.*;
 
 /**
- * @Author Bao Liang
+ * @Author BaoLiang
  * @Date 2020/11/17 9:30
  * @Version 1.0
  */
