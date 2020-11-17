@@ -44,6 +44,7 @@ public class UserPanel extends JFrame{
     private ImageIcon getRandomAvatar(int width,int height){
         Integer randomInteger = new Random().nextInt(16);
         ImageIcon imageIcon = new ImageIcon("src/picture/avatar/"+randomInteger+".png");
+        System.out.println("src/picture/avatar/"+randomInteger+".png");
         imageIcon.setImage(imageIcon.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
         return imageIcon;
     }
@@ -63,9 +64,10 @@ public class UserPanel extends JFrame{
 
         JLabel avatar = new JLabel(getRandomAvatar(80,80));
         avatar.setBorder(BorderFactory.createLineBorder(new Color(0x696969),4,true));
+
         JLabel titleText = new JLabel("GIZMO BALL");
         titleText.setPreferredSize(new Dimension(200,90));
-        titleText.setFont(new Font("Dialog",Font.BOLD,25));
+        titleText.setFont(new Font("Dialog",Font.BOLD,30));
         titleText.setHorizontalAlignment(SwingConstants.CENTER);
         titleText.setVerticalAlignment(SwingConstants.CENTER);
         titleText.setOpaque(true);
