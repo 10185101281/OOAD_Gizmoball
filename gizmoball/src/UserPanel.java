@@ -1,3 +1,5 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -13,13 +15,19 @@ public class UserPanel extends JFrame{
     //private Board  boardPanel;
     private JPanel boardPanel, sideBarPanel;
     private JPanel titlePanel, modeControlPanel, layoutConsolePanel;
-    private JPanel validLayoutConsolePanel, forbidLayoutConsolePanel;
+    private JPanel validLayoutConsolePanel, invalidLayoutConsolePanel;
     private JPanel specialComponentPanel, componentPanel, toolPanel;
+    private ButtonGroup buttonGroup = new ButtonGroup();
     private Border[] linerBorders = new Border[]{
             BorderFactory.createLineBorder(new Color(0xD3D3D3),5),
             BorderFactory.createLineBorder(new Color(0x708090),3),
             BorderFactory.createLineBorder(new Color(0x000000),2),
     };
+    private Border[] buttonBorders = new Border[]{
+            BorderFactory.createLineBorder(Color.BLACK,1),
+            BorderFactory.createLineBorder(new Color(0xBEBEBE), 2),
+    };
+
     /**
      * @Author BaoLiang
      * @Date 2020/11/17 15:15
@@ -87,12 +95,27 @@ public class UserPanel extends JFrame{
 
         JButton layoutMode = new JButton("Layout Mode");
         layoutMode.setPreferredSize(new Dimension(100, 60));
-        layoutMode.setBackground(new Color(0xBEBEBE));
+        layoutMode.setBorder(buttonBorders[1]);
         layoutMode.setOpaque(true);
         JButton playMode = new JButton("Play Mode");
         playMode.setPreferredSize(new Dimension(100,60));
-        playMode.setBackground(new Color(0xBEBEBE));
+        playMode.setBorder(buttonBorders[1]);
         playMode.setOpaque(true);
+
+        layoutMode.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout cl = (CardLayout)layoutConsolePanel.getLayout();
+                cl.show(layoutConsolePanel,"valid");
+            }
+        });
+        playMode.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout cl = (CardLayout)layoutConsolePanel.getLayout();
+                cl.show(layoutConsolePanel,"invalid");
+            }
+        });
         modeControlPanel.add(layoutMode);
         modeControlPanel.add(playMode);
     }
@@ -105,13 +128,20 @@ public class UserPanel extends JFrame{
      */
     private void initSpecialComponentPanel(){
         specialComponentPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        specialComponentPanel.setPreferredSize(new Dimension(300,95));
+        specialComponentPanel.setPreferredSize(new Dimension(300,120));
         specialComponentPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Special Component"));
         specialComponentPanel.setBackground(new Color(0x00CED1));
 
-        JLabel avatar = new JLabel(getRandomAvatar(50,50));
-        avatar.setBorder(BorderFactory.createLineBorder(Color.RED,2));
-        specialComponentPanel.add(avatar);
+        JButton avatarButton = new JButton(getRandomAvatar(70,70));
+        avatarButton.setPreferredSize(new Dimension(70,70));
+        avatarButton.setBorder(buttonBorders[1]);
+        specialComponentPanel.add(avatarButton);
+        JRadioButton specialComponentButton = new JRadioButton();
+        buttonGroup.add(specialComponentButton);
+        specialComponentPanel.add(specialComponentButton);
+        JLabel specialComponent = new JLabel("Special Component");
+        specialComponent.setPreferredSize(new Dimension(70, 70));
+        specialComponentPanel.add(specialComponent);
     }
     /**
      * @Author BaoLiang
@@ -125,24 +155,29 @@ public class UserPanel extends JFrame{
         componentPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Component"));
         componentPanel.setBackground(new Color(0x00CED1));
 
-        JRadioButton[] jrs = new JRadioButton[]{
+        JRadioButton[] componentButtons = new JRadioButton[]{
                 new JRadioButton(), new JRadioButton(),
                 new JRadioButton(), new JRadioButton(),
                 new JRadioButton(), new JRadioButton(),
         };
-        ButtonGroup buttonGroup = new ButtonGroup();
+        JLabel[] component = new JLabel[]{
+                new JLabel("Move"), new JLabel("Ball"),
+                new JLabel("Triangle"), new JLabel("Rectange"),
+                new JLabel("Straight Pipe"), new JLabel("Curved Pipe"),
+        };
         for(int i=0; i<3; i++){
             JPanel tJPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             tJPanel.setPreferredSize(new Dimension(componentPanel.getPreferredSize().width-20,(componentPanel.getPreferredSize().height-20)/3-5));
             tJPanel.setBackground(new Color(0x54FF9F));
             for(int j=0; j<2; j++){
-                buttonGroup.add(jrs[i*2+j]);
-                tJPanel.add(jrs[i*2+j]);
-                tJPanel.add(new JLabel(getRandomAvatar(70,70)));
+                buttonGroup.add(componentButtons[i*2+j]);
+                tJPanel.add(componentButtons[i*2+j]);
+                component[i*2+j].setPreferredSize(new Dimension(70,70));
+                tJPanel.add(component[i*2+j]);
             }
             componentPanel.add(tJPanel);
         }
-        jrs[0].setSelected(true);
+        componentButtons[0].setSelected(true);
     }
     /**
      * @Author BaoLiang
@@ -156,59 +191,85 @@ public class UserPanel extends JFrame{
         toolPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Tool"));
         toolPanel.setBackground(new Color(0x00CED1));
 
+        JButton[] toolButtons = new JButton[]{
+                new JButton("Spin"), new JButton("Delete"),
+                new JButton("Zoom in"), new JButton("Zoom out"),
+        };
         for(int i=0; i<2; i++){
             JPanel tJPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             tJPanel.setPreferredSize(new Dimension(toolPanel.getPreferredSize().width-20,(toolPanel.getPreferredSize().height-20)/2-5));
             tJPanel.setBackground(new Color(0x54FF9F));
             for(int j=0; j<2; j++){
-                JButton tJButton = new JButton(getRandomAvatar(70,70));
-                tJButton.setPreferredSize(new Dimension(70,70));
-                tJButton.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
-                tJPanel.add(tJButton);
+                toolButtons[i*2+j].setPreferredSize(new Dimension(70,70));
+                toolButtons[i*2+j].setBorder(buttonBorders[0]);
+                tJPanel.add(toolButtons[i*2+j]);
             }
             toolPanel.add(tJPanel);
         }
     }
-    /**
-     * @Author BaoLiang
-     * @Date 2020/11/18 11:30
-     * @Version 1.0
-     * 初始化forbidLayoutConsolePanel
-     */
-    private void initForbidLayoutConsolePanel(){
 
-    }
     /**
      * @Author BaoLiang
-     * @Date 2020/11/18 11:30
+     * @Date 2020/11/18 18:00
      * @Version 1.0
-     * 初始化validLayoutConsolePanel
+     * 初始化validLayoutConsolePanel。
+     * 设置整体布局为Board布局，其中speceialComponentPanel居上，componentPanel居中，toolPanel居下。
      */
     private void initValidLayoutConsolePanel(){
         validLayoutConsolePanel = new JPanel(new BorderLayout());
         validLayoutConsolePanel.setPreferredSize(new Dimension(310, 630));
         validLayoutConsolePanel.setBorder(linerBorders[1]);
         validLayoutConsolePanel.setBackground(new Color(0x00CED1));
-    }
-    /**
-     * @Author BaoLiang
-     * @Date 2020/11/17 21:00
-     * @Version 1.0
-     * 初始化LayoutConsolePanel。
-     * 设置整体布局为Border布局，其中speceialComponentPanel居上，componentPanel居中，toolPanel居下。
-     */
-    private void initLayoutConsolePanel(){
-        layoutConsolePanel = new JPanel(new BorderLayout());
-        layoutConsolePanel.setPreferredSize(new Dimension(310, 630));
-        layoutConsolePanel.setBorder(linerBorders[1]);
-        layoutConsolePanel.setBackground(new Color(0x00CED1));
 
         initSpecialComponentPanel();
         initComponentPanel();
         initToolPanel();
-        layoutConsolePanel.add(specialComponentPanel,BorderLayout.NORTH);
-        layoutConsolePanel.add(componentPanel,BorderLayout.CENTER);
-        layoutConsolePanel.add(toolPanel,BorderLayout.SOUTH);
+        validLayoutConsolePanel.add(specialComponentPanel,BorderLayout.NORTH);
+        validLayoutConsolePanel.add(componentPanel,BorderLayout.CENTER);
+        validLayoutConsolePanel.add(toolPanel,BorderLayout.SOUTH);
+    }
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/18 18:00
+     * @Version 1.0
+     * 初始化invalidLayoutConsolePanel。
+     * 设置整体布局为Flow布局，显示不可以用提示信息。
+     */
+    private void initInvalidLayoutConsolePanel(){
+        invalidLayoutConsolePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        invalidLayoutConsolePanel.setPreferredSize(new Dimension(310, 630));
+        invalidLayoutConsolePanel.setBorder(linerBorders[1]);
+        invalidLayoutConsolePanel.setBackground(new Color(0x8B8B7A));
+
+        JLabel [] texts = new JLabel[]{
+                new JLabel("IN PLAY MODE,"),
+                new JLabel("CAN NOT"),
+                new JLabel("LAY OUT.")
+        };
+        for(int i=0; i<3; i++){
+            texts[i].setPreferredSize(new Dimension(300,60));
+            texts[i].setFont(new Font("Arial",Font.BOLD,30));
+            texts[i].setHorizontalAlignment(SwingConstants.CENTER);
+            texts[i].setVerticalAlignment(SwingConstants.CENTER);
+            invalidLayoutConsolePanel.add(texts[i]);
+        }
+    }
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/18 18:00
+     * @Version 1.0
+     * 初始化LayoutConsolePanel。
+     * 设置整体布局为Card布局，包括validLayoutConsolePanel与invalidConsolePanel两个状态。
+     */
+    private void initLayoutConsolePanel(){
+        layoutConsolePanel = new JPanel(new CardLayout());
+        layoutConsolePanel.setPreferredSize(new Dimension(310, 630));
+        layoutConsolePanel.setBorder(linerBorders[1]);
+        layoutConsolePanel.setBackground(new Color(0x00CED1));
+        initValidLayoutConsolePanel();
+        initInvalidLayoutConsolePanel();
+        layoutConsolePanel.add(validLayoutConsolePanel, "valid");
+        layoutConsolePanel.add(invalidLayoutConsolePanel,"invalid");
     }
     /**
      * @Author BaoLiang
