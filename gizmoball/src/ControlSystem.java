@@ -1,5 +1,6 @@
 import java.util.*;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 /**
  * @Author
@@ -8,9 +9,26 @@ import java.awt.*;
  */
 public class ControlSystem {
 
-    private BouncingBall bouncingBall;
-    public static void createBouncingBall(Board board){
+    private static BouncingBall bouncingBall;
+    private static Board board;
 
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/18 11:30
+     * @Version 1.0
+     * 获取Board
+     */
+    public static Board getBoard(){
+        return board;
+    }
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/18 11:30
+     * @Version 1.0
+     * 创建一个新的Board
+     */
+    public static void createBoard(){
+        board = new Board();
     }
     /**
      * @Author BaoLiang

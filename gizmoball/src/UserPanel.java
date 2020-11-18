@@ -1,5 +1,6 @@
 import java.util.*;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 /**
@@ -12,13 +13,12 @@ public class UserPanel extends JFrame{
     //private Board  boardPanel;
     private JPanel boardPanel, sideBarPanel;
     private JPanel titlePanel, modeControlPanel, layoutConsolePanel;
+    private JPanel validLayoutConsolePanel, forbidLayoutConsolePanel;
     private JPanel specialComponentPanel, componentPanel, toolPanel;
-    private JButton bordBackgroundButton;
-    private Color[] boardBackground = new Color[]{
-            new Color(0x1C1C1C),//幽邃深渊
-            new Color(0x00CED1),//碧蓝航线
-            new Color(0x2E8B57),//旷野之息
-            new Color(0xF0FFFF) //天空之城
+    private Border[] linerBorders = new Border[]{
+            BorderFactory.createLineBorder(new Color(0xD3D3D3),5),
+            BorderFactory.createLineBorder(new Color(0x708090),3),
+            BorderFactory.createLineBorder(new Color(0x000000),2),
     };
     /**
      * @Author BaoLiang
@@ -28,7 +28,8 @@ public class UserPanel extends JFrame{
      * 设置BordPanel为绝对布局，为其渲染背景。
      */
     private void initBoardPanel(){
-        boardPanel = new Board(800,800,boardBackground[3]);
+        ControlSystem.createBoard();
+        boardPanel = ControlSystem.getBoard();
     }
 
     private String[] characterNames = new String[]{
@@ -48,7 +49,6 @@ public class UserPanel extends JFrame{
     private ImageIcon getRandomAvatar(int width,int height){
         Integer randomInteger = new Random().nextInt(characterNames.length);
         ImageIcon imageIcon = new ImageIcon("gizmoball/src/picture/avatar/"+characterNames[randomInteger]+".png");
-        //System.out.println("gizmoball/src/picture/avatar/"+characterNames[randomInteger]+".png");
         imageIcon.setImage(imageIcon.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
         return imageIcon;
     }
@@ -57,18 +57,16 @@ public class UserPanel extends JFrame{
      * @Date 2020/11/17 16:00
      * @Version 1.0
      * 初始化titlePanel。
-     * 设置为流布局。
-     * 添加随机头像，并设置标题。
      */
     private void initTitlePanel(){
         titlePanel = new JPanel(new FlowLayout());
-        titlePanel.setPreferredSize(new Dimension(300,95));
-        titlePanel.setBackground(new Color(0xF5F5F5));
-        titlePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+        titlePanel.setPreferredSize(new Dimension(310,60));
+        titlePanel.setBackground(new Color(0x778899));
+        titlePanel.setBorder(linerBorders[1]);
 
         JLabel titleText = new JLabel("GIZMO BALL");
-        titleText.setPreferredSize(new Dimension(300,90));
-        titleText.setFont(new Font("Times New Roman",Font.BOLD,40));
+        titleText.setPreferredSize(new Dimension(300,55));
+        titleText.setFont(new Font("Times New Roman",Font.BOLD,45));
         titleText.setHorizontalAlignment(SwingConstants.CENTER);
         titleText.setVerticalAlignment(SwingConstants.CENTER);
         titlePanel.add(titleText);
@@ -83,14 +81,18 @@ public class UserPanel extends JFrame{
      */
     private void initModeControlPanel(){
         modeControlPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        modeControlPanel.setPreferredSize(new Dimension(300, 95));
-        modeControlPanel.setBackground(new Color(0xF5F5F5));
-        modeControlPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+        modeControlPanel.setPreferredSize(new Dimension(310, 70));
+        modeControlPanel.setBackground(new Color(0x1E90FF));
+        modeControlPanel.setBorder(linerBorders[1]);
 
         JButton layoutMode = new JButton("Layout Mode");
         layoutMode.setPreferredSize(new Dimension(100, 60));
+        layoutMode.setBackground(new Color(0xBEBEBE));
+        layoutMode.setOpaque(true);
         JButton playMode = new JButton("Play Mode");
         playMode.setPreferredSize(new Dimension(100,60));
+        playMode.setBackground(new Color(0xBEBEBE));
+        playMode.setOpaque(true);
         modeControlPanel.add(layoutMode);
         modeControlPanel.add(playMode);
     }
@@ -104,16 +106,8 @@ public class UserPanel extends JFrame{
     private void initSpecialComponentPanel(){
         specialComponentPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         specialComponentPanel.setPreferredSize(new Dimension(300,95));
-        specialComponentPanel.setBackground(new Color(0xE6E6FA));
-        specialComponentPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
-
-        JLabel title = new JLabel("Special Component");
-        title.setPreferredSize(new Dimension(300, 20));
-        title.setHorizontalAlignment(SwingConstants.CENTER);
-        title.setVerticalAlignment(SwingConstants.CENTER);
-        title.setBackground(new Color(0x778899));
-        title.setOpaque(true);
-        specialComponentPanel.add(title);
+        specialComponentPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Special Component"));
+        specialComponentPanel.setBackground(new Color(0x00CED1));
 
         JLabel avatar = new JLabel(getRandomAvatar(50,50));
         avatar.setBorder(BorderFactory.createLineBorder(Color.RED,2));
@@ -128,16 +122,8 @@ public class UserPanel extends JFrame{
     private void initComponentPanel(){
         componentPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         componentPanel.setPreferredSize(new Dimension(300,295));
-        componentPanel.setBackground(new Color(0xE6E6FA));
-        componentPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
-
-        JLabel title = new JLabel("Normal Component");
-        title.setPreferredSize(new Dimension(300, 20));
-        title.setHorizontalAlignment(SwingConstants.CENTER);
-        title.setVerticalAlignment(SwingConstants.CENTER);
-        title.setBackground(new Color(0x778899));
-        title.setOpaque(true);
-        componentPanel.add(title);
+        componentPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Component"));
+        componentPanel.setBackground(new Color(0x00CED1));
 
         JRadioButton[] jrs = new JRadioButton[]{
                 new JRadioButton(), new JRadioButton(),
@@ -147,7 +133,7 @@ public class UserPanel extends JFrame{
         ButtonGroup buttonGroup = new ButtonGroup();
         for(int i=0; i<3; i++){
             JPanel tJPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            tJPanel.setPreferredSize(new Dimension(componentPanel.getPreferredSize().width-5,(componentPanel.getPreferredSize().height-20)/3-5));
+            tJPanel.setPreferredSize(new Dimension(componentPanel.getPreferredSize().width-20,(componentPanel.getPreferredSize().height-20)/3-5));
             tJPanel.setBackground(new Color(0x54FF9F));
             for(int j=0; j<2; j++){
                 buttonGroup.add(jrs[i*2+j]);
@@ -167,20 +153,12 @@ public class UserPanel extends JFrame{
     private void initToolPanel(){
         toolPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         toolPanel.setPreferredSize(new Dimension(300,195));
-        toolPanel.setBackground(new Color(0xE6E6FA));
-        toolPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
-
-        JLabel title = new JLabel("Tool");
-        title.setPreferredSize(new Dimension(300, 20));
-        title.setHorizontalAlignment(SwingConstants.CENTER);
-        title.setVerticalAlignment(SwingConstants.CENTER);
-        title.setBackground(new Color(0x778899));
-        title.setOpaque(true);
-        toolPanel.add(title);
+        toolPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Tool"));
+        toolPanel.setBackground(new Color(0x00CED1));
 
         for(int i=0; i<2; i++){
             JPanel tJPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            tJPanel.setPreferredSize(new Dimension(toolPanel.getPreferredSize().width-5,(toolPanel.getPreferredSize().height-20)/2-5));
+            tJPanel.setPreferredSize(new Dimension(toolPanel.getPreferredSize().width-20,(toolPanel.getPreferredSize().height-20)/2-5));
             tJPanel.setBackground(new Color(0x54FF9F));
             for(int j=0; j<2; j++){
                 JButton tJButton = new JButton(getRandomAvatar(70,70));
@@ -193,6 +171,27 @@ public class UserPanel extends JFrame{
     }
     /**
      * @Author BaoLiang
+     * @Date 2020/11/18 11:30
+     * @Version 1.0
+     * 初始化forbidLayoutConsolePanel
+     */
+    private void initForbidLayoutConsolePanel(){
+
+    }
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/18 11:30
+     * @Version 1.0
+     * 初始化validLayoutConsolePanel
+     */
+    private void initValidLayoutConsolePanel(){
+        validLayoutConsolePanel = new JPanel(new BorderLayout());
+        validLayoutConsolePanel.setPreferredSize(new Dimension(310, 630));
+        validLayoutConsolePanel.setBorder(linerBorders[1]);
+        validLayoutConsolePanel.setBackground(new Color(0x00CED1));
+    }
+    /**
+     * @Author BaoLiang
      * @Date 2020/11/17 21:00
      * @Version 1.0
      * 初始化LayoutConsolePanel。
@@ -200,8 +199,9 @@ public class UserPanel extends JFrame{
      */
     private void initLayoutConsolePanel(){
         layoutConsolePanel = new JPanel(new BorderLayout());
-        layoutConsolePanel.setPreferredSize(new Dimension(300, 595));
-        layoutConsolePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+        layoutConsolePanel.setPreferredSize(new Dimension(310, 630));
+        layoutConsolePanel.setBorder(linerBorders[1]);
+        layoutConsolePanel.setBackground(new Color(0x00CED1));
 
         initSpecialComponentPanel();
         initComponentPanel();
@@ -219,8 +219,9 @@ public class UserPanel extends JFrame{
      */
     private void initSideBarPanel(){
         sideBarPanel = new JPanel(new BorderLayout());
-        sideBarPanel.setPreferredSize(new Dimension(305, 800));
-        sideBarPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY,4));
+        sideBarPanel.setPreferredSize(new Dimension(320, 800));
+        sideBarPanel.setBorder(linerBorders[0]);
+        sideBarPanel.setBackground(Color.GRAY);
 
         initTitlePanel();
         initModeControlPanel();
