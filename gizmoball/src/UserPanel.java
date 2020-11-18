@@ -9,15 +9,16 @@ import java.awt.*;
  */
 public class UserPanel extends JFrame{
     private Container contentPane;
+    //private Board  boardPanel;
     private JPanel boardPanel, sideBarPanel;
     private JPanel titlePanel, modeControlPanel, layoutConsolePanel;
     private JPanel specialComponentPanel, componentPanel, toolPanel;
     private JButton bordBackgroundButton;
     private Color[] boardBackground = new Color[]{
-            new Color(0x1C1C1C),
-            new Color(0x00CED1),
-            new Color(0x2E8B57),
-            new Color(0xF0FFFF)
+            new Color(0x1C1C1C),//幽邃深渊
+            new Color(0x00CED1),//碧蓝航线
+            new Color(0x2E8B57),//旷野之息
+            new Color(0xF0FFFF) //天空之城
     };
     /**
      * @Author BaoLiang
@@ -27,10 +28,7 @@ public class UserPanel extends JFrame{
      * 设置BordPanel为绝对布局，为其渲染背景。
      */
     private void initBoardPanel(){
-        boardPanel = new JPanel();
-        boardPanel.setLayout(null);
-        boardPanel.setPreferredSize(new Dimension(800,800));
-        boardPanel.setBackground(boardBackground[0]);
+        boardPanel = new Board(800,800,boardBackground[3]);
     }
 
     private String[] characterNames = new String[]{

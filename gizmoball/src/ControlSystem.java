@@ -7,6 +7,11 @@ import java.awt.*;
  * @Version 1.0
  */
 public class ControlSystem {
+
+    private BouncingBall bouncingBall;
+    public static void createBouncingBall(Board board){
+
+    }
     /**
      * @Author BaoLiang
      * @Date 2020/11/17 14:30
@@ -16,7 +21,7 @@ public class ControlSystem {
      * @param height UserPanel的高度
      * @return
      */
-    private static  void createUserPanel(int width,int height){
+    private static void createUserPanel(int width,int height){
         UserPanel userPanel = new UserPanel("Gizmobll");
         userPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         userPanel.setSize(width, height);
