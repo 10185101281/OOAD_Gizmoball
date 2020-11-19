@@ -1,10 +1,6 @@
 package Component;
 
-public class Rectangle implements Component{
-    Integer x;  //左上角坐标
-    Integer y;
-    Integer length;
-    Integer angle;
+public class Rectangle extends Component{
 
     public void Rectangle(Integer x,Integer y){
         this.x = x;
