@@ -56,7 +56,6 @@ public class Board extends JPanel{
         ball.paint(g);
     }
     public void refresh() {
-        Rectangle oldPos = ball.boundingBox();
         ball.move();
         repaint(0, 0, boardWidth, boardHeight);
     }
