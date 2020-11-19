@@ -13,7 +13,8 @@ import javax.swing.Timer;
  */
 public class UserPanel extends JFrame{
     private Container contentPane;
-    private JPanel boardPanel, sideBarPanel;
+    private Board boardPanel;
+    private JPanel sideBarPanel;
     private JPanel titlePanel, modeControlPanel, layoutConsolePanel;
     private JPanel validLayoutConsolePanel, invalidLayoutConsolePanel;
     private JPanel specialComponentPanel, componentPanel, toolPanel;
@@ -37,10 +38,10 @@ public class UserPanel extends JFrame{
      * @Version 1.0
      * 刷新Board
      */
-    private class FreshBoard implements ActionListener{
+    private class RefreshBoard implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
-            boardPanel.repaint();
+            boardPanel.refresh();
         }
     }
 
@@ -51,7 +52,7 @@ public class UserPanel extends JFrame{
      * 初始化Timer
      */
     private void initTimer(){
-        timer = new Timer(1000/FRAMES_PER_SECOND, new FreshBoard());
+        timer = new Timer(1000/FRAMES_PER_SECOND, new RefreshBoard());
         timer.stop();
     }
     /**
@@ -63,7 +64,9 @@ public class UserPanel extends JFrame{
      */
     private void initBoardPanel(){
         ControlSystem.createBoard();
+        ControlSystem.createBall();
         boardPanel = ControlSystem.getBoard();
+        initTimer();
     }
 
     private String[] characterNames = new String[]{

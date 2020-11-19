@@ -10,7 +10,7 @@ import java.util.Timer;
  */
 public class ControlSystem {
 
-    private static BouncingBall bouncingBall;
+    private static BouncingBall ball;
     private static Board board;
     /**
      * @Author BaoLiang
@@ -20,6 +20,11 @@ public class ControlSystem {
      */
     public static Board getBoard(){
         return board;
+    }
+
+    public static void createBall(){
+        ball = new BouncingBall(board);
+        board.setBall(ball);
     }
     /**
      * @Author BaoLiang

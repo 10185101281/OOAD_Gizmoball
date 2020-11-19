@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.*;
 import java.math.*;
 
@@ -10,6 +11,7 @@ public class BouncingBall {
     private Integer x, y, vx, vy, ax, ay;
     private Integer radius;
     private Board board;
+    private Color color = new Color(0x00000);
     public BouncingBall(Board board){
         this.x = 400;
         this.y = 400;
@@ -49,6 +51,17 @@ public class BouncingBall {
             vy = -vy;
         } else if(y + radius >= boardHeight){
             vy = -vy;
+        }
+    }
+
+    public Rectangle boundingBox(){
+        return new Rectangle(x - radius - 1, y - radius - 1, radius + radius + 2,radius + radius + 2);
+    }
+    public void paint(Graphics g){
+        Rectangle clipRect = g.getClipBounds();
+        if (clipRect.intersects(this.boundingBox())) {
+            g.setColor(color);
+            g.fillOval(x - radius, y - radius, radius + radius, radius + radius);
         }
     }
 }

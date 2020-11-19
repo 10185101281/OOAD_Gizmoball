@@ -40,4 +40,19 @@ public class Board extends JPanel{
         this.setPreferredSize(new Dimension(width,height));
         this.setBackground(boardBackground[0]);
     }
+
+
+    public void setBall(BouncingBall ball){
+        this.ball = ball;
+    }
+    @Override public void paintComponent(Graphics g) {
+        ball.paint(g);
+    }
+    public void refresh() {
+        Rectangle oldPos = ball.boundingBox();
+        ball.move();
+        Rectangle repaintArea = oldPos.union(ball.boundingBox());
+        repaint(repaintArea.x, repaintArea.y, repaintArea.width,
+                repaintArea.height);
+    }
 }
