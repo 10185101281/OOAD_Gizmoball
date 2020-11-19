@@ -8,6 +8,8 @@ import java.awt.*;
  * @Version 1.0
  */
 public class Board extends JPanel{
+    private Integer boardWidth;
+    private Integer boardHeight;
     private Color[] boardBackground = new Color[]{
             new Color(0xF0FFFF),//天空之城
             new Color(0x1C1C1C),//幽邃深渊
@@ -26,6 +28,8 @@ public class Board extends JPanel{
         this.setLayout(null);
         this.setPreferredSize(new Dimension(800,800));
         this.setBackground(boardBackground[0]);
+        boardWidth = 800;
+        boardHeight = 800;
     }
     /**
      * @Author BaoLiang
@@ -39,6 +43,8 @@ public class Board extends JPanel{
         this.setLayout(null);
         this.setPreferredSize(new Dimension(width,height));
         this.setBackground(boardBackground[0]);
+        boardWidth = width;
+        boardHeight = height;
     }
 
 
@@ -51,7 +57,6 @@ public class Board extends JPanel{
     public void refresh() {
         Rectangle oldPos = ball.boundingBox();
         ball.move();
-        Rectangle repaintArea = oldPos.union(ball.boundingBox());
-        repaint(repaintArea.x, repaintArea.y, repaintArea.width, repaintArea.height);
+        repaint(0, 0, boardWidth, boardHeight);
     }
 }
