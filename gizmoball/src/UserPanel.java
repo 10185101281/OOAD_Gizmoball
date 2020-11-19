@@ -44,7 +44,6 @@ public class UserPanel extends JFrame{
             boardPanel.refresh();
         }
     }
-
     /**
      * @Author BaoLiang
      * @Date 2020/11/17 15:15
@@ -70,9 +69,14 @@ public class UserPanel extends JFrame{
     }
 
     private String[] characterNames = new String[]{
-            "Qiqi","Jean","Amber","Lisa","Barbara","Venti",
-            "Klee","Noelle","Fischl","Sucrose","Mona","Xiao",
-            "Ningguang","Beidou","Keqing"
+            "Venti", "Klee", "Qiqi",
+            "Xiao", "Ningguang",
+            //"Jean","Amber","Lisa","Barbara",
+            //"Noelle","Fischl","Sucrose","Mona",
+            //"Beidou","Keqing"
+    };
+    private String[] characterComponents = new String[]{
+            
     };
     /**
      * @Author BaoLiang
