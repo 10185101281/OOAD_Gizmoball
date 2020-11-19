@@ -52,6 +52,7 @@ public class Board extends JPanel{
         this.ball = ball;
     }
     @Override public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         ball.paint(g);
     }
     public void refresh() {
