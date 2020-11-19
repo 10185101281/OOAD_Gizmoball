@@ -75,13 +75,13 @@ release.properties
 *.iml
 *.ipr
 *.iws
-.idea/
+
 out/
 
 # Mac
 .DS_Store
 /.gitignore
-.idea
+
 
 *_res.yml
 *_res.yaml
