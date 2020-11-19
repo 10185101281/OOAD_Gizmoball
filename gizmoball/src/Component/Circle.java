@@ -1,6 +1,6 @@
 package Component;
 
-public class Circle implements Component{
+public class Circle extends Component{
     Integer x;  //外切正方形左上角坐标
     Integer y;
     Integer radius;
@@ -11,17 +11,17 @@ public class Circle implements Component{
     }
 
     @Override
-    public void enlarge(Integer scale) {
+    public void enlarge(Integer scaler) {
 
     }
 
     @Override
-    public void shrink(Integer scale) {
+    public void shrink(Integer scaler) {
 
     }
 
     @Override
-    public void rotate(Integer scale) {
+    public void rotate(Integer scaler) {
 
     }
 }

@@ -1,14 +1,11 @@
 package Component;
 
-public class Triangle implements Component{
-    Integer origin_x;   //外接正方形左上角坐标
-    Integer origin_y;
-    Integer length;     //边长
-    Integer angle;
+public class Triangle extends Component{
+
     
     public Triangle(Integer x,Integer y){
-        this.origin_x = x;
-        this.origin_y = y;
+        this.x = x;
+        this.y = y;
         length = 20;
         angle = 0;
     }
