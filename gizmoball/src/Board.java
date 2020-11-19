@@ -52,7 +52,6 @@ public class Board extends JPanel{
         Rectangle oldPos = ball.boundingBox();
         ball.move();
         Rectangle repaintArea = oldPos.union(ball.boundingBox());
-        repaint(repaintArea.x, repaintArea.y, repaintArea.width,
-                repaintArea.height);
+        repaint(repaintArea.x, repaintArea.y, repaintArea.width, repaintArea.height);
     }
 }
