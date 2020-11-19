@@ -1,8 +1,7 @@
-import java.util.*;
+package main;
+
 import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
-import java.util.Timer;
+
 /**
  * @Author
  * @Date 2020/11/17 9:30

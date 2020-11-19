@@ -1,8 +1,9 @@
+package main;
+
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
-import java.math.*;
 import java.util.*;
 import javax.swing.Timer;
 
@@ -164,7 +165,7 @@ public class UserPanel extends JFrame{
     private void initSpecialComponentPanel(){
         specialComponentPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         specialComponentPanel.setPreferredSize(new Dimension(300,120));
-        specialComponentPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Special Component"));
+        specialComponentPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Special component"));
         specialComponentPanel.setBackground(new Color(0x00CED1));
 
         JButton avatarButton = new JButton(getRandomAvatar(70,70));
@@ -174,7 +175,7 @@ public class UserPanel extends JFrame{
         JRadioButton specialComponentButton = new JRadioButton();
         buttonGroup.add(specialComponentButton);
         specialComponentPanel.add(specialComponentButton);
-        JLabel specialComponent = new JLabel("Special Component");
+        JLabel specialComponent = new JLabel("Special component");
         specialComponent.setPreferredSize(new Dimension(70, 70));
         specialComponentPanel.add(specialComponent);
     }
@@ -187,7 +188,7 @@ public class UserPanel extends JFrame{
     private void initComponentPanel(){
         componentPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         componentPanel.setPreferredSize(new Dimension(300,295));
-        componentPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Component"));
+        componentPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2], "component"));
         componentPanel.setBackground(new Color(0x00CED1));
 
         JRadioButton[] componentButtons = new JRadioButton[]{

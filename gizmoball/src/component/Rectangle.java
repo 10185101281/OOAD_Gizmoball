@@ -1,8 +1,9 @@
-package Component;
+package component;
 
 public class Rectangle extends Component{
 
     public void Rectangle(Integer x,Integer y){
+
         this.x = x;
         this.y = y;
         length = 20;

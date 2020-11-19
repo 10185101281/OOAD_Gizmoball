@@ -1,4 +1,4 @@
-package Component;
+package component;
 
 public class Circle extends Component{
     Integer x;  //外切正方形左上角坐标

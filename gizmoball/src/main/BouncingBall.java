@@ -1,6 +1,7 @@
+package main;
+
 import java.awt.*;
 import java.util.*;
-import java.math.*;
 
 /**
  * @Author BaoLiang
