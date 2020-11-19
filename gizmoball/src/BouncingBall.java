@@ -16,8 +16,8 @@ public class BouncingBall {
         this.x = 400;
         this.y = 400;
         Random random = new Random();
-        this.vx = random.nextInt(200)-100;
-        this.vy = random.nextInt(200)-100;
+        this.vx = random.nextInt(20)-10;
+        this.vy = random.nextInt(20)-10;
         this.radius = 10;
         this.board = board;
     }

@@ -18,7 +18,7 @@ public class UserPanel extends JFrame{
     private JPanel titlePanel, modeControlPanel, layoutConsolePanel;
     private JPanel validLayoutConsolePanel, invalidLayoutConsolePanel;
     private JPanel specialComponentPanel, componentPanel, toolPanel;
-    private static final int FRAMES_PER_SECOND = 100;
+    private static final int FRAMES_PER_SECOND = 1000;
     private Timer timer;
 
     private ButtonGroup buttonGroup = new ButtonGroup();
