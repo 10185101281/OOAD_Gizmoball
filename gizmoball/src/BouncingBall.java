@@ -21,7 +21,7 @@ public class BouncingBall {
         this.radius = 10;
         this.board = board;
     }
-    public BouncingBall(int x,int y,int vx,int vy,int ax,int ay){
+    public BouncingBall(int x,int y,int vx,int vy,int ax,int ay,Board board){
         this.x = x;
         this.y = y;
         this.vx = vx;
@@ -32,6 +32,12 @@ public class BouncingBall {
         this.board = board;
     }
 
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/19 19:30
+     * @Version 1.0
+     * 模拟小球运动
+     */
     public void move(){
         Integer boardWidth = board.getPreferredSize().width;
         Integer boardHeight = board.getPreferredSize().height;
@@ -54,9 +60,20 @@ public class BouncingBall {
         }
     }
 
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/19 19:30
+     * @Version 1.0
+     */
     public Rectangle boundingBox(){
         return new Rectangle(x - radius - 1, y - radius - 1, radius + radius + 2,radius + radius + 2);
     }
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/19 19:30
+     * @Version 1.0
+     * @param g
+     */
     public void paint(Graphics g){
         Rectangle clipRect = g.getClipBounds();
         if (clipRect.intersects(this.boundingBox())) {
