@@ -12,7 +12,6 @@ public class ControlSystem {
 
     private static BouncingBall bouncingBall;
     private static Board board;
-    private static final int FRAMES_PER_SECOND = 100;
     /**
      * @Author BaoLiang
      * @Date 2020/11/18 11:30
@@ -48,18 +47,6 @@ public class ControlSystem {
     }
 
     public static void main(String[] args){
-        Timer timer = new Timer();
-        timer.schedule(new Test1(),0,1000/FRAMES_PER_SECOND);
         createUserPanel(1105, 800);
     }
 }
-
-class Test1 extends TimerTask{
-    private static int cnt = 0;
-    @Override
-    public void run(){
-        cnt++;
-        System.out.println("Text:"+cnt);
-    }
-}
-

@@ -4,6 +4,7 @@ import javax.swing.border.*;
 import java.awt.*;
 import java.math.*;
 import java.util.*;
+import javax.swing.Timer;
 
 /**
  * @Author BaoLiang
@@ -12,11 +13,13 @@ import java.util.*;
  */
 public class UserPanel extends JFrame{
     private Container contentPane;
-    //private Board  boardPanel;
     private JPanel boardPanel, sideBarPanel;
     private JPanel titlePanel, modeControlPanel, layoutConsolePanel;
     private JPanel validLayoutConsolePanel, invalidLayoutConsolePanel;
     private JPanel specialComponentPanel, componentPanel, toolPanel;
+    private static final int FRAMES_PER_SECOND = 100;
+    private Timer timer;
+
     private ButtonGroup buttonGroup = new ButtonGroup();
     private Border[] linerBorders = new Border[]{
             BorderFactory.createLineBorder(new Color(0xD3D3D3),5),
@@ -28,6 +31,29 @@ public class UserPanel extends JFrame{
             BorderFactory.createLineBorder(new Color(0xBEBEBE), 2),
     };
 
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/19 15:25
+     * @Version 1.0
+     * 刷新Board
+     */
+    private class FreshBoard implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e){
+            boardPanel.repaint();
+        }
+    }
+
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/17 15:15
+     * @Version 1.0
+     * 初始化Timer
+     */
+    private void initTimer(){
+        timer = new Timer(1000/FRAMES_PER_SECOND, new FreshBoard());
+        timer.stop();
+    }
     /**
      * @Author BaoLiang
      * @Date 2020/11/17 15:15
@@ -107,6 +133,7 @@ public class UserPanel extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 CardLayout cl = (CardLayout)layoutConsolePanel.getLayout();
                 cl.show(layoutConsolePanel,"valid");
+                timer.stop();
             }
         });
         playMode.addActionListener(new ActionListener() {
@@ -114,6 +141,7 @@ public class UserPanel extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 CardLayout cl = (CardLayout)layoutConsolePanel.getLayout();
                 cl.show(layoutConsolePanel,"invalid");
+                timer.start();
             }
         });
         modeControlPanel.add(layoutMode);
