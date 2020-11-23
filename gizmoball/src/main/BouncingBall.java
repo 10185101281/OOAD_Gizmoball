@@ -38,14 +38,17 @@ public class BouncingBall {
         this.vy = vy;
     }
 
+    private void randomAttributes(){
+        Random random = new Random();
+        vx = random.nextInt(5)-2;
+        vy = random.nextInt(5)-2;
+    }
     public BouncingBall(Board board){
         this.x = 400;
         this.y = 400;
-        Random random = new Random();
-        this.vx = random.nextInt(5)-2;
-        this.vy = random.nextInt(5)-2;
         this.radius = 10;
         this.board = board;
+        randomAttributes();
     }
     public BouncingBall(int x,int y,int vx,int vy,int ax,int ay,Board board){
         this.x = x;
@@ -68,22 +71,28 @@ public class BouncingBall {
         Integer boardWidth = board.getPreferredSize().width;
         Integer boardHeight = board.getPreferredSize().height;
 
+        boolean is = false;
         x += vx;
         if(x <= radius){
             x = radius;
             vx = -vx;
+            is = true;
         } else if(x + radius >=  boardWidth){
             x = boardWidth-radius;
             vx = -vx;
+            is = true;
         }
 
         y += vy;
         if(y <= radius){
             y = radius;
             vy = -vy;
+            is = true;
         } else if(y + radius >= boardHeight){
             vy = -vy;
+            is = true;
         }
+        if(is) randomAttributes();
     }
 
     /**

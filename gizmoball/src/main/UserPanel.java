@@ -69,15 +69,18 @@ public class UserPanel extends JFrame{
         initTimer();
     }
 
-    private String[] characterNames = new String[]{
-            "Venti", "Klee", "Qiqi",
-            "Xiao", "Ningguang",
-            //"Jean","Amber","Lisa","Barbara",
-            //"Noelle","Fischl","Sucrose","Mona",
-            //"Beidou","Keqing"
+    private Integer characterPointer = 0;
+    private Character[] characters = new Character[]{
+            new Character("Venti",new JRadioButton(""),new JLabel("Black Hole")),
+            new Character("Klee",new JRadioButton(""),new JLabel("Boom")),
+            new Character("Qiqi",new JRadioButton(""),new JLabel("Ice Ball")),
+            new Character("Xiao",new JRadioButton(""),new JLabel("Mask")),
+            new Character("Ningguang",new JRadioButton(""),new JLabel("Barrier")),
+
     };
-    private String[] characterComponents = new String[]{
-            
+    private String[] characterNames = new String[]{
+            "Venti", "Klee", "Qiqi","Xiao","Ningguang",
+            //"Jean","Amber","Lisa","Barbara","Noelle","Fischl","Sucrose","Mona","Beidou","Keqing"
     };
     /**
      * @Author BaoLiang
@@ -91,6 +94,21 @@ public class UserPanel extends JFrame{
     private ImageIcon getRandomAvatar(int width,int height){
         Integer randomInteger = new Random().nextInt(characterNames.length);
         ImageIcon imageIcon = new ImageIcon("gizmoball/src/picture/avatar/"+characterNames[randomInteger]+".png");
+        imageIcon.setImage(imageIcon.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
+        return imageIcon;
+    }
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/13 16:00
+     * @Version 1.0
+     * 生成指定头像。
+     * @param width 头像的宽度
+     * @param height 头像的高度
+     * @param s 角色名称
+     * @return 根据角色名称生成的头像
+     */
+    private ImageIcon getAvatar(int width,int height,String s){
+        ImageIcon imageIcon = new ImageIcon("gizmoball/src/picture/avatar/"+s+".png");
         imageIcon.setImage(imageIcon.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
         return imageIcon;
     }
@@ -168,16 +186,32 @@ public class UserPanel extends JFrame{
         specialComponentPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Special component"));
         specialComponentPanel.setBackground(new Color(0x00CED1));
 
-        JButton avatarButton = new JButton(getRandomAvatar(70,70));
+        //System.out.println(characterPointer);
+        JButton avatarButton = new JButton(getAvatar(70, 70, characters[characterPointer].getName()));
         avatarButton.setPreferredSize(new Dimension(70,70));
         avatarButton.setBorder(buttonBorders[1]);
         specialComponentPanel.add(avatarButton);
-        JRadioButton specialComponentButton = new JRadioButton();
+
+        JRadioButton specialComponentButton = characters[characterPointer].getButton();
         buttonGroup.add(specialComponentButton);
         specialComponentPanel.add(specialComponentButton);
-        JLabel specialComponent = new JLabel("Special component");
+
+        JLabel specialComponent = characters[characterPointer].getComponent();
         specialComponent.setPreferredSize(new Dimension(70, 70));
         specialComponentPanel.add(specialComponent);
+
+        avatarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                characterPointer = (characterPointer+1)%characters.length;
+                validLayoutConsolePanel.remove(specialComponentPanel);
+                initSpecialComponentPanel();
+                validLayoutConsolePanel.add(specialComponentPanel,BorderLayout.NORTH);
+                validLayoutConsolePanel.repaint();
+                validLayoutConsolePanel.updateUI();
+            }
+        });
+
     }
     /**
      * @Author BaoLiang
