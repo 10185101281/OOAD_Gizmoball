@@ -5,12 +5,8 @@ import main.BouncingBall;
 public class Rectangle extends Component{
     private Integer boucing_edge;
 
-    public void Rectangle(Integer x,Integer y){
+    public void Rectangle(){
 
-        this.x = x;
-        this.y = y;
-        length = 20;
-        angle = 0;
     }
 
 
@@ -22,23 +18,23 @@ public class Rectangle extends Component{
         Integer center_y = ball.getY();
         //小球半径
         Integer radius = ball.getRadius();
-        if(center_x+radius>=x)//左边
+        if(center_x+radius>=x&&y-radius<=center_y&&center_y<=y+length+radius)//左边
         {
             boucing_edge = 1;
             ball.setX(center_x-(center_x+radius-x));
         }
-        else if(center_x-radius<=x)//右边
+        else if(center_x-radius<=x&&y-radius<=center_y&&center_y<=y+length+radius)//右边
         {
             boucing_edge = 1;
             ball.setX(center_x+(x-(center_x-radius)));
         }
 
-        else if(center_y+radius>=y)//上边
+        else if(center_y+radius>=y&&x<=center_x&&center_x<=x+length)//上边
         {
             boucing_edge = 2;
             ball.setY(center_y-(center_y+radius-x));
         }
-        else if(center_y-radius<=y)
+        else if(center_y-radius<=y&&x<=center_x&&center_x<=x+length)//下边
         {
             boucing_edge = 2;
             ball.setY(center_y+(y-(center_y-radius)));

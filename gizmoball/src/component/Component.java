@@ -14,6 +14,12 @@ public abstract class Component {
     Integer length;
     Integer angle;
 
+    public void Component(Integer x,Integer y){
+        this.x = x;
+        this.y = y;
+        length = 20;
+        angle = 0;
+    }
 
     /**
      * @param scaler 放大倍数

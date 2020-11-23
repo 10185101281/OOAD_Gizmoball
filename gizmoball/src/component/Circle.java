@@ -6,7 +6,6 @@ import java.math.*;
 
 public class Circle extends Component{
 
-
     @Override
     public void enlarge(Integer scaler) {
         super.enlarge(scaler);
