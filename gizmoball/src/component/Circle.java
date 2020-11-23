@@ -25,12 +25,15 @@ public class Circle extends Component{
     @Override
     public void judge(BouncingBall ball) {
         super.judge(ball);
+        //控件圆心坐标
         Integer center_x1 = x + length/2;
         Integer center_y1 = y - length/2;
-        Integer center_x2 = ball.getX() + ball.getRadius();
-        Integer center_y2 = ball.getY() - ball.getRadius();
+        //小球圆心坐标
+        Integer center_x2 = ball.getX();
+        Integer center_y2 = ball.getY();
+        //圆心间距离
         double distance = Math.sqrt(Math.pow(center_x1-center_x2,2)+Math.pow(center_y1-center_y2,2));
-        if(distance<=length/2+ball.getRadius())
+        if(distance<=length/2+ball.getRadius())//如果圆心距离小于半径和，则相交
         {
             react(ball);
         }
@@ -39,13 +42,17 @@ public class Circle extends Component{
     @Override
     public void react(BouncingBall ball) {
         super.react(ball);
+        //控件圆心坐标
         double center_x1 = x.doubleValue() + length.doubleValue()/2;
         double center_y1 = y.doubleValue() - length.doubleValue()/2;
-        double center_x2 = ball.getX().doubleValue() + ball.getRadius().doubleValue();
-        double center_y2 = ball.getY().doubleValue() - ball.getRadius().doubleValue();
+        //小球圆心坐标
+        double center_x2 = ball.getX().doubleValue();
+        double center_y2 = ball.getY().doubleValue();
+
         double k = (Math.abs(center_y2-center_y1)/Math.abs(center_x2-center_x1));
-        double cos_a = 1/Math.sqrt(1+k*k);
-        double sin_a = k/Math.sqrt(1+k*k);
+        //切线与水平方向夹角的sin和cos
+        double sin_a = 1/Math.sqrt(1+k*k);
+        double cos_a = k/Math.sqrt(1+k*k);
         //获取小球当前x方向和y方向分速度
         double vx = ball.getVx();
         double vy = ball.getVy();
