@@ -13,6 +13,31 @@ public class BouncingBall {
     private Integer radius;
     private Board board;
     private Color color = new Color(0x00000);
+
+    public Integer getX() {
+        return x;
+    }
+    public Integer getY(){
+        return y;
+    }
+    public Integer getRadius(){
+        return radius;
+    }
+    public Integer getVx(){
+        return vx;
+    }
+    public Integer getVy() {
+        return vy;
+    }
+
+    public void setVx(Integer vx) {
+        this.vx = vx;
+    }
+
+    public void setVy(Integer vy) {
+        this.vy = vy;
+    }
+
     public BouncingBall(Board board){
         this.x = 400;
         this.y = 400;

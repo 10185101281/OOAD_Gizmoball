@@ -1,5 +1,7 @@
 package component;
 
+import main.BouncingBall;
+
 public class Triangle extends Component{
 
     
@@ -26,5 +28,15 @@ public class Triangle extends Component{
     @Override
     public void rotate(Integer angle) {
 
+    }
+
+    @Override
+    public void judge(BouncingBall ball) {
+        super.judge(ball);
+    }
+
+    @Override
+    public void react(BouncingBall ball) {
+        super.react(ball);
     }
 }

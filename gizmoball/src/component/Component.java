@@ -1,5 +1,7 @@
 package component;
 
+import main.BouncingBall;
+
 /**
  * @Author LiXiang
  * @Date 2020/11/19 15:30
@@ -21,7 +23,7 @@ public abstract class Component {
      * 放大控件
      */
     public void enlarge(Integer scaler) {
-
+        length = length*scaler;
     }
 
 
@@ -33,7 +35,7 @@ public abstract class Component {
      * 缩小控件
      */
     public void shrink(Integer scaler) {
-
+        length = length/scaler;
     }
 
     /**
@@ -44,8 +46,30 @@ public abstract class Component {
      * 旋转控件
      */
     public void rotate(Integer angle) {
+        this.angle = angle;
+    }
+
+    /**
+     * @param ball 小球
+     * @Author LiXiang
+     * @Date 2020/11/20 10:00
+     * @Version 1.0
+     * 判断小球是否与自己碰撞
+     */
+    public void judge(BouncingBall ball){
 
     }
-    public void judge()
+
+
+    /**
+     * @param ball 小球
+     * @Author LiXiang
+     * @Date 2020/11/20 10:00
+     * @Version 1.0
+     * 碰撞后作出反应，改变小球状态
+     */
+    public void react(BouncingBall ball){
+
+    }
 
 }
