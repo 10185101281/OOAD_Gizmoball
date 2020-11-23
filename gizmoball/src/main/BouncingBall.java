@@ -37,6 +37,13 @@ public class BouncingBall {
     public void setVy(Integer vy) {
         this.vy = vy;
     }
+    public void setX(Integer x) {
+        this.x = x;
+    }
+
+    public void setY(Integer y) {
+        this.y = y;
+    }
 
     private void randomAttributes(){
         Random random = new Random();
