@@ -20,6 +20,7 @@ public class UserPanel extends JFrame{
     private JPanel validLayoutConsolePanel, invalidLayoutConsolePanel;
     private JPanel validToolPanel, invalidToolPanel;
     private JPanel specialComponentPanel, componentPanel, toolPanel;
+    private ActionListener toolValidControlListener;
     private static final int FRAMES_PER_SECOND = 1000;
     private Timer timer;
 
@@ -193,6 +194,7 @@ public class UserPanel extends JFrame{
         specialComponentPanel.add(avatarButton);
 
         JRadioButton specialComponentButton = characters[characterPointer].getButton();
+        specialComponentButton.addActionListener(toolValidControlListener);
         buttonGroup.add(specialComponentButton);
         specialComponentPanel.add(specialComponentButton);
 
@@ -205,6 +207,7 @@ public class UserPanel extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 characterPointer = (characterPointer+1)%characters.length;
                 validLayoutConsolePanel.remove(specialComponentPanel);
+                buttonGroup.remove(specialComponentButton);
                 initSpecialComponentPanel();
                 validLayoutConsolePanel.add(specialComponentPanel,BorderLayout.NORTH);
                 //validLayoutConsolePanel.repaint();
@@ -225,13 +228,15 @@ public class UserPanel extends JFrame{
         componentPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2], "component"));
         componentPanel.setBackground(new Color(0x00CED1));
 
+        JRadioButton placementJRadioButton = new JRadioButton();
+        placementJRadioButton.setActionCommand("placement");
         JRadioButton[] componentButtons = new JRadioButton[]{
-                new JRadioButton(), new JRadioButton(),
+                placementJRadioButton, new JRadioButton(),
                 new JRadioButton(), new JRadioButton(),
                 new JRadioButton(), new JRadioButton(),
         };
         JLabel[] component = new JLabel[]{
-                new JLabel("Move"), new JLabel("Ball"),
+                new JLabel("Placement"), new JLabel("Ball"),
                 new JLabel("Triangle"), new JLabel("Rectange"),
                 new JLabel("Straight Pipe"), new JLabel("Curved Pipe"),
         };
@@ -240,10 +245,12 @@ public class UserPanel extends JFrame{
             tJPanel.setPreferredSize(new Dimension(componentPanel.getPreferredSize().width-20,(componentPanel.getPreferredSize().height-20)/3-5));
             tJPanel.setBackground(new Color(0x54FF9F));
             for(int j=0; j<2; j++){
-                buttonGroup.add(componentButtons[i*2+j]);
-                tJPanel.add(componentButtons[i*2+j]);
-                component[i*2+j].setPreferredSize(new Dimension(70,70));
-                tJPanel.add(component[i*2+j]);
+                int id = i*2+j;
+                buttonGroup.add(componentButtons[id]);
+                componentButtons[id].addActionListener(toolValidControlListener);
+                tJPanel.add(componentButtons[id]);
+                component[id].setPreferredSize(new Dimension(70,70));
+                tJPanel.add(component[id]);
             }
             componentPanel.add(tJPanel);
         }
@@ -267,8 +274,8 @@ public class UserPanel extends JFrame{
                 new JLabel("CAN USE TOOL.")
         };
         for(int i=0; i<3; i++){
-            texts[i].setPreferredSize(new Dimension(300,60));
-            texts[i].setFont(new Font("Arial",Font.BOLD,30));
+            texts[i].setPreferredSize(new Dimension(300,50));
+            texts[i].setFont(new Font("Arial",Font.BOLD,20));
             texts[i].setHorizontalAlignment(SwingConstants.CENTER);
             texts[i].setVerticalAlignment(SwingConstants.CENTER);
             invalidToolPanel.add(texts[i]);
@@ -299,9 +306,10 @@ public class UserPanel extends JFrame{
             tJPanel.setPreferredSize(new Dimension(toolPanel.getPreferredSize().width-20,(toolPanel.getPreferredSize().height-20)/2-5));
             tJPanel.setBackground(new Color(0x54FF9F));
             for(int j=0; j<2; j++){
-                toolButtons[i*2+j].setPreferredSize(new Dimension(70,70));
-                toolButtons[i*2+j].setBorder(buttonBorders[0]);
-                tJPanel.add(toolButtons[i*2+j]);
+                int id = i*2+j;
+                toolButtons[id].setPreferredSize(new Dimension(70,70));
+                toolButtons[id].setBorder(buttonBorders[0]);
+                tJPanel.add(toolButtons[id]);
             }
             validToolPanel.add(tJPanel);
         }
@@ -339,12 +347,36 @@ public class UserPanel extends JFrame{
     private void initToolPanel(){
         toolPanel = new JPanel(new CardLayout());
         toolPanel.setPreferredSize(new Dimension(300,195));
+
         initInvalidToolPanel();
         initValidToolPanel();
         toolPanel.add(validToolPanel,"valid");
         toolPanel.add(invalidToolPanel,"invalid");
+
+        initToolValidControlListener();
     }
 
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/24 17:40
+     * @Version 1.0
+     * 初始化toolValidControlListener
+     */
+    private void initToolValidControlListener(){
+        toolValidControlListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String eActionCommand = e.getActionCommand();
+                if(eActionCommand != null && eActionCommand.equals("placement")){
+                    CardLayout cl = (CardLayout)toolPanel.getLayout();
+                    cl.show(toolPanel,"valid");
+                } else {
+                    CardLayout cl = (CardLayout)toolPanel.getLayout();
+                    cl.show(toolPanel,"invalid");
+                }
+            }
+        };
+    }
     /**
      * @Author BaoLiang
      * @Date 2020/11/18 18:00
@@ -358,9 +390,10 @@ public class UserPanel extends JFrame{
         validLayoutConsolePanel.setBorder(linerBorders[1]);
         validLayoutConsolePanel.setBackground(new Color(0x00CED1));
 
+        initToolPanel();
         initSpecialComponentPanel();
         initComponentPanel();
-        initToolPanel();
+
         validLayoutConsolePanel.add(specialComponentPanel,BorderLayout.NORTH);
         validLayoutConsolePanel.add(componentPanel,BorderLayout.CENTER);
         validLayoutConsolePanel.add(toolPanel,BorderLayout.SOUTH);
@@ -403,6 +436,8 @@ public class UserPanel extends JFrame{
         layoutConsolePanel.setPreferredSize(new Dimension(310, 630));
         layoutConsolePanel.setBorder(linerBorders[1]);
         layoutConsolePanel.setBackground(new Color(0x00CED1));
+
+
         initValidLayoutConsolePanel();
         initInvalidLayoutConsolePanel();
         layoutConsolePanel.add(validLayoutConsolePanel, "valid");
