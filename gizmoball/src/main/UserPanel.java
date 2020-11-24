@@ -1,5 +1,8 @@
 package main;
 
+import component.*;
+import component.XRectangle;
+import gui.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -218,6 +221,42 @@ public class UserPanel extends JFrame{
     }
     /**
      * @Author BaoLiang
+     * @Date 2020/11/24 20:00
+     * @Version 1.0
+     * 初始化componentPanel的Button组
+     */
+    private void initComponentPanelButton(){
+        JRadioButtonP placement = new JRadioButtonP("placement");
+        JRadioButtonP rectangle = new JRadioButtonP("rectangle", XRectangle.picture);
+        JRadioButtonP triangle = new JRadioButtonP("triangle",XTriangle.picture);
+        JRadioButtonP circle = new JRadioButtonP("circle",XCircle.picture);
+        JRadioButtonP straightPipe = new JRadioButtonP("straightPipe");
+        JRadioButtonP curvedPipe = new JRadioButtonP("curvedPipe");
+        JRadioButtonP[] jRadioButtonGroups = new JRadioButtonP[]{
+                placement, rectangle,
+                triangle, circle,
+                straightPipe,curvedPipe
+        };
+        for(int i=0; i<3; i++){
+            JPanel tJPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+            tJPanel.setPreferredSize(new Dimension(componentPanel.getPreferredSize().width-20,(componentPanel.getPreferredSize().height-20)/3-5));
+            tJPanel.setBackground(new Color(0x54FF9F));
+            for(int j=0; j<2; j++){
+                int id = i*2+j;
+                jRadioButtonGroups[id].addActionListener(toolValidControlListener);
+                JRadioButton button = jRadioButtonGroups[id].getjRadioButton();
+                JLabel label = jRadioButtonGroups[id].getjLabel();
+
+                buttonGroup.add(button);
+                tJPanel.add(button);
+                tJPanel.add(label);
+            }
+            componentPanel.add(tJPanel);
+        }
+        placement.getjRadioButton().setSelected(true);
+    }
+    /**
+     * @Author BaoLiang
      * @Date 2020/11/17 21:00
      * @Version 1.0
      * 初始化componentPanel
@@ -228,33 +267,7 @@ public class UserPanel extends JFrame{
         componentPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2], "component"));
         componentPanel.setBackground(new Color(0x00CED1));
 
-        JRadioButton placementJRadioButton = new JRadioButton();
-        placementJRadioButton.setActionCommand("placement");
-        JRadioButton[] componentButtons = new JRadioButton[]{
-                placementJRadioButton, new JRadioButton(),
-                new JRadioButton(), new JRadioButton(),
-                new JRadioButton(), new JRadioButton(),
-        };
-        JLabel[] component = new JLabel[]{
-                new JLabel("Placement"), new JLabel("Ball"),
-                new JLabel("Triangle"), new JLabel("Rectange"),
-                new JLabel("Straight Pipe"), new JLabel("Curved Pipe"),
-        };
-        for(int i=0; i<3; i++){
-            JPanel tJPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            tJPanel.setPreferredSize(new Dimension(componentPanel.getPreferredSize().width-20,(componentPanel.getPreferredSize().height-20)/3-5));
-            tJPanel.setBackground(new Color(0x54FF9F));
-            for(int j=0; j<2; j++){
-                int id = i*2+j;
-                buttonGroup.add(componentButtons[id]);
-                componentButtons[id].addActionListener(toolValidControlListener);
-                tJPanel.add(componentButtons[id]);
-                component[id].setPreferredSize(new Dimension(70,70));
-                tJPanel.add(component[id]);
-            }
-            componentPanel.add(tJPanel);
-        }
-        componentButtons[0].setSelected(true);
+        initComponentPanelButton();
     }
     /**
      * @Author BaoLiang

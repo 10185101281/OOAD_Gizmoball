@@ -2,7 +2,11 @@ package component;
 
 import main.BouncingBall;
 
-public class Rectangle extends Component{
+import javax.swing.*;
+
+public class XRectangle extends Component{
+    public static final ImageIcon picture = new ImageIcon("gizmoball/src/picture/component/rectangle.png");
+
     private Integer boucing_edge;
 
     public void Rectangle(){

@@ -2,10 +2,13 @@ package component;
 
 import main.BouncingBall;
 
-public class Triangle extends Component{
+import javax.swing.*;
 
+public class XTriangle extends Component{
+
+    public static final ImageIcon picture = new ImageIcon("gizmoball/src/picture/component/triangle.png");
     
-    public Triangle(Integer x,Integer y){
+    public XTriangle(Integer x, Integer y){
         this.x = x;
         this.y = y;
         length = 20;

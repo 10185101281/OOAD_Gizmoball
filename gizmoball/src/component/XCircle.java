@@ -2,9 +2,12 @@ package component;
 
 import com.sun.xml.internal.rngom.parse.host.GrammarHost;
 import main.BouncingBall;
+
+import javax.swing.*;
 import java.math.*;
 
-public class Circle extends Component{
+public class XCircle extends Component{
+    public static final ImageIcon picture = new ImageIcon("gizmoball/src/picture/component/circle.png");
 
     @Override
     public void enlarge(Integer scaler) {
