@@ -124,10 +124,14 @@ public class BouncingBall {
      * @param g
      */
     public void paint(Graphics g){
+        g.setColor(color);
+        g.fillOval(x - radius, y - radius, radius + radius, radius + radius);
+        /*
         Rectangle clipRect = g.getClipBounds();
         if (clipRect.intersects(this.boundingBox())) {
             g.setColor(color);
             g.fillOval(x - radius, y - radius, radius + radius, radius + radius);
         }
+         */
     }
 }

@@ -47,6 +47,7 @@ public class Board extends JPanel{
             if(nowComponent.equals("rectangle")){
                 XRectangle rectangle = new XRectangle(x,y);
                 componentList.add(rectangle);
+                refresh();
             } else if(nowComponent.equals("triangle")){
 
             } else if(nowComponent.equals("circle")){
@@ -81,6 +82,7 @@ public class Board extends JPanel{
         this.setBackground(boardBackground[0]);
         boardWidth = 800;
         boardHeight = 800;
+        this.addMouseListener(mouseListener);
     }
     /**
      * @Author BaoLiang
@@ -96,6 +98,7 @@ public class Board extends JPanel{
         this.setBackground(boardBackground[0]);
         boardWidth = width;
         boardHeight = height;
+        this.addMouseListener(mouseListener);
     }
 
 
@@ -105,9 +108,7 @@ public class Board extends JPanel{
     @Override public void paintComponent(Graphics g) {
         super.paintComponent(g);
         ball.paint(g);
-        for(Component component: componentList){
-            component.paint(g);
-        }
+        for(Component component: componentList) component.paint(g);
     }
     public void refresh() {
         ball.move();

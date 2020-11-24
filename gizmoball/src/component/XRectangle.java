@@ -21,8 +21,11 @@ public class XRectangle extends Component{
      * @param g
      */
     public void paint(Graphics g){
-        Image image = getToolkit().createImage("gizmoball/src/picture/component/rectangle.png");
+        System.out.println("1");
+        //Image image = getToolkit().createImage("gizmoball/src/picture/component/rectangle.png");
         g.drawImage(image, x, y,length,length,this);
+        g.setColor(Color.BLACK);
+        g.fillOval(x,y,10,10);
     }
 
     @Override

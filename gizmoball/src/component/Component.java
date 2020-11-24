@@ -8,7 +8,7 @@ import javax.swing.*;
  * @Date 2020/11/19 15:30
  * @Version 1.0
  */
-public abstract class Component extends JLabel{
+public abstract class Component{
 
     Integer x;  //左上角坐标
     Integer y;

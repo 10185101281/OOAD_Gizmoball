@@ -254,6 +254,7 @@ public class UserPanel extends JFrame{
             componentPanel.add(tJPanel);
         }
         placement.getjRadioButton().setSelected(true);
+        boardPanel.setNowComponent("placement");
     }
     /**
      * @Author BaoLiang
