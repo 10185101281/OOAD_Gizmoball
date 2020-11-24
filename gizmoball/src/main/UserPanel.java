@@ -380,6 +380,7 @@ public class UserPanel extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String eActionCommand = e.getActionCommand();
+                boardPanel.setNowComponent(eActionCommand);
                 if(eActionCommand != null && eActionCommand.equals("placement")){
                     CardLayout cl = (CardLayout)toolPanel.getLayout();
                     cl.show(toolPanel,"valid");
@@ -449,7 +450,6 @@ public class UserPanel extends JFrame{
         layoutConsolePanel.setPreferredSize(new Dimension(310, 630));
         layoutConsolePanel.setBorder(linerBorders[1]);
         layoutConsolePanel.setBackground(new Color(0x00CED1));
-
 
         initValidLayoutConsolePanel();
         initInvalidLayoutConsolePanel();

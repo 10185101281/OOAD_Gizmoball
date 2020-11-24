@@ -1,7 +1,12 @@
 package main;
 
+import component.XTriangle;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 /**
  * @Author BaoLiang
@@ -12,7 +17,6 @@ public class Board extends JPanel{
     private Integer boardWidth;
     private Integer boardHeight;
     private Color[] boardBackground = new Color[]{
-
             new Color(0xF0FFFF),//天空之城
             new Color(0x1C1C1C),//幽邃深渊
             new Color(0x00CED1),//碧蓝航线
@@ -20,6 +24,48 @@ public class Board extends JPanel{
             new Color(0xBEBEBE),//灰烬之海
     };
     private BouncingBall ball;
+    private ArrayList<Component> componentList =  new ArrayList();
+    private String nowComponent;
+
+    public void setNowComponent(String nowComponent) {
+        this.nowComponent = nowComponent;
+    }
+
+    private MouseListener mouseListener = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            if(nowComponent == null) return ;
+            Point positon = getMousePosition();
+            int x = positon.x/20 * 40;
+            int y = positon.y/20 * 40;
+            if(nowComponent.equals("rectangle")){
+
+            } else if(nowComponent.equals("triangle")){
+
+            } else if(nowComponent.equals("circle")){
+
+            }
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+    };
     /**
      * @Author BaoLiang
      * @Date 2020/11/18 11:30
