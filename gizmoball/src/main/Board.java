@@ -29,6 +29,9 @@ public class Board extends JPanel{
     private Board getThisBoard(){
         return this;
     }
+    public ArrayList<XComponent> getComponentlist(){
+        return componentList;
+    }
 
     public void setNowComponent(String nowComponent) {
         this.nowComponent = nowComponent;

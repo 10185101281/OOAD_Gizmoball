@@ -2,7 +2,7 @@ package main;
 
 import java.awt.*;
 import java.util.*;
-
+import component.*;
 /**
  * @Author BaoLiang
  * @Date 2020/11/18 9:00
@@ -75,8 +75,14 @@ public class BouncingBall {
      * 模拟小球运动
      */
     public void move(){
+        ArrayList<XComponent> componentslist = board.getComponentlist();
+        for(XComponent component : componentslist){
+            component.judge(this);
+        }
+       // System.out.println("Component finish");
         Integer boardWidth = board.getPreferredSize().width;
         Integer boardHeight = board.getPreferredSize().height;
+
 
         boolean is = false;
         x += vx;

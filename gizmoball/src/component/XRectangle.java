@@ -41,26 +41,34 @@ public class XRectangle extends XComponent {
         Integer center_y = ball.getY();
         //小球半径
         Integer radius = ball.getRadius();
-        if(center_x+radius>=x&&y-radius<=center_y&&center_y<=y+length+radius)//左边
+        if(center_x>=x-radius&&center_x<=x&&y-radius<=center_y&&center_y<=y+length+radius)//左边
         {
             boucing_edge = 1;
-            ball.setX(center_x-(center_x+radius-x));
+            ball.setX(center_x-(center_x+radius-x+1));
+           // ball.setX(center_x-radius);
+            System.out.println("left");
         }
-        else if(center_x-radius<=x&&y-radius<=center_y&&center_y<=y+length+radius)//右边
+        else if(center_x>=x+length&&center_x<=x+length+radius&&y-radius<=center_y&&center_y<=y+length+radius)//右边
         {
             boucing_edge = 1;
-            ball.setX(center_x+(x-(center_x-radius)));
+            ball.setX(center_x+(x-(center_x-radius)+1));
+            //ball.setX(center_x+3*radius);
+            System.out.println("right");
         }
 
-        else if(center_y+radius>=y&&x<=center_x&&center_x<=x+length)//上边
+        else if(center_y<=y&&center_y>=y-radius&&x<=center_x&&center_x<=x+length)//上边
         {
             boucing_edge = 2;
-            ball.setY(center_y-(center_y+radius-x));
+            ball.setY(center_y-(center_y+radius-x+1));
+            //ball.setY(center_y-3*radius);
+            System.out.println("top");
         }
-        else if(center_y-radius<=y&&x<=center_x&&center_x<=x+length)//下边
+        else if(center_y>=y&&center_y<=y+radius&&x<=center_x&&center_x<=x+length)//下边
         {
             boucing_edge = 2;
-            ball.setY(center_y+(y-(center_y-radius)));
+            ball.setY(center_y+(y-(center_y-radius)+1));
+           // ball.setY(center_y+3*radius);
+            System.out.println("bottom");
         }
 
         react(ball);
@@ -74,12 +82,12 @@ public class XRectangle extends XComponent {
         //碰到左右的边
         if(boucing_edge==1)
         {
-            ball.setVy(-ball.getVy());
+            ball.setVx(-ball.getVx());
         }
         //碰到上下的边
         else if(boucing_edge==2)
         {
-            ball.setVx(-ball.getVx());
+            ball.setVy(-ball.getVy());
         }
 
     }
