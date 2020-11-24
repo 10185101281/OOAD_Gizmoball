@@ -96,10 +96,17 @@ public class BouncingBall {
             vy = -vy;
             is = true;
         } else if(y + radius >= boardHeight){
+            y = boardHeight-radius;
             vy = -vy;
             is = true;
         }
-        if(is) randomAttributes();
+        if(is) {
+            Random random = new Random();
+            if(vx < 0) vx = (-1) * random.nextInt(10);
+            else vx = random.nextInt(10);
+            if(vy < 0) vy = (-1) * random.nextInt(10);
+            else vy = random.nextInt(10);
+        }
     }
 
     /**

@@ -12,6 +12,7 @@ public class Board extends JPanel{
     private Integer boardWidth;
     private Integer boardHeight;
     private Color[] boardBackground = new Color[]{
+
             new Color(0xF0FFFF),//天空之城
             new Color(0x1C1C1C),//幽邃深渊
             new Color(0x00CED1),//碧蓝航线
