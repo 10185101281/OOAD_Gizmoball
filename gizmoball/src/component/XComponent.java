@@ -1,27 +1,33 @@
 package component;
 
+import javafx.scene.layout.Border;
 import main.BouncingBall;
 import javax.swing.*;
+import java.awt.*;
+import main.Board;
 
 /**
  * @Author LiXiang
  * @Date 2020/11/19 15:30
  * @Version 1.0
  */
-public abstract class Component{
+public abstract class XComponent{
 
     Integer x;  //左上角坐标
     Integer y;
     Integer length;
     Integer angle;
     Integer base = 40;//一个格子40像素
-    public Component(Integer x,Integer y){
-        this.x = x;
-        this.y = y;
+    Board board;
+
+    public XComponent(Integer x, Integer y, Board board){
+        this.x = x; this.y = y;
         length = base;
         angle = 0;
+        this.board = board;
     }
 
+    public abstract void paint(Graphics g);
     /**
      * @Author LiXiang
      * @Date 2020/11/19 15:30

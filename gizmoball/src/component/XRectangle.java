@@ -1,16 +1,18 @@
 package component;
 
 import main.BouncingBall;
+import main.Board;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class XRectangle extends Component{
-    public static final ImageIcon picture = new ImageIcon("gizmoball/src/picture/component/rectangle.png");
+public class XRectangle extends XComponent {
+    private static final String picturePath = "gizmoball/src/picture/component/rectangle.png";
+    public static final ImageIcon picture = new ImageIcon(picturePath);
 
     private Integer boucing_edge;
-    public XRectangle(Integer x,Integer y){
-        super(x,y);
+    public XRectangle(Integer x,Integer y,Board board){
+        super(x,y,board);
         boucing_edge = 0;
     }
 
@@ -20,12 +22,15 @@ public class XRectangle extends Component{
      * @Version 1.0
      * @param g
      */
+    @Override
     public void paint(Graphics g){
-        System.out.println("1");
-        //Image image = getToolkit().createImage("gizmoball/src/picture/component/rectangle.png");
-        g.drawImage(image, x, y,length,length,this);
-        g.setColor(Color.BLACK);
-        g.fillOval(x,y,10,10);
+        Image image;
+        try {
+            image = Toolkit.getDefaultToolkit().getImage(picturePath);
+            g.drawImage(image, x, y,length,length,board);
+        } catch (Exception e) {
+            System.out.println("File Not Found");
+        }
     }
 
     @Override

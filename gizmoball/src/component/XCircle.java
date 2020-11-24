@@ -1,18 +1,29 @@
 package component;
 
-import com.sun.xml.internal.rngom.parse.host.GrammarHost;
 import main.BouncingBall;
+import main.Board;
 
 import javax.swing.*;
-import java.math.*;
+import java.awt.*;
 
-public class XCircle extends Component{
-    public static final ImageIcon picture = new ImageIcon("gizmoball/src/picture/component/circle.png");
+public class XCircle extends XComponent {
+    public static final String picturePath = "gizmoball/src/picture/component/circle.png";
+    public static final ImageIcon picture = new ImageIcon(picturePath);
 
-    public XCircle(Integer x,Integer y){
-        super(x,y);
+    public XCircle(Integer x,Integer y,Board board){
+        super(x,y,board);
     }
 
+    @Override
+    public void paint(Graphics g){
+        Image image;
+        try {
+            image = Toolkit.getDefaultToolkit().getImage(picturePath);
+            g.drawImage(image, x, y,length,length,board);
+        } catch (Exception e) {
+            System.out.println("File Not Found");
+        }
+    }
     @Override
     public void enlarge() {
         super.enlarge();

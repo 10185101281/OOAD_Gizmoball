@@ -47,7 +47,7 @@ public class UserPanel extends JFrame{
     private class RefreshBoard implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
-            boardPanel.refresh();
+            boardPanel.refresh(true);
         }
     }
     /**

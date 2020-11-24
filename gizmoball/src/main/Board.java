@@ -1,7 +1,6 @@
 package main;
 
-import component.XRectangle;
-import component.XTriangle;
+import component.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,8 +24,11 @@ public class Board extends JPanel{
             new Color(0xBEBEBE),//灰烬之海
     };
     private BouncingBall ball;
-    private ArrayList<Component> componentList =  new ArrayList<Component>();
+    private ArrayList<XComponent> componentList =  new ArrayList<XComponent>();
     private String nowComponent;
+    private Board getThisBoard(){
+        return this;
+    }
 
     public void setNowComponent(String nowComponent) {
         this.nowComponent = nowComponent;
@@ -42,17 +44,19 @@ public class Board extends JPanel{
             System.out.println(nowComponent);
             if(nowComponent == null) return ;
             Point positon = getMousePosition();
-            int x = positon.x/20 * 40;
-            int y = positon.y/20 * 40;
+            int x = positon.x/20 * 20;
+            int y = positon.y/20 * 20;
             if(nowComponent.equals("rectangle")){
-                XRectangle rectangle = new XRectangle(x,y);
+                XComponent rectangle = new XRectangle(x,y,getThisBoard());
                 componentList.add(rectangle);
-                refresh();
             } else if(nowComponent.equals("triangle")){
-
+                XComponent triangle = new XTriangle(x,y,getThisBoard());
+                componentList.add(triangle);
             } else if(nowComponent.equals("circle")){
-
+                XComponent circle = new XCircle(x,y,getThisBoard());
+                componentList.add(circle);
             }
+            refresh(false);
         }
 
         @Override
@@ -108,10 +112,10 @@ public class Board extends JPanel{
     @Override public void paintComponent(Graphics g) {
         super.paintComponent(g);
         ball.paint(g);
-        for(Component component: componentList) component.paint(g);
+        for(XComponent component: componentList) component.paint(g);
     }
-    public void refresh() {
-        ball.move();
+    public void refresh(boolean hasMove) {
+        if(hasMove) ball.move();
         repaint(0, 0, boardWidth, boardHeight);
     }
 }
