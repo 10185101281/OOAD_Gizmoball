@@ -13,17 +13,7 @@ public class XTriangle extends Component{
     }
 
 
-    @Override
-    public void enlarge(Integer scaler) {
-        length = length*scaler;
 
-    }
-
-    @Override
-    public void shrink(Integer scaler) {
-        length = length/scaler;
-
-    }
 
     @Override
     public void rotate(Integer angle) {
