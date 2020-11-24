@@ -18,6 +18,7 @@ public class UserPanel extends JFrame{
     private JPanel sideBarPanel;
     private JPanel titlePanel, modeControlPanel, layoutConsolePanel;
     private JPanel validLayoutConsolePanel, invalidLayoutConsolePanel;
+    private JPanel validToolPanel, invalidToolPanel;
     private JPanel specialComponentPanel, componentPanel, toolPanel;
     private static final int FRAMES_PER_SECOND = 1000;
     private Timer timer;
@@ -186,7 +187,6 @@ public class UserPanel extends JFrame{
         specialComponentPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Special component"));
         specialComponentPanel.setBackground(new Color(0x00CED1));
 
-        //System.out.println(characterPointer);
         JButton avatarButton = new JButton(getAvatar(70, 70, characters[characterPointer].getName()));
         avatarButton.setPreferredSize(new Dimension(70,70));
         avatarButton.setBorder(buttonBorders[1]);
@@ -207,7 +207,7 @@ public class UserPanel extends JFrame{
                 validLayoutConsolePanel.remove(specialComponentPanel);
                 initSpecialComponentPanel();
                 validLayoutConsolePanel.add(specialComponentPanel,BorderLayout.NORTH);
-                validLayoutConsolePanel.repaint();
+                //validLayoutConsolePanel.repaint();
                 validLayoutConsolePanel.updateUI();
             }
         });
@@ -251,19 +251,48 @@ public class UserPanel extends JFrame{
     }
     /**
      * @Author BaoLiang
-     * @Date 2020/11/17 21:00
+     * @Date 2020/11/24 17:00
      * @Version 1.0
-     * 初始化toolPanel
+     * 初始化invalidToolPanel。
      */
-    private void initToolPanel(){
-        toolPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        toolPanel.setPreferredSize(new Dimension(300,195));
-        toolPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Tool"));
-        toolPanel.setBackground(new Color(0x00CED1));
+    private void initInvalidToolPanel(){
+        invalidToolPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        invalidToolPanel.setPreferredSize(new Dimension(300,195));
+        invalidToolPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Tool"));
+        invalidToolPanel.setBackground(new Color(0x8B8B7A));
 
+        JLabel [] texts = new JLabel[]{
+                new JLabel("ONLY IN"),
+                new JLabel("PLACEMENT STATE"),
+                new JLabel("CAN USE TOOL.")
+        };
+        for(int i=0; i<3; i++){
+            texts[i].setPreferredSize(new Dimension(300,60));
+            texts[i].setFont(new Font("Arial",Font.BOLD,30));
+            texts[i].setHorizontalAlignment(SwingConstants.CENTER);
+            texts[i].setVerticalAlignment(SwingConstants.CENTER);
+            invalidToolPanel.add(texts[i]);
+        }
+    }
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/24 17:00
+     * @Version 1.0
+     * 初始化validToolPanel。
+     */
+    private void initValidToolPanel(){
+        validToolPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        validToolPanel.setPreferredSize(new Dimension(300,195));
+        validToolPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Tool"));
+        validToolPanel.setBackground(new Color(0x00CED1));
+
+        JButton spinButton = new JButton("Spin");
+        JButton deleteButton = new JButton("Delete");
+        JButton zoominButton = new JButton("Zoom in");
+        JButton zoomoutButton = new JButton("Zoom out");
         JButton[] toolButtons = new JButton[]{
-                new JButton("Spin"), new JButton("Delete"),
-                new JButton("Zoom in"), new JButton("Zoom out"),
+                spinButton, deleteButton,
+                zoominButton, zoomoutButton,
         };
         for(int i=0; i<2; i++){
             JPanel tJPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -274,8 +303,46 @@ public class UserPanel extends JFrame{
                 toolButtons[i*2+j].setBorder(buttonBorders[0]);
                 tJPanel.add(toolButtons[i*2+j]);
             }
-            toolPanel.add(tJPanel);
+            validToolPanel.add(tJPanel);
         }
+        spinButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        zoominButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        zoomoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+    }
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/17 21:00
+     * @Version 1.0
+     * 初始化toolPanel
+     */
+    private void initToolPanel(){
+        toolPanel = new JPanel(new CardLayout());
+        toolPanel.setPreferredSize(new Dimension(300,195));
+        initInvalidToolPanel();
+        initValidToolPanel();
+        toolPanel.add(validToolPanel,"valid");
+        toolPanel.add(invalidToolPanel,"invalid");
     }
 
     /**
