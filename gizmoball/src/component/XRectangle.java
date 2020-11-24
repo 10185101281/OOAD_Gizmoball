@@ -3,6 +3,7 @@ package component;
 import main.BouncingBall;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class XRectangle extends Component{
     public static final ImageIcon picture = new ImageIcon("gizmoball/src/picture/component/rectangle.png");
@@ -10,8 +11,19 @@ public class XRectangle extends Component{
     private Integer boucing_edge;
     public XRectangle(Integer x,Integer y){
         super(x,y);
+        boucing_edge = 0;
     }
 
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/24 21:00
+     * @Version 1.0
+     * @param g
+     */
+    public void paint(Graphics g){
+        Image image = getToolkit().createImage("gizmoball/src/picture/component/rectangle.png");
+        g.drawImage(image, x, y,length,length,this);
+    }
 
     @Override
     public void judge(BouncingBall ball) {

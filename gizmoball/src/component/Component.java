@@ -1,13 +1,14 @@
 package component;
 
 import main.BouncingBall;
+import javax.swing.*;
 
 /**
  * @Author LiXiang
  * @Date 2020/11/19 15:30
  * @Version 1.0
  */
-public abstract class Component {
+public abstract class Component extends JLabel{
 
     Integer x;  //左上角坐标
     Integer y;

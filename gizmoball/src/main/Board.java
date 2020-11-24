@@ -1,5 +1,6 @@
 package main;
 
+import component.XRectangle;
 import component.XTriangle;
 
 import javax.swing.*;
@@ -24,7 +25,7 @@ public class Board extends JPanel{
             new Color(0xBEBEBE),//灰烬之海
     };
     private BouncingBall ball;
-    private ArrayList<Component> componentList =  new ArrayList();
+    private ArrayList<Component> componentList =  new ArrayList<Component>();
     private String nowComponent;
 
     public void setNowComponent(String nowComponent) {
@@ -38,12 +39,14 @@ public class Board extends JPanel{
 
         @Override
         public void mousePressed(MouseEvent e) {
+            System.out.println(nowComponent);
             if(nowComponent == null) return ;
             Point positon = getMousePosition();
             int x = positon.x/20 * 40;
             int y = positon.y/20 * 40;
             if(nowComponent.equals("rectangle")){
-
+                XRectangle rectangle = new XRectangle(x,y);
+                componentList.add(rectangle);
             } else if(nowComponent.equals("triangle")){
 
             } else if(nowComponent.equals("circle")){
@@ -102,6 +105,9 @@ public class Board extends JPanel{
     @Override public void paintComponent(Graphics g) {
         super.paintComponent(g);
         ball.paint(g);
+        for(Component component: componentList){
+            component.paint(g);
+        }
     }
     public void refresh() {
         ball.move();

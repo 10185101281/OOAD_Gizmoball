@@ -12,9 +12,6 @@ public class XTriangle extends Component{
         super(x,y);
     }
 
-
-
-
     @Override
     public void rotate(Integer angle) {
 
