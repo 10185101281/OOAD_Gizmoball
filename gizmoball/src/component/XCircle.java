@@ -9,16 +9,20 @@ import java.math.*;
 public class XCircle extends Component{
     public static final ImageIcon picture = new ImageIcon("gizmoball/src/picture/component/circle.png");
 
-    @Override
-    public void enlarge(Integer scaler) {
-        super.enlarge(scaler);
+    public XCircle(Integer x,Integer y){
+        super(x,y);
     }
 
     @Override
-    public void shrink(Integer scaler) {
-        super.shrink(scaler);
+    public void enlarge() {
+        super.enlarge();
     }
 
+    @Override
+    public void shrink() {
+        super.shrink();
+    }
+    
     @Override
     public void rotate(Integer angle) {
         super.rotate(angle);

@@ -8,8 +8,8 @@ public class XRectangle extends Component{
     public static final ImageIcon picture = new ImageIcon("gizmoball/src/picture/component/rectangle.png");
 
     private Integer boucing_edge;
-    public void Rectangle(){
-
+    public XRectangle(Integer x,Integer y){
+        super(x,y);
     }
 
 

@@ -13,35 +13,33 @@ public abstract class Component {
     Integer y;
     Integer length;
     Integer angle;
-
-    public void Component(Integer x,Integer y){
+    Integer base = 40;//一个格子40像素
+    public Component(Integer x,Integer y){
         this.x = x;
         this.y = y;
-        length = 20;
+        length = base;
         angle = 0;
     }
 
     /**
-     * @param scaler 放大倍数
      * @Author LiXiang
      * @Date 2020/11/19 15:30
      * @Version 1.0
      * 放大控件
      */
-    public void enlarge(Integer scaler) {
-        length = length*scaler;
+    public void enlarge() {
+        length = length+base;
     }
 
 
     /**
-     * @param scaler 放大倍数
      * @Author LiXiang
      * @Date 2020/11/19 15:30
      * @Version 1.0
      * 缩小控件
      */
-    public void shrink(Integer scaler) {
-        length = length/scaler;
+    public void shrink() {
+        length = length-base;
     }
 
     /**
