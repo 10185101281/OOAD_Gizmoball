@@ -310,12 +310,12 @@ public class UserPanel extends JFrame{
         validToolPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Tool"));
         validToolPanel.setBackground(new Color(0x00CED1));
 
-        JButton spinButton = new JButton("Spin");
+        JButton rotateButton = new JButton("Rotate");
         JButton deleteButton = new JButton("Delete");
         JButton enlargeButton = new JButton("Enlarge");
         JButton shrinkButton = new JButton("Shrink");
         JButton[] toolButtons = new JButton[]{
-                spinButton, deleteButton,
+                rotateButton, deleteButton,
                 enlargeButton, shrinkButton,
         };
         for(int i=0; i<2; i++){
@@ -330,16 +330,22 @@ public class UserPanel extends JFrame{
             }
             validToolPanel.add(tJPanel);
         }
-        spinButton.addActionListener(new ActionListener() {
+        rotateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                if(board.getSelectedComponent() != null){
+                    board.getSelectedComponent().rotate();
+                    board.refresh(false);
+                }
             }
         });
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                if(board.getSelectedComponent() != null){
+                    board.getSelectedComponent().delete();
+                    board.refresh(false);
+                }
             }
         });
         enlargeButton.addActionListener(new ActionListener() {

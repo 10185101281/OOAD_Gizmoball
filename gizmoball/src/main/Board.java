@@ -66,13 +66,17 @@ public class Board extends JPanel{
         selectedComponent = null;
         this.addMouseListener(mouseListener);
     }
-
+    public Integer getBoardWidth(){return boardWidth;}
+    public Integer getBoardHeight(){return boardHeight;}
     private Board getThisBoard(){
         return this;
     }
-    public ArrayList<XComponent> getComponentlist(){
+    public final ArrayList<XComponent> getComponentlist(){
         return componentList;
     }
+    public final XComponent[][] getComponentMap(){return componentMap; }
+    public boolean componentMapIsEmpty(int x,int y){return componentMap[x][y] == null;}
+    public void updateComponentMap(int x,int y,XComponent xComponent){componentMap[x][y]=xComponent;}
 
     public void setNowComponent(String nowComponent) {
         this.nowComponent = nowComponent;

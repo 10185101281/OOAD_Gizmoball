@@ -23,10 +23,21 @@ public class XCircle extends XComponent {
      */
     @Override
     public void paint(Graphics g){
-        Image image;
+        /*
+        g.setColor(Color.BLACK);
+        g.fill3DRect(x,y,length,length,true);
+        */
         try {
+            Image image;
             image = Toolkit.getDefaultToolkit().getImage(picturePath);
             g.drawImage(image, x, y,length,length,board);
+            if(isSelected){
+                Graphics2D g2 = (Graphics2D)g;
+                g2.setColor(Color.RED);
+                //BasicStroke s = new BasicStroke(2.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, new float[]{5.0f}, 0.0f);
+                g2.setStroke(new BasicStroke(3));
+                g2.drawRect(x,y,length,length);
+            }
         } catch (Exception e) {
             System.out.println("File Not Found");
         }
@@ -42,8 +53,8 @@ public class XCircle extends XComponent {
     }
     
     @Override
-    public void rotate(Integer angle) {
-        super.rotate(angle);
+    public void rotate() {
+
     }
 
     @Override
