@@ -44,7 +44,7 @@ public abstract class XComponent{
      */
     public void enlarge() {
         if(x+length >= board.getBoardWidth() || y+length >= board.getBoardHeight()) return ;
-        
+
         rate++;
         for(int i=1; i<=rate; i++){
             int tx =  x+(rate-1)*base; int ty = y+(i-1)*base;
