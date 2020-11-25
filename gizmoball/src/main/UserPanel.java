@@ -17,8 +17,8 @@ import javax.swing.Timer;
  */
 public class UserPanel extends JFrame{
     private Container contentPane;
-    private Board boardPanel;
-    private JPanel sideBarPanel;
+    private Board board;
+    private JPanel boardPanel,sideBarPanel;
     private JPanel titlePanel, modeControlPanel, layoutConsolePanel;
     private JPanel validLayoutConsolePanel, invalidLayoutConsolePanel;
     private JPanel validToolPanel, invalidToolPanel;
@@ -47,7 +47,7 @@ public class UserPanel extends JFrame{
     private class RefreshBoard implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
-            boardPanel.refresh(true);
+            board.refresh(true);
         }
     }
     /**
@@ -68,9 +68,12 @@ public class UserPanel extends JFrame{
      * 设置BordPanel为绝对布局，为其渲染背景。
      */
     private void initBoardPanel(){
+        boardPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        boardPanel.setPreferredSize(new Dimension(850,830));
         ControlSystem.createBoard();
         ControlSystem.createBall();
-        boardPanel = ControlSystem.getBoard();
+        board = ControlSystem.getBoard();
+        boardPanel.add(board);
         initTimer();
     }
 
@@ -89,7 +92,7 @@ public class UserPanel extends JFrame{
     };
     /**
      * @Author BaoLiang
-     * @Date 2020/11/17 16:00
+     * @Date 2020/11/17 16:00f
      * @Version 1.0
      * 随机生成头像。
      * @param width 头像的宽度
@@ -254,7 +257,7 @@ public class UserPanel extends JFrame{
             componentPanel.add(tJPanel);
         }
         placement.getjRadioButton().setSelected(true);
-        boardPanel.setNowComponent("placement");
+        board.setNowComponent("placement");
     }
     /**
      * @Author BaoLiang
@@ -309,11 +312,11 @@ public class UserPanel extends JFrame{
 
         JButton spinButton = new JButton("Spin");
         JButton deleteButton = new JButton("Delete");
-        JButton zoominButton = new JButton("Zoom in");
-        JButton zoomoutButton = new JButton("Zoom out");
+        JButton enlargeButton = new JButton("Enlarge");
+        JButton shrinkButton = new JButton("Shrink");
         JButton[] toolButtons = new JButton[]{
                 spinButton, deleteButton,
-                zoominButton, zoomoutButton,
+                enlargeButton, shrinkButton,
         };
         for(int i=0; i<2; i++){
             JPanel tJPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -339,16 +342,22 @@ public class UserPanel extends JFrame{
 
             }
         });
-        zoominButton.addActionListener(new ActionListener() {
+        enlargeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                if(board.getSelectedComponent() != null){
+                    board.getSelectedComponent().enlarge();
+                    board.refresh(false);
+                }
             }
         });
-        zoomoutButton.addActionListener(new ActionListener() {
+        shrinkButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                if(board.getSelectedComponent() != null){
+                    board.getSelectedComponent().shrink();
+                    board.refresh(false);
+                }
             }
         });
     }
@@ -381,7 +390,7 @@ public class UserPanel extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String eActionCommand = e.getActionCommand();
-                boardPanel.setNowComponent(eActionCommand);
+                board.setNowComponent(eActionCommand);
                 if(eActionCommand != null && eActionCommand.equals("placement")){
                     CardLayout cl = (CardLayout)toolPanel.getLayout();
                     cl.show(toolPanel,"valid");
@@ -466,7 +475,7 @@ public class UserPanel extends JFrame{
      */
     private void initSideBarPanel(){
         sideBarPanel = new JPanel(new BorderLayout());
-        sideBarPanel.setPreferredSize(new Dimension(320, 800));
+        sideBarPanel.setPreferredSize(new Dimension(350, 830));
         sideBarPanel.setBorder(linerBorders[0]);
         sideBarPanel.setBackground(Color.GRAY);
 
@@ -488,7 +497,7 @@ public class UserPanel extends JFrame{
     private void initContentPane(){
         contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
-        contentPane.setPreferredSize(new Dimension(1105,800));
+        contentPane.setPreferredSize(new Dimension(1200,830));
 
         initBoardPanel();
         initSideBarPanel();
@@ -506,8 +515,7 @@ public class UserPanel extends JFrame{
         Dimension screenSize = kit.getScreenSize();
         int screenHeight = screenSize.height;
         int screenWidth = screenSize.width;
-        setLocation(screenWidth/6, screenHeight/12);
-
+        setLocation(screenWidth/6, screenHeight/16);
     }
     public UserPanel(String title){
         super(title);

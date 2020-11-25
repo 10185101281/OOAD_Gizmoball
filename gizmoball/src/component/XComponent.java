@@ -17,7 +17,7 @@ public abstract class XComponent{
     Integer y;
     Integer length;
     Integer angle;
-    Integer base = 80;//一个格子40像素
+    Integer base = 40;//一个格子40像素
     Board board;
     boolean isSelected;
 
@@ -30,7 +30,7 @@ public abstract class XComponent{
     }
 
     public void setSelected(boolean isSelected){
-        isSelected = isSelected;
+        this.isSelected = isSelected;
     }
 
     public abstract void paint(Graphics g);

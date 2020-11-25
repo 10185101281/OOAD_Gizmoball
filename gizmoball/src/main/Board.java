@@ -24,8 +24,49 @@ public class Board extends JPanel{
             new Color(0xBEBEBE),//灰烬之海
     };
     private BouncingBall ball;
-    private ArrayList<XComponent> componentList =  new ArrayList<XComponent>();
+    private ArrayList<XComponent> componentList;
+    private XComponent[][] componentMap;
     private String nowComponent;
+    private XComponent selectedComponent;
+
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/18 11:30
+     * @Version 1.0
+     * 直接创建一个大小800*800的Board
+     */
+    public Board(){
+        this.setLayout(null);
+        this.setPreferredSize(new Dimension(800,800));
+        this.setBackground(boardBackground[0]);
+        this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+        boardWidth = 800;
+        boardHeight = 800;
+        componentList = new ArrayList<>();
+        componentMap = new XComponent[810][810];
+        selectedComponent = null;
+        this.addMouseListener(mouseListener);
+    }
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/18 11:30
+     * @Version 1.0
+     * @param width 宽度
+     * @param height 高度
+     * 创建一个大小 width*height 的Board
+     */
+    public Board(int width,int height){
+        this.setLayout(null);
+        this.setPreferredSize(new Dimension(width,height));
+        this.setBackground(boardBackground[0]);
+        boardWidth = width;
+        boardHeight = height;
+        componentList = new ArrayList<>();
+        componentMap = new XComponent[width+10][height+10];
+        selectedComponent = null;
+        this.addMouseListener(mouseListener);
+    }
+
     private Board getThisBoard(){
         return this;
     }
@@ -44,24 +85,41 @@ public class Board extends JPanel{
 
         @Override
         public void mousePressed(MouseEvent e) {
+            if(selectedComponent != null){
+                selectedComponent.setSelected(false);
+                selectedComponent = null;
+            }
+
             if(nowComponent == null) return ;
             Point positon = getMousePosition();
             int x = positon.x/40 * 40;
             int y = positon.y/40 * 40;
+
             //System.out.println(nowComponent+" "+x+","+y);
-            if(nowComponent.equals("rectangle")){
-                XComponent rectangle = new XRectangle(x,y,getThisBoard());
-                componentList.add(rectangle);
-            } else if(nowComponent.equals("triangle")){
-                XComponent triangle = new XTriangle(x,y,getThisBoard());
-                componentList.add(triangle);
-            } else if(nowComponent.equals("circle")){
-                XComponent circle = new XCircle(x,y,getThisBoard());
-                componentList.add(circle);
+            if(nowComponent.equals("placement")){
+                if(componentMap[x][y] != null){
+                    selectedComponent = componentMap[x][y];
+                    selectedComponent.setSelected(true);
+                }
+            } else {
+                if(componentMap[x][y] != null) return ;
+
+                if(nowComponent.equals("rectangle")){
+                    XComponent rectangle = new XRectangle(x,y,getThisBoard());
+                    componentMap[x][y] = rectangle;
+                    componentList.add(rectangle);
+                } else if(nowComponent.equals("triangle")){
+                    XComponent triangle = new XTriangle(x,y,getThisBoard());
+                    componentMap[x][y] = triangle;
+                    componentList.add(triangle);
+                } else if(nowComponent.equals("circle")){
+                    XComponent circle = new XCircle(x,y,getThisBoard());
+                    componentMap[x][y] = circle;
+                    componentList.add(circle);
+                }
             }
             refresh(false);
         }
-
         @Override
         public void mouseReleased(MouseEvent e) {
 
@@ -77,41 +135,17 @@ public class Board extends JPanel{
 
         }
     };
-    /**
-     * @Author BaoLiang
-     * @Date 2020/11/18 11:30
-     * @Version 1.0
-     * 直接创建一个大小800*800的Board
-     */
-    public Board(){
-        this.setLayout(null);
-        this.setPreferredSize(new Dimension(800,800));
-        this.setBackground(boardBackground[0]);
-        boardWidth = 800;
-        boardHeight = 800;
-        this.addMouseListener(mouseListener);
-    }
-    /**
-     * @Author BaoLiang
-     * @Date 2020/11/18 11:30
-     * @Version 1.0
-     * @param width 宽度
-     * @param height 高度
-     * 创建一个大小 width*height 的Board
-     */
-    public Board(int width,int height){
-        this.setLayout(null);
-        this.setPreferredSize(new Dimension(width,height));
-        this.setBackground(boardBackground[0]);
-        boardWidth = width;
-        boardHeight = height;
-        this.addMouseListener(mouseListener);
-    }
 
-
+    public void setSelectedComponent(XComponent selectedComponent){
+        this.selectedComponent = selectedComponent;
+    }
+    public XComponent getSelectedComponent(){
+        return selectedComponent;
+    }
     public void setBall(BouncingBall ball){
         this.ball = ball;
     }
+
     @Override public void paintComponent(Graphics g) {
         super.paintComponent(g);
         ball.paint(g);

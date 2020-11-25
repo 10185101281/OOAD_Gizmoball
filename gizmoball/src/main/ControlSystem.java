@@ -51,6 +51,6 @@ public class ControlSystem {
     }
 
     public static void main(String[] args){
-        createUserPanel(1105, 800);
+        createUserPanel(1150, 830);
     }
 }
