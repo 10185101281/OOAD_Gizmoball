@@ -19,12 +19,18 @@ public abstract class XComponent{
     Integer angle;
     Integer base = 40;//一个格子40像素
     Board board;
+    boolean isSelected;
 
     public XComponent(Integer x, Integer y, Board board){
         this.x = x; this.y = y;
         length = base;
         angle = 0;
+        isSelected = false;
         this.board = board;
+    }
+
+    public void setSelected(boolean isSelected){
+        isSelected = isSelected;
     }
 
     public abstract void paint(Graphics g);
