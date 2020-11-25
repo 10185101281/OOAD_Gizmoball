@@ -46,14 +46,14 @@ public class XRectangle extends XComponent {
             boucing_edge = 1;
             ball.setX(center_x-(center_x+radius-x+1));
            // ball.setX(center_x-radius);
-            System.out.println("left");
+            //System.out.println("left");
         }
         else if(center_x>=x+length&&center_x<=x+length+radius&&y-radius<=center_y&&center_y<=y+length+radius)//右边
         {
             boucing_edge = 1;
             ball.setX(center_x+(x-(center_x-radius)+1));
             //ball.setX(center_x+3*radius);
-            System.out.println("right");
+            //System.out.println("right");
         }
 
         else if(center_y<=y&&center_y>=y-radius&&x<=center_x&&center_x<=x+length)//上边
@@ -61,14 +61,14 @@ public class XRectangle extends XComponent {
             boucing_edge = 2;
             ball.setY(center_y-(center_y+radius-x+1));
             //ball.setY(center_y-3*radius);
-            System.out.println("top");
+            //System.out.println("top");
         }
         else if(center_y>=y&&center_y<=y+radius&&x<=center_x&&center_x<=x+length)//下边
         {
             boucing_edge = 2;
             ball.setY(center_y+(y-(center_y-radius)+1));
            // ball.setY(center_y+3*radius);
-            System.out.println("bottom");
+            //System.out.println("bottom");
         }
 
         react(ball);

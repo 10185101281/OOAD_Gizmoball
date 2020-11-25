@@ -44,11 +44,11 @@ public class Board extends JPanel{
 
         @Override
         public void mousePressed(MouseEvent e) {
-            System.out.println(nowComponent);
             if(nowComponent == null) return ;
             Point positon = getMousePosition();
-            int x = positon.x/20 * 20;
-            int y = positon.y/20 * 20;
+            int x = positon.x/40 * 40;
+            int y = positon.y/40 * 40;
+            //System.out.println(nowComponent+" "+x+","+y);
             if(nowComponent.equals("rectangle")){
                 XComponent rectangle = new XRectangle(x,y,getThisBoard());
                 componentList.add(rectangle);

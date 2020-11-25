@@ -24,7 +24,7 @@ public class UserPanel extends JFrame{
     private JPanel validToolPanel, invalidToolPanel;
     private JPanel specialComponentPanel, componentPanel, toolPanel;
     private ActionListener toolValidControlListener;
-    private static final int FRAMES_PER_SECOND = 1000;
+    private static final int FRAMES_PER_SECOND = 100;
     private Timer timer;
 
     private ButtonGroup buttonGroup = new ButtonGroup();

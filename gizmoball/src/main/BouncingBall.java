@@ -108,10 +108,10 @@ public class BouncingBall {
         }
         if(is) {
             Random random = new Random();
-            if(vx < 0) vx = (-1) * random.nextInt(10);
-            else vx = random.nextInt(10);
-            if(vy < 0) vy = (-1) * random.nextInt(10);
-            else vy = random.nextInt(10);
+            if(vx < 0) vx = (-1) * random.nextInt(3);
+            else vx = random.nextInt(3);
+            if(vy < 0) vy = (-1) * random.nextInt(3);
+            else vy = random.nextInt(3);
         }
     }
 

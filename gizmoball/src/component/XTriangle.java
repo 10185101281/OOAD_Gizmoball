@@ -14,6 +14,12 @@ public class XTriangle extends XComponent {
         super(x,y,board);
     }
 
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/24 21:00
+     * @Version 1.0
+     * @param g
+     */
     @Override
     public void paint(Graphics g){
         Image image;
