@@ -24,8 +24,12 @@ public class XRectangle extends XComponent {
      */
     @Override
     public void paint(Graphics g){
-        Image image;
+        /*
+        g.setColor(Color.BLACK);
+        g.fill3DRect(x,y,length,length,true);
+        */
         try {
+            Image image;
             image = Toolkit.getDefaultToolkit().getImage(picturePath);
             g.drawImage(image, x, y,length,length,board);
         } catch (Exception e) {
