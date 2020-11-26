@@ -52,10 +52,30 @@ public class XBlackHole extends XComponent{
     @Override
     public void judge(BouncingBall ball) {
         super.judge(ball);
+        //控件圆心坐标
+        Integer center_x1 = x + length/2;
+        Integer center_y1 = y + length/2;
+        //小球圆心坐标
+        Integer center_x2 = ball.getX();
+        Integer center_y2 = ball.getY();
+        Integer radius = ball.getRadius();//小球半径
+        //圆心间距离
+        double distance = Math.sqrt(Math.pow(center_x1-center_x2,2)+Math.pow(center_y1-center_y2,2));
+        if(distance<length+radius)
+        {
+            react(ball);
+        }
     }
 
     @Override
     public void react(BouncingBall ball) {
         super.react(ball);
+        //控件圆心坐标
+        Integer center_x1 = x + length/2;
+        Integer center_y1 = y + length/2;
+        //小球圆心坐标
+        Integer center_x2 = ball.getX();
+        Integer center_y2 = ball.getY();
+        
     }
 }
