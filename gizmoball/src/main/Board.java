@@ -1,7 +1,12 @@
 package main;
 
+import component.*;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 /**
  * @Author BaoLiang
@@ -19,6 +24,11 @@ public class Board extends JPanel{
             new Color(0xBEBEBE),//灰烬之海
     };
     private BouncingBall ball;
+    private ArrayList<XComponent> componentList;
+    private XComponent[][] componentMap;
+    private String nowComponent;
+    private XComponent selectedComponent;
+
     /**
      * @Author BaoLiang
      * @Date 2020/11/18 11:30
@@ -29,8 +39,13 @@ public class Board extends JPanel{
         this.setLayout(null);
         this.setPreferredSize(new Dimension(800,800));
         this.setBackground(boardBackground[0]);
+        this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
         boardWidth = 800;
         boardHeight = 800;
+        componentList = new ArrayList<>();
+        componentMap = new XComponent[810][810];
+        selectedComponent = null;
+        this.addMouseListener(mouseListener);
     }
     /**
      * @Author BaoLiang
@@ -46,18 +61,102 @@ public class Board extends JPanel{
         this.setBackground(boardBackground[0]);
         boardWidth = width;
         boardHeight = height;
+        componentList = new ArrayList<>();
+        componentMap = new XComponent[width+10][height+10];
+        selectedComponent = null;
+        this.addMouseListener(mouseListener);
+    }
+    public Integer getBoardWidth(){return boardWidth;}
+    public Integer getBoardHeight(){return boardHeight;}
+    private Board getThisBoard(){
+        return this;
+    }
+    public final ArrayList<XComponent> getComponentlist(){
+        return componentList;
+    }
+    public final XComponent[][] getComponentMap(){return componentMap; }
+    public boolean componentMapIsEmpty(int x,int y){return componentMap[x][y] == null;}
+    public void updateComponentMap(int x,int y,XComponent xComponent){componentMap[x][y]=xComponent;}
+
+    public void setNowComponent(String nowComponent) {
+        this.nowComponent = nowComponent;
     }
 
+    private MouseListener mouseListener = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+        }
 
+        @Override
+        public void mousePressed(MouseEvent e) {
+            if(selectedComponent != null){
+                selectedComponent.setSelected(false);
+                selectedComponent = null;
+            }
+
+            if(nowComponent == null) return ;
+            Point positon = getMousePosition();
+            int x = positon.x/40 * 40;
+            int y = positon.y/40 * 40;
+
+            //System.out.println(nowComponent+" "+x+","+y);
+            if(nowComponent.equals("placement")){
+                if(componentMap[x][y] != null){
+                    selectedComponent = componentMap[x][y];
+                    selectedComponent.setSelected(true);
+                }
+            } else {
+                if(componentMap[x][y] != null) return ;
+
+                if(nowComponent.equals("rectangle")){
+                    XComponent rectangle = new XRectangle(x,y,getThisBoard());
+                    componentMap[x][y] = rectangle;
+                    componentList.add(rectangle);
+                } else if(nowComponent.equals("triangle")){
+                    XComponent triangle = new XTriangle(x,y,getThisBoard());
+                    componentMap[x][y] = triangle;
+                    componentList.add(triangle);
+                } else if(nowComponent.equals("circle")){
+                    XComponent circle = new XCircle(x,y,getThisBoard());
+                    componentMap[x][y] = circle;
+                    componentList.add(circle);
+                }
+            }
+            refresh(false);
+        }
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+    };
+
+    public void setSelectedComponent(XComponent selectedComponent){
+        this.selectedComponent = selectedComponent;
+    }
+    public XComponent getSelectedComponent(){
+        return selectedComponent;
+    }
     public void setBall(BouncingBall ball){
         this.ball = ball;
     }
+
     @Override public void paintComponent(Graphics g) {
         super.paintComponent(g);
         ball.paint(g);
+        for(XComponent component: componentList) component.paint(g);
     }
-    public void refresh() {
-        ball.move();
+    public void refresh(boolean hasMove) {
+        if(hasMove) ball.move();
         repaint(0, 0, boardWidth, boardHeight);
     }
 }
