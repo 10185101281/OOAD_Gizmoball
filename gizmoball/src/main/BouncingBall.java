@@ -3,12 +3,17 @@ package main;
 import java.awt.*;
 import java.util.*;
 import component.*;
+
+import javax.swing.*;
+
 /**
  * @Author BaoLiang
  * @Date 2020/11/18 9:00
  * @Version 1.0
  */
 public class BouncingBall {
+    private static final String picturePath = "gizmoball/src/picture/other/ball.png";
+    public static final ImageIcon picture = new ImageIcon(picturePath);
     private Integer x, y, vx, vy, ax, ay;
     private Integer radius;
     private Board board;
@@ -130,14 +135,8 @@ public class BouncingBall {
      * @param g
      */
     public void paint(Graphics g){
-        g.setColor(color);
-        g.fillOval(x - radius, y - radius, radius + radius, radius + radius);
-        /*
-        Rectangle clipRect = g.getClipBounds();
-        if (clipRect.intersects(this.boundingBox())) {
-            g.setColor(color);
-            g.fillOval(x - radius, y - radius, radius + radius, radius + radius);
-        }
-         */
+        Image image;
+        image = Toolkit.getDefaultToolkit().getImage(picturePath);
+        g.drawImage(image, x-radius, y-radius,radius+radius,radius+radius,board);
     }
 }
