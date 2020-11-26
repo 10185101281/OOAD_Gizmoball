@@ -44,15 +44,27 @@ public abstract class XComponent{
      */
     public void enlarge() {
         if(x+length >= board.getBoardWidth() || y+length >= board.getBoardHeight()) return ;
-
+        length = length+base;
+        if(is_collision(board.getBall()) > 0){
+            length = length - base;
+            return ;
+        }
         rate++;
         for(int i=1; i<=rate; i++){
             int tx =  x+(rate-1)*base; int ty = y+(i-1)*base;
-            if(!board.componentMapIsEmpty(tx, ty)) return ;
+            if(!board.componentMapIsEmpty(tx, ty)) {
+                length = length - base;
+                rate--;
+                return ;
+            }
         }
         for(int i=1; i<=rate; i++){
             int tx = x+(i-1)*base; int ty = y+(rate-1)*base;
-            if(!board.componentMapIsEmpty(tx, ty)) return ;
+            if(!board.componentMapIsEmpty(tx, ty)) {
+                length = length - base;
+                rate--;
+                return ;
+            }
         }
         for(int i=1; i<=rate; i++){
             int tx =  x+(rate-1)*base; int ty = y+(i-1)*base;
@@ -62,7 +74,6 @@ public abstract class XComponent{
             int tx = x+(i-1)*base; int ty = y+(rate-1)*base;
             board.updateComponentMap(tx, ty, this);
         }
-        length = length+base;
     }
 
 
@@ -132,6 +143,10 @@ public abstract class XComponent{
      */
     public void react(BouncingBall ball){
 
+    }
+
+    public Integer is_collision(BouncingBall ball){
+        return 0;
     }
 
 }
