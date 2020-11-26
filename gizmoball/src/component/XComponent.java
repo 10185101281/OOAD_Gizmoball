@@ -134,4 +134,8 @@ public abstract class XComponent{
 
     }
 
+    public Integer is_collision(BouncingBall ball){
+        return 0;
+    }
+
 }

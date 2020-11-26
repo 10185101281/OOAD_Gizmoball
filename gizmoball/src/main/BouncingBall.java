@@ -82,7 +82,7 @@ public class BouncingBall {
     public void move(){
         ArrayList<XComponent> componentslist = board.getComponentlist();
         for(XComponent component : componentslist){
-            component.judge(this);
+            component.react(this);
         }
        // System.out.println("Component finish");
         Integer boardWidth = board.getPreferredSize().width;
