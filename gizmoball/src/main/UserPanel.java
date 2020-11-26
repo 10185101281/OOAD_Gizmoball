@@ -159,6 +159,10 @@ public class UserPanel extends JFrame{
         playMode.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(board.getSelectedComponent() != null){
+                    board.getSelectedComponent().setSelected(false);
+                    board.setSelectedComponent(null);
+                }
                 CardLayout cl = (CardLayout)layoutConsolePanel.getLayout();
                 cl.show(layoutConsolePanel,"invalid");
                 timer.start();
@@ -397,6 +401,11 @@ public class UserPanel extends JFrame{
                     CardLayout cl = (CardLayout)toolPanel.getLayout();
                     cl.show(toolPanel,"valid");
                 } else {
+                    if(board.getSelectedComponent() != null){
+                        board.getSelectedComponent().setSelected(false);
+                        board.setSelectedComponent(null);
+                        board.refresh(false);
+                    }
                     CardLayout cl = (CardLayout)toolPanel.getLayout();
                     cl.show(toolPanel,"invalid");
                 }

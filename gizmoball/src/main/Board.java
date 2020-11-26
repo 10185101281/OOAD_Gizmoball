@@ -76,8 +76,9 @@ public class Board extends JPanel{
     }
     public final XComponent[][] getComponentMap(){return componentMap; }
     public boolean componentMapIsEmpty(int x,int y){return componentMap[x][y] == null;}
-    public void updateComponentMap(int x,int y,XComponent xComponent){componentMap[x][y]=xComponent;}
 
+    public BouncingBall getBall() { return ball; }
+    public void updateComponentMap(int x, int y, XComponent xComponent){componentMap[x][y]=xComponent;}
     public void setNowComponent(String nowComponent) {
         this.nowComponent = nowComponent;
     }
@@ -110,14 +111,26 @@ public class Board extends JPanel{
 
                 if(nowComponent.equals("rectangle")){
                     XComponent rectangle = new XRectangle(x,y,getThisBoard());
+                    if(rectangle.is_collision(ball) > 0){
+                        rectangle.delete();
+                        return ;
+                    }
                     componentMap[x][y] = rectangle;
                     componentList.add(rectangle);
                 } else if(nowComponent.equals("triangle")){
                     XComponent triangle = new XTriangle(x,y,getThisBoard());
+                    if(triangle.is_collision(ball) > 0){
+                        triangle.delete();
+                        return ;
+                    }
                     componentMap[x][y] = triangle;
                     componentList.add(triangle);
                 } else if(nowComponent.equals("circle")){
                     XComponent circle = new XCircle(x,y,getThisBoard());
+                    if(circle.is_collision(ball) > 0){
+                        circle.delete();
+                        return ;
+                    }
                     componentMap[x][y] = circle;
                     componentList.add(circle);
                 }
