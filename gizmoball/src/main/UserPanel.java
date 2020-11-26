@@ -1,13 +1,14 @@
 package main;
 
 import component.*;
-import component.XRectangle;
 import gui.*;
+import gui.Character;
+
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
-import java.util.*;
+import java.util.Random;
 import javax.swing.Timer;
 
 /**
@@ -79,12 +80,11 @@ public class UserPanel extends JFrame{
 
     private Integer characterPointer = 0;
     private Character[] characters = new Character[]{
-            new Character("Venti",new JRadioButton(""),new JLabel("Black Hole")),
-            new Character("Klee",new JRadioButton(""),new JLabel("Boom")),
-            new Character("Qiqi",new JRadioButton(""),new JLabel("Ice Ball")),
-            new Character("Xiao",new JRadioButton(""),new JLabel("Mask")),
-            new Character("Ningguang",new JRadioButton(""),new JLabel("Barrier")),
-
+            new Character("Venti", new JRadioButtonP("blackhole",XBlackHole.picture)),
+            new Character("Klee", new JRadioButtonP("boom")),
+            new Character("Qiqi", new JRadioButtonP("iceball")),
+            new Character("Xiao", new JRadioButtonP("Mask")),
+            new Character("Ningguang", new JRadioButtonP("barrier")),
     };
     private String[] characterNames = new String[]{
             "Venti", "Klee", "Qiqi","Xiao","Ningguang",
@@ -105,21 +105,7 @@ public class UserPanel extends JFrame{
         imageIcon.setImage(imageIcon.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
         return imageIcon;
     }
-    /**
-     * @Author BaoLiang
-     * @Date 2020/11/13 16:00
-     * @Version 1.0
-     * 生成指定头像。
-     * @param width 头像的宽度
-     * @param height 头像的高度
-     * @param s 角色名称
-     * @return 根据角色名称生成的头像
-     */
-    private ImageIcon getAvatar(int width,int height,String s){
-        ImageIcon imageIcon = new ImageIcon("gizmoball/src/picture/avatar/"+s+".png");
-        imageIcon.setImage(imageIcon.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
-        return imageIcon;
-    }
+
     /**
      * @Author BaoLiang
      * @Date 2020/11/17 16:00
@@ -181,7 +167,6 @@ public class UserPanel extends JFrame{
         modeControlPanel.add(layoutMode);
         modeControlPanel.add(playMode);
     }
-
     /**
      * @Author BaoLiang
      * @Date 2020/11/17 21:00
@@ -194,7 +179,7 @@ public class UserPanel extends JFrame{
         specialComponentPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Special component"));
         specialComponentPanel.setBackground(new Color(0x00CED1));
 
-        JButton avatarButton = new JButton(getAvatar(70, 70, characters[characterPointer].getName()));
+        JButton avatarButton = new JButton(characters[characterPointer].getCharacterAvatar());
         avatarButton.setPreferredSize(new Dimension(70,70));
         avatarButton.setBorder(buttonBorders[1]);
         specialComponentPanel.add(avatarButton);
@@ -229,7 +214,7 @@ public class UserPanel extends JFrame{
      * 初始化componentPanel的Button组
      */
     private void initComponentPanelButton(){
-        JRadioButtonP placement = new JRadioButtonP("placement");
+        JRadioButtonP placement = new JRadioButtonP("placement",new ImageIcon("gizmoball/src/picture/component/placement.png"));
         JRadioButtonP rectangle = new JRadioButtonP("rectangle", XRectangle.picture);
         JRadioButtonP triangle = new JRadioButtonP("triangle",XTriangle.picture);
         JRadioButtonP circle = new JRadioButtonP("circle",XCircle.picture);
@@ -310,14 +295,25 @@ public class UserPanel extends JFrame{
         validToolPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Tool"));
         validToolPanel.setBackground(new Color(0x00CED1));
 
-        JButton rotateButton = new JButton("Rotate");
-        JButton deleteButton = new JButton("Delete");
-        JButton enlargeButton = new JButton("Enlarge");
-        JButton shrinkButton = new JButton("Shrink");
+        int width = 70, height = 70;
+        ImageIcon rotateImage = new ImageIcon("gizmoball/src/picture/tool/rotate.png");
+        rotateImage.setImage(rotateImage.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
+        ImageIcon deleteImage = new ImageIcon("gizmoball/src/picture/tool/delete.png");
+        deleteImage.setImage(deleteImage.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
+        ImageIcon enlargeImage = new ImageIcon("gizmoball/src/picture/tool/enlarge.png");
+        enlargeImage.setImage(enlargeImage.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
+        ImageIcon shrinkImage = new ImageIcon("gizmoball/src/picture/tool/shrink.png");
+        shrinkImage.setImage(shrinkImage.getImage().getScaledInstance(width,30,Image.SCALE_DEFAULT));
+
+        JButton rotateButton = new JButton(rotateImage);
+        JButton deleteButton = new JButton(deleteImage);
+        JButton enlargeButton = new JButton(enlargeImage);
+        JButton shrinkButton = new JButton(shrinkImage);
         JButton[] toolButtons = new JButton[]{
                 rotateButton, deleteButton,
                 enlargeButton, shrinkButton,
         };
+
         for(int i=0; i<2; i++){
             JPanel tJPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             tJPanel.setPreferredSize(new Dimension(toolPanel.getPreferredSize().width-20,(toolPanel.getPreferredSize().height-20)/2-5));
