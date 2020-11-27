@@ -23,7 +23,12 @@ public class UserPanel extends JFrame{
     private JPanel titlePanel, modeControlPanel, layoutConsolePanel;
     private JPanel validLayoutConsolePanel, invalidLayoutConsolePanel;
     private JPanel validToolPanel, invalidToolPanel;
-    private JPanel specialComponentPanel, componentPanel, toolPanel;
+    private JPanel specialComponentPanel, toolPanel;
+    private JPanel mainComponentPanel;
+    private JPanel[] componentPanel = new JPanel[]{
+            new JPanel(new FlowLayout(FlowLayout.CENTER)),
+            new JPanel(new FlowLayout(FlowLayout.CENTER)),
+    };
     private ActionListener toolValidControlListener;
     private static final int FRAMES_PER_SECOND = 100;
     private Timer timer;
@@ -70,7 +75,7 @@ public class UserPanel extends JFrame{
      */
     private void initBoardPanel(){
         boardPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        boardPanel.setPreferredSize(new Dimension(850,830));
+        boardPanel.setPreferredSize(new Dimension(830,830));
         ControlSystem.createBoard();
         ControlSystem.createBall();
         board = ControlSystem.getBoard();
@@ -140,11 +145,11 @@ public class UserPanel extends JFrame{
         modeControlPanel.setBorder(linerBorders[1]);
 
         JButton layoutMode = new JButton("Layout Mode");
-        layoutMode.setPreferredSize(new Dimension(100, 60));
+        layoutMode.setPreferredSize(new Dimension(100, 40));
         layoutMode.setBorder(buttonBorders[1]);
         layoutMode.setOpaque(true);
         JButton playMode = new JButton("Play Mode");
-        playMode.setPreferredSize(new Dimension(100,60));
+        playMode.setPreferredSize(new Dimension(100,40));
         playMode.setBorder(buttonBorders[1]);
         playMode.setOpaque(true);
 
@@ -179,7 +184,7 @@ public class UserPanel extends JFrame{
      */
     private void initSpecialComponentPanel(){
         specialComponentPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        specialComponentPanel.setPreferredSize(new Dimension(300,120));
+        specialComponentPanel.setPreferredSize(new Dimension(310,120));
         specialComponentPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Special component"));
         specialComponentPanel.setBackground(new Color(0x00CED1));
 
@@ -231,8 +236,8 @@ public class UserPanel extends JFrame{
         };
         for(int i=0; i<3; i++){
             JPanel tJPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            tJPanel.setPreferredSize(new Dimension(componentPanel.getPreferredSize().width-20,(componentPanel.getPreferredSize().height-20)/3-5));
-            tJPanel.setBackground(new Color(0x54FF9F));
+            tJPanel.setPreferredSize(new Dimension(mainComponentPanel.getPreferredSize().width-20,(mainComponentPanel.getPreferredSize().height-20)/3-5));
+            tJPanel.setBackground(new Color(0x00CED1));
             for(int j=0; j<2; j++){
                 int id = i*2+j;
                 jRadioButtonGroups[id].addActionListener(toolValidControlListener);
@@ -243,7 +248,7 @@ public class UserPanel extends JFrame{
                 tJPanel.add(button);
                 tJPanel.add(label);
             }
-            componentPanel.add(tJPanel);
+            mainComponentPanel.add(tJPanel);
         }
         placement.getjRadioButton().setSelected(true);
         board.setNowComponent("placement");
@@ -254,11 +259,11 @@ public class UserPanel extends JFrame{
      * @Version 1.0
      * 初始化componentPanel
      */
-    private void initComponentPanel(){
-        componentPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        componentPanel.setPreferredSize(new Dimension(300,295));
-        componentPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2], "component"));
-        componentPanel.setBackground(new Color(0x00CED1));
+    private void initMainComponentPanel(){
+        mainComponentPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        mainComponentPanel.setPreferredSize(new Dimension(310,335));
+        mainComponentPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2], "component"));
+        mainComponentPanel.setBackground(new Color(0x00CED1));
 
         initComponentPanelButton();
     }
@@ -270,7 +275,7 @@ public class UserPanel extends JFrame{
      */
     private void initInvalidToolPanel(){
         invalidToolPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        invalidToolPanel.setPreferredSize(new Dimension(300,195));
+        invalidToolPanel.setPreferredSize(new Dimension(310,205));
         invalidToolPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Tool"));
         invalidToolPanel.setBackground(new Color(0x8B8B7A));
 
@@ -295,7 +300,7 @@ public class UserPanel extends JFrame{
      */
     private void initValidToolPanel(){
         validToolPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        validToolPanel.setPreferredSize(new Dimension(300,195));
+        validToolPanel.setPreferredSize(new Dimension(310,205));
         validToolPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2],"Tool"));
         validToolPanel.setBackground(new Color(0x00CED1));
 
@@ -321,7 +326,7 @@ public class UserPanel extends JFrame{
         for(int i=0; i<2; i++){
             JPanel tJPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             tJPanel.setPreferredSize(new Dimension(toolPanel.getPreferredSize().width-20,(toolPanel.getPreferredSize().height-20)/2-5));
-            tJPanel.setBackground(new Color(0x54FF9F));
+            tJPanel.setBackground(new Color(0x00CED1));
             for(int j=0; j<2; j++){
                 int id = i*2+j;
                 toolButtons[id].setPreferredSize(new Dimension(70,70));
@@ -375,7 +380,7 @@ public class UserPanel extends JFrame{
      */
     private void initToolPanel(){
         toolPanel = new JPanel(new CardLayout());
-        toolPanel.setPreferredSize(new Dimension(300,195));
+        toolPanel.setPreferredSize(new Dimension(310,205));
 
         initInvalidToolPanel();
         initValidToolPanel();
@@ -421,16 +426,16 @@ public class UserPanel extends JFrame{
      */
     private void initValidLayoutConsolePanel(){
         validLayoutConsolePanel = new JPanel(new BorderLayout());
-        validLayoutConsolePanel.setPreferredSize(new Dimension(310, 630));
+        validLayoutConsolePanel.setPreferredSize(new Dimension(310, 675));
         validLayoutConsolePanel.setBorder(linerBorders[1]);
         validLayoutConsolePanel.setBackground(new Color(0x00CED1));
 
         initToolPanel();
         initSpecialComponentPanel();
-        initComponentPanel();
+        initMainComponentPanel();
 
         validLayoutConsolePanel.add(specialComponentPanel,BorderLayout.NORTH);
-        validLayoutConsolePanel.add(componentPanel,BorderLayout.CENTER);
+        validLayoutConsolePanel.add(mainComponentPanel,BorderLayout.CENTER);
         validLayoutConsolePanel.add(toolPanel,BorderLayout.SOUTH);
     }
     /**
@@ -442,7 +447,7 @@ public class UserPanel extends JFrame{
      */
     private void initInvalidLayoutConsolePanel(){
         invalidLayoutConsolePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        invalidLayoutConsolePanel.setPreferredSize(new Dimension(310, 630));
+        invalidLayoutConsolePanel.setPreferredSize(new Dimension(310, 675));
         invalidLayoutConsolePanel.setBorder(linerBorders[1]);
         invalidLayoutConsolePanel.setBackground(new Color(0x8B8B7A));
 
@@ -468,7 +473,7 @@ public class UserPanel extends JFrame{
      */
     private void initLayoutConsolePanel(){
         layoutConsolePanel = new JPanel(new CardLayout());
-        layoutConsolePanel.setPreferredSize(new Dimension(310, 630));
+        layoutConsolePanel.setPreferredSize(new Dimension(310, 675));
         layoutConsolePanel.setBorder(linerBorders[1]);
         layoutConsolePanel.setBackground(new Color(0x00CED1));
 
@@ -486,7 +491,7 @@ public class UserPanel extends JFrame{
      */
     private void initSideBarPanel(){
         sideBarPanel = new JPanel(new BorderLayout());
-        sideBarPanel.setPreferredSize(new Dimension(350, 830));
+        sideBarPanel.setPreferredSize(new Dimension(320, 830));
         sideBarPanel.setBorder(linerBorders[0]);
         sideBarPanel.setBackground(Color.GRAY);
 
@@ -508,7 +513,7 @@ public class UserPanel extends JFrame{
     private void initContentPane(){
         contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
-        contentPane.setPreferredSize(new Dimension(1200,830));
+        contentPane.setPreferredSize(new Dimension(1150,830));
 
         initBoardPanel();
         initSideBarPanel();
