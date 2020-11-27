@@ -1,6 +1,7 @@
 package component;
 
 import main.Board;
+import main.BouncingBall;
 
 import javax.swing.*;
 import java.awt.*;

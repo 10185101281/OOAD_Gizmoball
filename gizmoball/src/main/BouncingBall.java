@@ -1,9 +1,8 @@
-package component;
+package main;
 
 import java.awt.*;
 import java.util.*;
 import component.*;
-import main.Board;
 
 import javax.swing.*;
 
@@ -12,11 +11,13 @@ import javax.swing.*;
  * @Date 2020/11/18 9:00
  * @Version 1.0
  */
-public class BouncingBall extends XComponent{
-    private static final String picturePath = "gizmoball/src/picture/component/ball.png";
+public class BouncingBall {
+    private static final String picturePath = "gizmoball/src/picture/other/ball.png";
     public static final ImageIcon picture = new ImageIcon(picturePath);
-    private Integer vx, vy, ax, ay;
+    private Integer x, y, vx, vy, ax, ay;
     private Integer radius;
+    private Board board;
+    private Color color = new Color(0x00000);
 
     public Integer getX() {
         return x;
@@ -51,22 +52,17 @@ public class BouncingBall extends XComponent{
 
     private void randomAttributes(){
         Random random = new Random();
-        vx = 0; vy = 0;
-        while(vx == 0 && vy == 0){
-            vx = random.nextInt(5)-2;
-            vy = random.nextInt(5)-2;
-        }
+        vx = random.nextInt(5)-2;
+        vy = random.nextInt(5)-2;
     }
     public BouncingBall(Board board){
-        super(400,400,board);
         this.x = 400;
         this.y = 400;
         this.radius = 10;
         this.board = board;
         randomAttributes();
     }
-    public BouncingBall(Integer x,Integer y,Integer vx,Integer vy,Integer ax,Integer ay,Board board){
-        super(x,y,board);
+    public BouncingBall(int x,int y,int vx,int vy,int ax,int ay,Board board){
         this.x = x;
         this.y = y;
         this.vx = vx;
