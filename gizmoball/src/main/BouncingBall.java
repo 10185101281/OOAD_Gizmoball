@@ -139,4 +139,14 @@ public class BouncingBall {
         image = Toolkit.getDefaultToolkit().getImage(picturePath);
         g.drawImage(image, x-radius, y-radius,radius+radius,radius+radius,board);
     }
+
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/19 19:30
+     * @Version 1.0
+     * 删除球
+     */
+    public void delete(){
+        board.setBall(null);
+    }
 }
