@@ -165,7 +165,7 @@ public class Board extends JPanel{
 
     @Override public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        ball.paint(g);
+        if(ball != null) ball.paint(g);
         for(XComponent component: componentList) component.paint(g);
     }
     public void refresh(boolean hasMove) {

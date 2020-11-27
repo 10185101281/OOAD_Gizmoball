@@ -1,8 +1,5 @@
 package component;
 
-import javafx.scene.layout.Border;
-import main.BouncingBall;
-import javax.swing.*;
 import java.awt.*;
 import main.Board;
 
