@@ -14,6 +14,7 @@ import java.awt.*;
 public class XBlackHole extends XComponent{
     public static final String picturePath = "gizmoball/src/picture/specialcomponent/blackhole.png";
     public static final ImageIcon picture = new ImageIcon(picturePath);
+    private boolean attracing=true;
     public XBlackHole(Integer x, Integer y, Board board){
         super(x,y,board);
         paintPicturePath = picturePath;
@@ -44,10 +45,11 @@ public class XBlackHole extends XComponent{
         if(reach_center(ball)){
             ball.setVx(0);
             ball.setVy(0);
-            System.out.println("vanish");
+           // System.out.println("vanish");
+            attracing = true;
         }
 
-        if(isattracted)
+        if(isattracted&&attracing)
         {
             Integer vx = ball.getVx();
             Integer vy = ball.getVy();
@@ -57,6 +59,7 @@ public class XBlackHole extends XComponent{
             Double new_vy = new_v*(center_y1-center_y2)/distance;
             ball.setVx((int)Math.round(new_vx));
             ball.setVy((int)Math.round(new_vy));
+            attracing =false;
         }
 
 
@@ -76,10 +79,13 @@ public class XBlackHole extends XComponent{
         Integer center_x2 = ball.getX();
         Integer center_y2 = ball.getY();
         Integer radius = ball.getRadius();//小球半径
+        Integer R = length/2;
         //圆心间距离
         double distance = Math.sqrt(Math.pow(center_x1-center_x2,2)+Math.pow(center_y1-center_y2,2));
-        if(distance<3*radius){
+        if(distance<2*R){
+            System.out.println("catch");
             return true;
+
         }
         return false;
     }
@@ -100,7 +106,7 @@ public class XBlackHole extends XComponent{
         Integer radius = ball.getRadius();//小球半径
         //圆心间距离
         double distance = Math.sqrt(Math.pow(center_x1-center_x2,2)+Math.pow(center_y1-center_y2,2));
-        if(distance<10)
+        if(distance<length/2-radius)
         {
             return true;
         }
