@@ -25,10 +25,7 @@ public class UserPanel extends JFrame{
     private JPanel validToolPanel, invalidToolPanel;
     private JPanel specialComponentPanel, toolPanel;
     private JPanel mainComponentPanel;
-    private JPanel[] componentPanel = new JPanel[]{
-            new JPanel(new FlowLayout(FlowLayout.CENTER)),
-            new JPanel(new FlowLayout(FlowLayout.CENTER)),
-    };
+    private JPanel[] componentPanel = new JPanel[2]; private Integer componentPanelPoint;
     private ActionListener toolValidControlListener;
     private static final int FRAMES_PER_SECOND = 100;
     private Timer timer;
@@ -145,13 +142,9 @@ public class UserPanel extends JFrame{
         modeControlPanel.setBorder(linerBorders[1]);
 
         JButton layoutMode = new JButton("Layout Mode");
-        layoutMode.setPreferredSize(new Dimension(100, 40));
-        layoutMode.setBorder(buttonBorders[1]);
-        layoutMode.setOpaque(true);
+        layoutMode.setPreferredSize(new Dimension(100, 45));
         JButton playMode = new JButton("Play Mode");
-        playMode.setPreferredSize(new Dimension(100,40));
-        playMode.setBorder(buttonBorders[1]);
-        playMode.setOpaque(true);
+        playMode.setPreferredSize(new Dimension(100,45));
 
         layoutMode.addActionListener(new ActionListener() {
             @Override
@@ -218,11 +211,29 @@ public class UserPanel extends JFrame{
     }
     /**
      * @Author BaoLiang
-     * @Date 2020/11/24 20:00
+     * @Date 2020/11/27 14:00
      * @Version 1.0
-     * 初始化componentPanel的Button组
+     * 初始化第一个componentPanel页
      */
-    private void initComponentPanelButton(){
+    private void initComponentPanel0(){
+        componentPanel[0] = new JPanel(new BorderLayout());
+        componentPanel[0].setPreferredSize(new Dimension(310,335));
+        componentPanel[0].setBackground(new Color(0x00CED1));
+        JButton controlButton = new JButton("Next Page>>");
+        controlButton.setPreferredSize(new Dimension(310,30));
+        controlButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout cl = (CardLayout)mainComponentPanel.getLayout();
+                cl.show(mainComponentPanel,"1");
+            }
+        });
+        JPanel componentPage = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        componentPage.setPreferredSize(new Dimension(310, 305));
+        componentPage.setBackground(new Color(0x00CED1));
+        componentPanel[0].add(controlButton,BorderLayout.NORTH);
+        componentPanel[0].add(componentPage);
+
         JRadioButtonP placement = new JRadioButtonP("placement",new ImageIcon("gizmoball/src/picture/component/placement.png"));
         JRadioButtonP rectangle = new JRadioButtonP("rectangle", XRectangle.picture);
         JRadioButtonP triangle = new JRadioButtonP("triangle",XTriangle.picture);
@@ -236,7 +247,7 @@ public class UserPanel extends JFrame{
         };
         for(int i=0; i<3; i++){
             JPanel tJPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            tJPanel.setPreferredSize(new Dimension(mainComponentPanel.getPreferredSize().width-20,(mainComponentPanel.getPreferredSize().height-20)/3-5));
+            tJPanel.setPreferredSize(new Dimension(componentPage.getPreferredSize().width-20,(componentPage.getPreferredSize().height-20)/3-5));
             tJPanel.setBackground(new Color(0x00CED1));
             for(int j=0; j<2; j++){
                 int id = i*2+j;
@@ -248,10 +259,35 @@ public class UserPanel extends JFrame{
                 tJPanel.add(button);
                 tJPanel.add(label);
             }
-            mainComponentPanel.add(tJPanel);
+            componentPage.add(tJPanel);
         }
         placement.getjRadioButton().setSelected(true);
         board.setNowComponent("placement");
+    }
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/27 14:00
+     * @Version 1.0
+     * 初始化第二个componentPanel页
+     */
+    private void initComponentPanel1(){
+        componentPanel[1] = new JPanel(new BorderLayout());
+        componentPanel[1].setPreferredSize(new Dimension(310,335));
+        componentPanel[1].setBackground(new Color(0x00CED1));
+        JButton controlButton = new JButton("<<Previous Page");
+        controlButton.setPreferredSize(new Dimension(310,30));
+        controlButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout cl = (CardLayout)mainComponentPanel.getLayout();
+                cl.show(mainComponentPanel,"0");
+            }
+        });
+        JPanel componentPage = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        componentPage.setPreferredSize(new Dimension(310, 305));
+        componentPage.setBackground(new Color(0x00CED1));
+        componentPanel[1].add(controlButton,BorderLayout.NORTH);
+        componentPanel[1].add(componentPage);
     }
     /**
      * @Author BaoLiang
@@ -260,12 +296,19 @@ public class UserPanel extends JFrame{
      * 初始化componentPanel
      */
     private void initMainComponentPanel(){
-        mainComponentPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        mainComponentPanel = new JPanel(new CardLayout());
         mainComponentPanel.setPreferredSize(new Dimension(310,335));
         mainComponentPanel.setBorder(BorderFactory.createTitledBorder(linerBorders[2], "component"));
         mainComponentPanel.setBackground(new Color(0x00CED1));
 
-        initComponentPanelButton();
+        initComponentPanel0();
+        initComponentPanel1();
+
+        mainComponentPanel.add(componentPanel[0],"0");
+        mainComponentPanel.add(componentPanel[1],"1");
+
+        CardLayout cl = (CardLayout)mainComponentPanel.getLayout();
+        cl.show(mainComponentPanel,"0");
     }
     /**
      * @Author BaoLiang
