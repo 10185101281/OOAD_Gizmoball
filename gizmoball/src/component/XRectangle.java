@@ -6,12 +6,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class XRectangle extends XComponent {
-    private static final String picturePath = "gizmoball/src/picture/component/rectangle.png";
+    public static final String picturePath = "gizmoball/src/picture/component/rectangle.png";
     public static final ImageIcon picture = new ImageIcon(picturePath);
 
     private Integer boucing_edge;
     public XRectangle(Integer x,Integer y,Board board){
         super(x,y,board);
+        paintPicturePath = picturePath;
         boucing_edge = 0;
     }
 

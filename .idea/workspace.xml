@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2f432d9-88d8-4c0c-bac4-72e03b54b79d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gizmoball/src/component/BouncingBall.java" beforeDir="false" afterPath="$PROJECT_DIR$/gizmoball/src/component/BouncingBall.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gizmoball/src/component/XBlackHole.java" beforeDir="false" afterPath="$PROJECT_DIR$/gizmoball/src/component/XBlackHole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gizmoball/src/component/XCircle.java" beforeDir="false" afterPath="$PROJECT_DIR$/gizmoball/src/component/XCircle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gizmoball/src/component/XComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/gizmoball/src/component/XComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gizmoball/src/component/XRectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/gizmoball/src/component/XRectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gizmoball/src/component/XTriangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/gizmoball/src/component/XTriangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gizmoball/src/main/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/gizmoball/src/main/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gizmoball/src/main/UserPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/gizmoball/src/main/UserPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,13 +67,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ControlSystem" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -86,33 +103,37 @@
       <workItem from="1606381155959" duration="8668000" />
       <workItem from="1606459862476" duration="57000" />
       <workItem from="1606460075403" duration="369000" />
+      <workItem from="1606462807413" duration="1152000" />
+      <workItem from="1606464203770" duration="20000" />
+      <workItem from="1606464397979" duration="680000" />
+      <workItem from="1606465121885" duration="348000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1400" height="213" key="GridCell.Tab.0.bottom" timestamp="1606460444462">
-      <screen x="0" y="23" width="1440" height="811" />
+    <state width="1299" height="294" key="GridCell.Tab.0.bottom" timestamp="1606465117823">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1400" height="213" key="GridCell.Tab.0.bottom/0.23.1440.811@0.23.1440.811" timestamp="1606460444462" />
-    <state width="1318" height="266" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1606459087097" />
-    <state width="1400" height="213" key="GridCell.Tab.0.center" timestamp="1606460444462">
-      <screen x="0" y="23" width="1440" height="811" />
+    <state width="1299" height="294" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1606465117823" />
+    <state width="1299" height="294" key="GridCell.Tab.0.center" timestamp="1606465117822">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1400" height="213" key="GridCell.Tab.0.center/0.23.1440.811@0.23.1440.811" timestamp="1606460444462" />
-    <state width="1318" height="266" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1606459087097" />
-    <state width="1400" height="213" key="GridCell.Tab.0.left" timestamp="1606460444462">
-      <screen x="0" y="23" width="1440" height="811" />
+    <state width="1299" height="294" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1606465117822" />
+    <state width="1299" height="294" key="GridCell.Tab.0.left" timestamp="1606465117822">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1400" height="213" key="GridCell.Tab.0.left/0.23.1440.811@0.23.1440.811" timestamp="1606460444462" />
-    <state width="1318" height="266" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1606459087096" />
-    <state width="1400" height="213" key="GridCell.Tab.0.right" timestamp="1606460444462">
-      <screen x="0" y="23" width="1440" height="811" />
+    <state width="1299" height="294" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1606465117822" />
+    <state width="1299" height="294" key="GridCell.Tab.0.right" timestamp="1606465117822">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1400" height="213" key="GridCell.Tab.0.right/0.23.1440.811@0.23.1440.811" timestamp="1606460444462" />
-    <state width="1318" height="266" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1606459087097" />
+    <state width="1299" height="294" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1606465117822" />
     <state width="1318" height="266" key="GridCell.Tab.1.bottom" timestamp="1606459087098">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

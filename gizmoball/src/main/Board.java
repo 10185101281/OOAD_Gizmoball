@@ -108,8 +108,10 @@ public class Board extends JPanel{
                 }
             } else {
                 if(componentMap[x][y] != null) return ;
-
-                if(nowComponent.equals("rectangle")){
+                if(nowComponent.equals("ball")){
+                    if(ball != null) return ;
+                    ball = new BouncingBall(x,y,getThisBoard());
+                } else if(nowComponent.equals("rectangle")){
                     XComponent rectangle = new XRectangle(x,y,getThisBoard());
                     if(rectangle.is_collision(ball) > 0){
                         rectangle.delete();
@@ -133,6 +135,14 @@ public class Board extends JPanel{
                     }
                     componentMap[x][y] = circle;
                     componentList.add(circle);
+                } else if(nowComponent.equals("blackhole")){
+                    XComponent blackhole = new XBlackHole(x,y,getThisBoard());
+                    if(blackhole.is_collision(ball) > 0){
+                        blackhole.delete();
+                        return ;
+                    }
+                    componentMap[x][y] = blackhole;
+                    componentList.add(blackhole);
                 }
             }
             refresh(false);

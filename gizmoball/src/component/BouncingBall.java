@@ -13,8 +13,8 @@ import javax.swing.*;
  * @Version 1.0
  */
 public class BouncingBall extends XComponent{
-    private static final String picturePath = "gizmoball/src/picture/component/ball.png";
-    public static final ImageIcon picture = new ImageIcon(picturePath);
+    public static String picturePath = "gizmoball/src/picture/component/ball.png";
+    public static ImageIcon picture = new ImageIcon(picturePath);
     private Integer vx, vy, ax, ay;
     private Integer radius;
 
@@ -59,11 +59,14 @@ public class BouncingBall extends XComponent{
     }
     public BouncingBall(Board board){
         super(400,400,board);
-        this.x = 400;
-        this.y = 400;
         this.radius = 10;
         this.board = board;
         randomAttributes();
+    }
+    public BouncingBall(Integer x,Integer y,Board board){
+        super(x, y,  board);
+        this.radius = 10;
+        this.board = board;
     }
     public BouncingBall(Integer x,Integer y,Integer vx,Integer vy,Integer ax,Integer ay,Board board){
         super(x,y,board);
@@ -95,23 +98,23 @@ public class BouncingBall extends XComponent{
 
         boolean is = false;
         x += vx;
-        if(x <= radius){
-            x = radius;
+        if(x <= 0){
+            x = 0;
             vx = -vx;
             is = true;
-        } else if(x + radius >=  boardWidth){
-            x = boardWidth-radius;
+        } else if(x + 2*radius >=  boardWidth){
+            x = boardWidth-2*radius;
             vx = -vx;
             is = true;
         }
 
         y += vy;
-        if(y <= radius){
-            y = radius;
+        if(y <= 0){
+            y = 0;
             vy = -vy;
             is = true;
-        } else if(y + radius >= boardHeight){
-            y = boardHeight-radius;
+        } else if(y + 2*radius >= boardHeight){
+            y = boardHeight-2*radius;
             vy = -vy;
             is = true;
         }
@@ -138,10 +141,11 @@ public class BouncingBall extends XComponent{
      * @Version 1.0
      * @param g
      */
+    @Override
     public void paint(Graphics g){
         Image image;
         image = Toolkit.getDefaultToolkit().getImage(picturePath);
-        g.drawImage(image, x-radius, y-radius,radius+radius,radius+radius,board);
+        g.drawImage(image, x, y,radius+radius,radius+radius,board);
     }
 
     /**

@@ -37,7 +37,7 @@ public class UserPanel extends JFrame{
             BorderFactory.createLineBorder(new Color(0x000000),2),
     };
     private Border[] buttonBorders = new Border[]{
-            BorderFactory.createLineBorder(Color.BLACK,1),
+            BorderFactory.createLineBorder(Color.BLACK,3),
             BorderFactory.createLineBorder(new Color(0xBEBEBE), 2),
     };
 
@@ -142,9 +142,9 @@ public class UserPanel extends JFrame{
         modeControlPanel.setBorder(linerBorders[1]);
 
         JButton layoutMode = new JButton("Layout Mode");
-        layoutMode.setPreferredSize(new Dimension(100, 45));
+        layoutMode.setPreferredSize(new Dimension(100, 50));
         JButton playMode = new JButton("Play Mode");
-        playMode.setPreferredSize(new Dimension(100,45));
+        playMode.setPreferredSize(new Dimension(100,50));
 
         layoutMode.addActionListener(new ActionListener() {
             @Override
@@ -288,6 +288,30 @@ public class UserPanel extends JFrame{
         componentPage.setBackground(new Color(0x00CED1));
         componentPanel[1].add(controlButton,BorderLayout.NORTH);
         componentPanel[1].add(componentPage);
+
+        JRadioButtonP ball = new JRadioButtonP("ball",BouncingBall.picture);
+        JRadioButtonP[] jRadioButtonGroups = new JRadioButtonP[]{
+                ball, null,
+                null, null,
+                null, null,
+        };
+        for(int i=0; i<3; i++){
+            JPanel tJPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+            tJPanel.setPreferredSize(new Dimension(componentPage.getPreferredSize().width-20,(componentPage.getPreferredSize().height-20)/3-5));
+            tJPanel.setBackground(new Color(0x00CED1));
+            for(int j=0; j<2; j++){
+                int id = i*2+j;
+                if(jRadioButtonGroups[id] == null) continue;
+                jRadioButtonGroups[id].addActionListener(toolValidControlListener);
+                JRadioButton button = jRadioButtonGroups[id].getjRadioButton();
+                JLabel label = jRadioButtonGroups[id].getjLabel();
+
+                buttonGroup.add(button);
+                tJPanel.add(button);
+                tJPanel.add(label);
+            }
+            componentPage.add(tJPanel);
+        }
     }
     /**
      * @Author BaoLiang
@@ -375,6 +399,11 @@ public class UserPanel extends JFrame{
                 toolButtons[id].setPreferredSize(new Dimension(70,70));
                 toolButtons[id].setBorder(buttonBorders[0]);
                 tJPanel.add(toolButtons[id]);
+                if(j == 0){
+                    JLabel block= new JLabel("");
+                    block.setPreferredSize(new Dimension(30,70));
+                    tJPanel.add(block);
+                }
             }
             validToolPanel.add(tJPanel);
         }

@@ -10,6 +10,7 @@ public class XTriangle extends XComponent {
     
     public XTriangle(Integer x, Integer y,Board board){
         super(x,y,board);
+        paintPicturePath = picturePath;
     }
 
     /**
