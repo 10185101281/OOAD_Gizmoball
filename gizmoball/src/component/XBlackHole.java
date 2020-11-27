@@ -1,6 +1,7 @@
 package component;
 
 import main.Board;
+import main.BouncingBall;
 
 
 import javax.swing.*;
@@ -86,7 +87,11 @@ public class XBlackHole extends XComponent{
             ball.setVy((int)Math.round(new_vy));
         }
 
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 26896f217f6bd2aa2cd327e1c1c77daf6e12201a
     }
 
     /**

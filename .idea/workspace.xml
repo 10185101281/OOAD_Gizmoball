@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2f432d9-88d8-4c0c-bac4-72e03b54b79d" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/gizmoball/src/main/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gizmoball/src/main/UserPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/gizmoball/src/main/UserPanel.java" afterDir="false" />
+>>>>>>> 26896f217f6bd2aa2cd327e1c1c77daf6e12201a
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
