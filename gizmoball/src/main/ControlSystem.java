@@ -1,5 +1,7 @@
 package main;
 
+import component.BouncingBall;
+
 import javax.swing.*;
 
 /**
