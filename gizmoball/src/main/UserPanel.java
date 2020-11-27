@@ -149,6 +149,7 @@ public class UserPanel extends JFrame{
         layoutMode.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                board.setForbid(false);
                 CardLayout cl = (CardLayout)layoutConsolePanel.getLayout();
                 cl.show(layoutConsolePanel,"valid");
                 timer.stop();
@@ -157,6 +158,7 @@ public class UserPanel extends JFrame{
         playMode.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                board.setForbid(true);
                 if(board.getSelectedComponent() != null){
                     board.getSelectedComponent().setSelected(false);
                     board.setSelectedComponent(null);

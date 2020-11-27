@@ -28,6 +28,7 @@ public class Board extends JPanel{
     private XComponent[][] componentMap;
     private String nowComponent;
     private XComponent selectedComponent;
+    private boolean forbid;
 
     /**
      * @Author BaoLiang
@@ -45,6 +46,7 @@ public class Board extends JPanel{
         componentList = new ArrayList<>();
         componentMap = new XComponent[810][810];
         selectedComponent = null;
+        forbid = false;
         this.addMouseListener(mouseListener);
     }
     /**
@@ -64,8 +66,10 @@ public class Board extends JPanel{
         componentList = new ArrayList<>();
         componentMap = new XComponent[width+10][height+10];
         selectedComponent = null;
+        forbid = false;
         this.addMouseListener(mouseListener);
     }
+    public void setForbid(boolean forbid){this.forbid =  forbid;}
     public Integer getBoardWidth(){return boardWidth;}
     public Integer getBoardHeight(){return boardHeight;}
     private Board getThisBoard(){
@@ -90,6 +94,7 @@ public class Board extends JPanel{
 
         @Override
         public void mousePressed(MouseEvent e) {
+            if(forbid) return ;
             if(selectedComponent != null){
                 selectedComponent.setSelected(false);
                 selectedComponent = null;
