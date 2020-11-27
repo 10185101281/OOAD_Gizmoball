@@ -83,7 +83,7 @@ public class UserPanel extends JFrame{
     private Integer characterPointer = 0;
     private Character[] characters = new Character[]{
             new Character("Venti", new JRadioButtonP("blackhole",XBlackHole.picture)),
-            new Character("Klee", new JRadioButtonP("boom")),
+            new Character("Klee", new JRadioButtonP("boom",XBoom.picture)),
             new Character("Qiqi", new JRadioButtonP("iceball")),
             new Character("Xiao", new JRadioButtonP("Mask")),
             new Character("Ningguang", new JRadioButtonP("barrier")),

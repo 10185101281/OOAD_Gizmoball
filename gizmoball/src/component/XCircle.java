@@ -29,7 +29,6 @@ public class XCircle extends XComponent {
 
     }
 
-
     @Override
     public void react(BouncingBall ball) {
         super.react(ball);

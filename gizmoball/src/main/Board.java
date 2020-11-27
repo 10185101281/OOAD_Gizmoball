@@ -148,6 +148,14 @@ public class Board extends JPanel{
                     }
                     componentMap[x][y] = blackhole;
                     componentList.add(blackhole);
+                } else if(nowComponent.equals("boom")){
+                    XComponent boom = new XBoom(x,y,getThisBoard());
+                    if(boom.is_collision(ball)>0){
+                        boom.delete();
+                        return ;
+                    }
+                    componentMap[x][y] = boom;
+                    componentList.add(boom);
                 }
             }
             refresh(false);
