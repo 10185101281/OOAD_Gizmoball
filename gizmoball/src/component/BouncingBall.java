@@ -1,8 +1,9 @@
-package main;
+package component;
 
 import java.awt.*;
 import java.util.*;
 import component.*;
+import main.Board;
 
 import javax.swing.*;
 
@@ -11,13 +12,11 @@ import javax.swing.*;
  * @Date 2020/11/18 9:00
  * @Version 1.0
  */
-public class BouncingBall {
-    private static final String picturePath = "gizmoball/src/picture/other/ball.png";
-    public static final ImageIcon picture = new ImageIcon(picturePath);
-    private Integer x, y, vx, vy, ax, ay;
+public class BouncingBall extends XComponent{
+    public static String picturePath = "gizmoball/src/picture/component/ball.png";
+    public static ImageIcon picture = new ImageIcon(picturePath);
+    private Integer vx, vy, ax, ay;
     private Integer radius;
-    private Board board;
-    private Color color = new Color(0x00000);
 
     public Integer getX() {
         return x;
@@ -52,17 +51,25 @@ public class BouncingBall {
 
     private void randomAttributes(){
         Random random = new Random();
-        vx = random.nextInt(5)-2;
-        vy = random.nextInt(5)-2;
+        vx = 0; vy = 0;
+        while(vx == 0 && vy == 0){
+            vx = random.nextInt(5)-2;
+            vy = random.nextInt(5)-2;
+        }
     }
     public BouncingBall(Board board){
-        this.x = 400;
-        this.y = 400;
+        super(400,400,board);
         this.radius = 10;
         this.board = board;
         randomAttributes();
     }
-    public BouncingBall(int x,int y,int vx,int vy,int ax,int ay,Board board){
+    public BouncingBall(Integer x,Integer y,Board board){
+        super(x, y,  board);
+        this.radius = 10;
+        this.board = board;
+    }
+    public BouncingBall(Integer x,Integer y,Integer vx,Integer vy,Integer ax,Integer ay,Board board){
+        super(x,y,board);
         this.x = x;
         this.y = y;
         this.vx = vx;
@@ -91,23 +98,23 @@ public class BouncingBall {
 
         boolean is = false;
         x += vx;
-        if(x <= radius){
-            x = radius;
+        if(x <= 0){
+            x = 0;
             vx = -vx;
             is = true;
-        } else if(x + radius >=  boardWidth){
-            x = boardWidth-radius;
+        } else if(x + 2*radius >=  boardWidth){
+            x = boardWidth-2*radius;
             vx = -vx;
             is = true;
         }
 
         y += vy;
-        if(y <= radius){
-            y = radius;
+        if(y <= 0){
+            y = 0;
             vy = -vy;
             is = true;
-        } else if(y + radius >= boardHeight){
-            y = boardHeight-radius;
+        } else if(y + 2*radius >= boardHeight){
+            y = boardHeight-2*radius;
             vy = -vy;
             is = true;
         }
@@ -134,9 +141,20 @@ public class BouncingBall {
      * @Version 1.0
      * @param g
      */
+    @Override
     public void paint(Graphics g){
         Image image;
         image = Toolkit.getDefaultToolkit().getImage(picturePath);
-        g.drawImage(image, x-radius, y-radius,radius+radius,radius+radius,board);
+        g.drawImage(image, x, y,radius+radius,radius+radius,board);
+    }
+
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/19 19:30
+     * @Version 1.0
+     * 删除球
+     */
+    public void delete(){
+        board.setBall(null);
     }
 }

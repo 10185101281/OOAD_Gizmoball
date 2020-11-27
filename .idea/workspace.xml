@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2f432d9-88d8-4c0c-bac4-72e03b54b79d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/gizmoball/src/main/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gizmoball/src/main/BouncingBall.java" beforeDir="false" afterPath="$PROJECT_DIR$/gizmoball/src/main/BouncingBall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gizmoball/src/component/BouncingBall.java" beforeDir="false" afterPath="$PROJECT_DIR$/gizmoball/src/component/BouncingBall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gizmoball/src/component/XBlackHole.java" beforeDir="false" afterPath="$PROJECT_DIR$/gizmoball/src/component/XBlackHole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gizmoball/src/component/XCircle.java" beforeDir="false" afterPath="$PROJECT_DIR$/gizmoball/src/component/XCircle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gizmoball/src/component/XComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/gizmoball/src/component/XComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gizmoball/src/component/XRectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/gizmoball/src/component/XRectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gizmoball/src/component/XTriangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/gizmoball/src/component/XTriangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gizmoball/src/main/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/gizmoball/src/main/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gizmoball/src/main/UserPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/gizmoball/src/main/UserPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,14 +34,24 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.statistic.project.settings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/gizmoball/src/picture/component" />
+      <recent name="$PROJECT_DIR$/gizmoball/src/picture/other" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="ControlSystem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -43,7 +59,7 @@
       <module name="gizmoball" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="main.*" />
+          <option name="PATTERN" value="gui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -69,6 +85,9 @@
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="f2f432d9-88d8-4c0c-bac4-72e03b54b79d" name="Default Changelist" comment="" />
@@ -77,6 +96,17 @@
       <option name="presentableId" value="Default" />
       <updated>1606115456218</updated>
       <workItem from="1606115458816" duration="3991000" />
+      <workItem from="1606265095951" duration="7073000" />
+      <workItem from="1606317894294" duration="3586000" />
+      <workItem from="1606379504491" duration="733000" />
+      <workItem from="1606380994172" duration="145000" />
+      <workItem from="1606381155959" duration="8668000" />
+      <workItem from="1606459862476" duration="57000" />
+      <workItem from="1606460075403" duration="369000" />
+      <workItem from="1606462807413" duration="1152000" />
+      <workItem from="1606464203770" duration="20000" />
+      <workItem from="1606464397979" duration="680000" />
+      <workItem from="1606465121885" duration="348000" />
     </task>
     <servers />
   </component>
@@ -84,21 +114,53 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1258" height="123" key="GridCell.Tab.0.bottom" timestamp="1606120776488">
+    <state width="1299" height="294" key="GridCell.Tab.0.bottom" timestamp="1606465117823">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1258" height="123" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1606120776488" />
-    <state width="1258" height="123" key="GridCell.Tab.0.center" timestamp="1606120776488">
+    <state width="1400" height="213" key="GridCell.Tab.0.bottom/0.23.1440.811@0.23.1440.811" timestamp="1606460444462" />
+    <state width="1299" height="294" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1606465117823" />
+    <state width="1299" height="294" key="GridCell.Tab.0.center" timestamp="1606465117822">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1258" height="123" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1606120776488" />
-    <state width="1258" height="123" key="GridCell.Tab.0.left" timestamp="1606120776487">
+    <state width="1400" height="213" key="GridCell.Tab.0.center/0.23.1440.811@0.23.1440.811" timestamp="1606460444462" />
+    <state width="1299" height="294" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1606465117822" />
+    <state width="1299" height="294" key="GridCell.Tab.0.left" timestamp="1606465117822">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1258" height="123" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1606120776487" />
-    <state width="1258" height="123" key="GridCell.Tab.0.right" timestamp="1606120776488">
+    <state width="1400" height="213" key="GridCell.Tab.0.left/0.23.1440.811@0.23.1440.811" timestamp="1606460444462" />
+    <state width="1299" height="294" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1606465117822" />
+    <state width="1299" height="294" key="GridCell.Tab.0.right" timestamp="1606465117822">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1258" height="123" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1606120776488" />
+    <state width="1400" height="213" key="GridCell.Tab.0.right/0.23.1440.811@0.23.1440.811" timestamp="1606460444462" />
+    <state width="1299" height="294" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1606465117822" />
+    <state width="1318" height="266" key="GridCell.Tab.1.bottom" timestamp="1606459087098">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1318" height="266" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1606459087098" />
+    <state width="1318" height="266" key="GridCell.Tab.1.center" timestamp="1606459087097">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1318" height="266" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1606459087097" />
+    <state width="1318" height="266" key="GridCell.Tab.1.left" timestamp="1606459087097">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1318" height="266" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1606459087097" />
+    <state width="1318" height="266" key="GridCell.Tab.1.right" timestamp="1606459087098">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1318" height="266" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1606459087098" />
+    <state x="217" y="98" key="SettingsEditor" timestamp="1606381180688">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="217" y="98" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1606381180688" />
+    <state x="534" y="204" width="670" height="676" key="search.everywhere.popup" timestamp="1606209932065">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="534" y="204" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1606209932065" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

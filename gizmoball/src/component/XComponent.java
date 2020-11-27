@@ -1,10 +1,9 @@
 package component;
 
-import javafx.scene.layout.Border;
-import main.BouncingBall;
-import javax.swing.*;
 import java.awt.*;
 import main.Board;
+
+import javax.swing.*;
 
 /**
  * @Author LiXiang
@@ -12,7 +11,6 @@ import main.Board;
  * @Version 1.0
  */
 public abstract class XComponent{
-
     Integer x;  //左上角坐标
     Integer y;
     Integer length;
@@ -21,6 +19,7 @@ public abstract class XComponent{
     Integer rate;
     Board board;
     boolean isSelected;
+    protected String paintPicturePath;
 
     public XComponent(Integer x, Integer y, Board board){
         this.x = x; this.y = y;
@@ -30,12 +29,26 @@ public abstract class XComponent{
         isSelected = false;
         this.board = board;
     }
-
     public void setSelected(boolean isSelected){
         this.isSelected = isSelected;
     }
 
-    public abstract void paint(Graphics g);
+    public void paint(Graphics g){
+        try {
+            Image image;
+            image = Toolkit.getDefaultToolkit().getImage(paintPicturePath);
+            g.drawImage(image, x, y,length,length,board);
+            if(isSelected){
+                Graphics2D g2 = (Graphics2D)g;
+                g2.setColor(Color.RED);
+                //BasicStroke s = new BasicStroke(2.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, new float[]{5.0f}, 0.0f);
+                g2.setStroke(new BasicStroke(3));
+                g2.drawRect(x,y,length,length);
+            }
+        } catch (Exception e) {
+            System.out.println("File Not Found");
+        }
+    }
     /**
      * @Author LiXiang, BaoLiang
      * @Date 2020/11/19 15:30

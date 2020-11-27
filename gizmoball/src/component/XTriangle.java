@@ -1,7 +1,5 @@
 package component;
 
-import main.BouncingBall;
-
 import javax.swing.*;
 import java.awt.*;
 import main.Board;
@@ -12,6 +10,7 @@ public class XTriangle extends XComponent {
     
     public XTriangle(Integer x, Integer y,Board board){
         super(x,y,board);
+        paintPicturePath = picturePath;
     }
 
     /**
