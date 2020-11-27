@@ -188,11 +188,11 @@ public class Board extends JPanel{
 
     @Override public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        if(ball != null) ball.paint(g);
         for(XComponent component: componentList) component.paint(g);
+        if(ball != null) ball.paint(g);
     }
     public void refresh(boolean hasMove) {
-        if(hasMove) ball.move();
+        if(hasMove&&ball!=null) ball.move();
         repaint(0, 0, boardWidth, boardHeight);
     }
 }

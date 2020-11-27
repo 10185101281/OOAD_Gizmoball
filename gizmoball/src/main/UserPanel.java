@@ -74,9 +74,11 @@ public class UserPanel extends JFrame{
         boardPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         boardPanel.setPreferredSize(new Dimension(830,830));
         ControlSystem.createBoard();
-        ControlSystem.createBall();
+       // ControlSystem.createBall();
         board = ControlSystem.getBoard();
         boardPanel.add(board);
+        BouncingBall ball = new BouncingBall(board);
+        board.setBall(ball);
         initTimer();
     }
 

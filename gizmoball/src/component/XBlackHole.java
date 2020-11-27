@@ -47,6 +47,7 @@ public class XBlackHole extends XComponent{
             ball.setVy(0);
            // System.out.println("vanish");
             attracing = true;
+            ball.delete();
         }
 
         if(isattracted&&attracing)
@@ -54,11 +55,20 @@ public class XBlackHole extends XComponent{
             Integer vx = ball.getVx();
             Integer vy = ball.getVy();
             Double v = Math.sqrt(Math.pow(vx,2)+Math.pow(vy,2));
-            Double new_v = v/2;
+            Double new_v = v;
+
             Double new_vx = new_v*(center_x1-center_x2)/distance;
             Double new_vy = new_v*(center_y1-center_y2)/distance;
-            ball.setVx((int)Math.round(new_vx));
-            ball.setVy((int)Math.round(new_vy));
+
+            if(new_vx<0)
+                ball.setVx((int)Math.floor(new_vx));
+            else
+                ball.setVx((int)Math.ceil(new_vx));
+            if(new_vy<0)
+                ball.setVy((int)Math.floor(new_vy));
+            else
+                ball.setVy((int)Math.ceil(new_vy));
+
             attracing =false;
         }
 
@@ -106,9 +116,17 @@ public class XBlackHole extends XComponent{
         Integer radius = ball.getRadius();//小球半径
         //圆心间距离
         double distance = Math.sqrt(Math.pow(center_x1-center_x2,2)+Math.pow(center_y1-center_y2,2));
-        if(distance<length/2-radius)
+        if(length==base)
         {
-            return true;
+            if(distance<length/2-radius){
+                return true;
+            }
+        }
+        else
+        {
+            if (distance < radius) {
+                return true;
+            }
         }
         return false;
     }

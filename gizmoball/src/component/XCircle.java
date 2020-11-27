@@ -58,7 +58,6 @@ public class XCircle extends XComponent {
             //x方向速度在碰撞面切向和法向做分解
             double vxt = vx * cos_a;
             double vxn = vx * sin_a;
-            System.out.println("x方向速度在碰撞面切向和法向做分解:切向：" + vxt + "法向：" + vxn);
 
             //切向速度和法向速度再沿xy轴分解
             double vxtx = 0;//切向速度在x轴投影
@@ -91,10 +90,6 @@ public class XCircle extends XComponent {
                 vxny = vxn * cos_a;//法向速度*cos
             }
 
-            System.out.println("X切向分解，x轴：" + vxtx + "y轴：" + vxty);
-
-
-            System.out.println("X法向分解，x轴：" + vxnx + "y轴：" + vxny);
 
             //法向速度反向
             vxnx = -vxnx;
@@ -103,12 +98,9 @@ public class XCircle extends XComponent {
             double Xspeed1 = vxtx + vxnx;
             double Yspeed1 = vxty + vxny;
 
-
-            System.out.println("XSpeed1:" + Xspeed1 + " YSpeed1:" + Yspeed1);
             //y方向速度在碰撞面切向和法向做分解
             double vyt = vy * sin_a;
             double vyn = vy * cos_a;
-            System.out.println("y方向速度在碰撞面切向和法向做分解:切向：" + vyt + "法向：" + vyn);
 
             //切向速度和法向速度再沿xy轴分解
             double vytx = 0;//切向速度在x轴投影
@@ -128,10 +120,6 @@ public class XCircle extends XComponent {
                 vyny = vyn * cos_a;
             }
 
-            System.out.println("Y切向分解，x轴：" + vytx + "y轴：" + vyty);
-
-
-            System.out.println("Y法向分解，x轴：" + vynx + "y轴：" + vyny);
             //法向速度反向
             vynx = -vynx;
             vyny = -vyny;
@@ -139,7 +127,6 @@ public class XCircle extends XComponent {
             double Xspeed2 = vytx + vynx;
             double Yspeed2 = vyty + vyny;
 
-            System.out.println("XSpeed2:" + Xspeed2 + " YSpeed2:" + Yspeed2);
 
             Double new_vx = Xspeed1 + Xspeed2;
             Double new_vy = Yspeed1 + Yspeed2;

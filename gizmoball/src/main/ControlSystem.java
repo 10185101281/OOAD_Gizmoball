@@ -11,7 +11,7 @@ import javax.swing.*;
  */
 public class ControlSystem {
 
-    private static BouncingBall ball;
+  //  private static BouncingBall ball;
     private static Board board;
     /**
      * @Author BaoLiang
@@ -23,10 +23,10 @@ public class ControlSystem {
         return board;
     }
 
-    public static void createBall(){
-        ball = new BouncingBall(board);
-        board.setBall(ball);
-    }
+//    public static void createBall(){
+//        ball = new BouncingBall(board);
+//        board.setBall(ball);
+//    }
     /**
      * @Author BaoLiang
      * @Date 2020/11/18 11:30

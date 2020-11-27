@@ -52,9 +52,9 @@ public class BouncingBall extends XComponent{
     private void randomAttributes(){
         Random random = new Random();
         vx = 0; vy = 0;
-        while(vx == 0 && vy == 0){
-            vx = random.nextInt(5)-2;
-            vy = random.nextInt(5)-2;
+        while(vx == 0 || vy == 0){
+            vx = random.nextInt(10)-5;
+            vy = random.nextInt(10)-5;
         }
     }
     public BouncingBall(Board board){
@@ -67,6 +67,7 @@ public class BouncingBall extends XComponent{
         super(x, y,  board);
         this.radius = 10;
         this.board = board;
+        randomAttributes();
     }
     public BouncingBall(Integer x,Integer y,Integer vx,Integer vy,Integer ax,Integer ay,Board board){
         super(x,y,board);
@@ -96,35 +97,25 @@ public class BouncingBall extends XComponent{
         Integer boardHeight = board.getPreferredSize().height;
 
 
-        boolean is = false;
+
         x += vx;
         if(x <= 0){
             x = 0;
             vx = -vx;
-            is = true;
         } else if(x + 2*radius >=  boardWidth){
             x = boardWidth-2*radius;
             vx = -vx;
-            is = true;
         }
 
         y += vy;
         if(y <= 0){
             y = 0;
             vy = -vy;
-            is = true;
         } else if(y + 2*radius >= boardHeight){
             y = boardHeight-2*radius;
             vy = -vy;
-            is = true;
         }
-        if(is) {
-            Random random = new Random();
-            if(vx < 0) vx = (-1) * random.nextInt(3);
-            else vx = random.nextInt(3);
-            if(vy < 0) vy = (-1) * random.nextInt(3);
-            else vy = random.nextInt(3);
-        }
+
     }
 
     /**
