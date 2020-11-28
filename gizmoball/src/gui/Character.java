@@ -23,7 +23,7 @@ public class Character {
      * @return 根据角色名称生成的头像
      */
     private ImageIcon getAvatar(int width,int height,String s){
-        ImageIcon imageIcon = new ImageIcon("gizmoball/src/picture/avatar/"+s+".png");
+        ImageIcon imageIcon = new ImageIcon("src/picture/avatar/"+s+".png");
         imageIcon.setImage(imageIcon.getImage().getScaledInstance(width,height, Image.SCALE_DEFAULT));
         return imageIcon;
     }

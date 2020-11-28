@@ -103,7 +103,7 @@ public class UserPanel extends JFrame{
      */
     private ImageIcon getRandomAvatar(int width,int height){
         Integer randomInteger = new Random().nextInt(characterNames.length);
-        ImageIcon imageIcon = new ImageIcon("gizmoball/src/picture/avatar/"+characterNames[randomInteger]+".png");
+        ImageIcon imageIcon = new ImageIcon("src/picture/avatar/"+characterNames[randomInteger]+".png");
         imageIcon.setImage(imageIcon.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
         return imageIcon;
     }
@@ -234,7 +234,7 @@ public class UserPanel extends JFrame{
         componentPanel[0].add(controlButton,BorderLayout.NORTH);
         componentPanel[0].add(componentPage);
 
-        JRadioButtonP placement = new JRadioButtonP("placement",new ImageIcon("gizmoball/src/picture/component/placement.png"));
+        JRadioButtonP placement = new JRadioButtonP("placement",new ImageIcon("src/picture/component/placement.png"));
         JRadioButtonP rectangle = new JRadioButtonP("rectangle", XRectangle.picture);
         JRadioButtonP triangle = new JRadioButtonP("triangle",XTriangle.picture);
         JRadioButtonP circle = new JRadioButtonP("circle",XCircle.picture);
@@ -372,13 +372,13 @@ public class UserPanel extends JFrame{
         validToolPanel.setBackground(new Color(0x00CED1));
 
         int width = 70, height = 70;
-        ImageIcon rotateImage = new ImageIcon("gizmoball/src/picture/tool/rotate.png");
+        ImageIcon rotateImage = new ImageIcon("src/picture/tool/rotate.png");
         rotateImage.setImage(rotateImage.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
-        ImageIcon deleteImage = new ImageIcon("gizmoball/src/picture/tool/delete.png");
+        ImageIcon deleteImage = new ImageIcon("src/picture/tool/delete.png");
         deleteImage.setImage(deleteImage.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
-        ImageIcon enlargeImage = new ImageIcon("gizmoball/src/picture/tool/enlarge.png");
+        ImageIcon enlargeImage = new ImageIcon("src/picture/tool/enlarge.png");
         enlargeImage.setImage(enlargeImage.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
-        ImageIcon shrinkImage = new ImageIcon("gizmoball/src/picture/tool/shrink.png");
+        ImageIcon shrinkImage = new ImageIcon("src/picture/tool/shrink.png");
         shrinkImage.setImage(shrinkImage.getImage().getScaledInstance(width,30,Image.SCALE_DEFAULT));
 
         JButton rotateButton = new JButton(rotateImage);

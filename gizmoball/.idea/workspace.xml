@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="19aede53-5fd9-44fb-ad97-fa4fcb90f5e9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/BouncingBall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/BouncingBall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/XBlackHole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/XBlackHole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/XCircle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/XCircle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/XRectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/XRectangle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/component/XTriangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/XTriangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/UserPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UserPanel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,13 +18,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/component/XCircle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+            <state relative-caret-position="-1159">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -31,14 +38,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/component/XTriangle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1086">
-              <caret line="93" column="68" selection-start-line="93" selection-start-column="68" selection-end-line="93" selection-end-column="68" />
+            <state relative-caret-position="96">
+              <caret line="91" column="35" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1625#1626#0" expanded="true" />
-                <element signature="e#1670#1671#0" expanded="true" />
-                <element signature="e#2868#2869#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/ControlSystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -55,8 +68,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/component/XRectangle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="69" column="38" lean-forward="true" selection-start-line="69" selection-start-column="12" selection-end-line="69" selection-end-column="38" />
+            <state relative-caret-position="-1357">
+              <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -64,17 +77,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/component/XComponent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
+            <state relative-caret-position="2932">
               <caret line="160" column="11" selection-start-line="160" selection-start-column="11" selection-end-line="160" selection-end-column="11" />
-              <folding>
-                <element signature="e#3517#3518#0" expanded="true" />
-                <element signature="e#3541#3542#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>gizmoball/src</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>src</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>E:\GithubDoucument\OOAD_03\gizmoball\src\main</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -111,7 +131,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -160,6 +179,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="CatdeaLogs" />
     </panes>
   </component>
@@ -183,6 +203,26 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="ControlSystem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.ControlSystem" />
+      <module name="gizmoball" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ControlSystem" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -196,17 +236,28 @@
       <workItem from="1606370174910" duration="9684000" />
       <workItem from="1606396267840" duration="1363000" />
       <workItem from="1606467595209" duration="702000" />
-      <workItem from="1606475261895" duration="3360000" />
+      <workItem from="1606475261895" duration="3982000" />
+      <workItem from="1606561774439" duration="1556000" />
+      <workItem from="1606573792135" duration="5998000" />
     </task>
+    <task id="LOCAL-00001" summary="三角碰撞">
+      <created>1606478888263</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606478888263</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15109000" />
+    <option name="totallyTimeSpent" value="23285000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26213592" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27184466" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -215,7 +266,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23445825" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -225,6 +276,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -240,6 +292,10 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="三角碰撞" />
+    <option name="LAST_COMMIT_MESSAGE" value="三角碰撞" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/calc/CalcPosition.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -248,51 +304,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/XCircle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/BouncingBall.java" />
     <entry file="file://$PROJECT_DIR$/src/component/XComponent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
+        <state relative-caret-position="2932">
           <caret line="160" column="11" selection-start-line="160" selection-start-column="11" selection-end-line="160" selection-end-column="11" />
-          <folding>
-            <element signature="e#3517#3518#0" expanded="true" />
-            <element signature="e#3541#3542#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/BouncingBall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="e#521#522#0" expanded="true" />
-            <element signature="e#545#546#0" expanded="true" />
-            <element signature="e#572#573#0" expanded="true" />
-            <element signature="e#596#597#0" expanded="true" />
-            <element signature="e#628#629#0" expanded="true" />
-            <element signature="e#657#658#0" expanded="true" />
-            <element signature="e#685#686#0" expanded="true" />
-            <element signature="e#710#711#0" expanded="true" />
-            <element signature="e#739#740#0" expanded="true" />
-            <element signature="e#764#765#0" expanded="true" />
-            <element signature="e#801#802#0" expanded="true" />
-            <element signature="e#829#830#0" expanded="true" />
-            <element signature="e#866#867#0" expanded="true" />
-            <element signature="e#894#895#0" expanded="true" />
-            <element signature="e#928#929#0" expanded="true" />
-            <element signature="e#954#955#0" expanded="true" />
-            <element signature="e#989#990#0" expanded="true" />
-            <element signature="e#1015#1016#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -303,22 +319,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/XCircle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1159">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/ControlSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/component/XRectangle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="69" column="38" lean-forward="true" selection-start-line="69" selection-start-column="12" selection-end-line="69" selection-end-column="38" />
+        <state relative-caret-position="-1357">
+          <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/component/XTriangle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1086">
-          <caret line="93" column="68" selection-start-line="93" selection-start-column="68" selection-end-line="93" selection-end-column="68" />
+        <state relative-caret-position="96">
+          <caret line="91" column="35" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1625#1626#0" expanded="true" />
-            <element signature="e#1670#1671#0" expanded="true" />
-            <element signature="e#2868#2869#0" expanded="true" />
           </folding>
         </state>
       </provider>

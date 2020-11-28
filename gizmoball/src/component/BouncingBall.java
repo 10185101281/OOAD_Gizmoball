@@ -13,7 +13,7 @@ import javax.swing.*;
  * @Version 1.0
  */
 public class BouncingBall extends XComponent{
-    public static String picturePath = "gizmoball/src/picture/component/ball.png";
+    public static String picturePath = "src/picture/component/ball.png";
     public static ImageIcon picture = new ImageIcon(picturePath);
     private Integer vx, vy, ax, ay;
     private Integer radius;

@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class XCircle extends XComponent {
-    public static String picturePath = "gizmoball/src/picture/component/circle.png";
+    public static String picturePath = "src/picture/component/circle.png";
     public static ImageIcon picture = new ImageIcon(picturePath);
 
     public XCircle(Integer x,Integer y,Board board){

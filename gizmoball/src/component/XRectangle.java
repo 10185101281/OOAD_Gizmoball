@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class XRectangle extends XComponent {
-    public static final String picturePath = "gizmoball/src/picture/component/rectangle.png";
+    public static final String picturePath = "src/picture/component/rectangle.png";
     public static final ImageIcon picture = new ImageIcon(picturePath);
 
     private Integer boucing_edge;
