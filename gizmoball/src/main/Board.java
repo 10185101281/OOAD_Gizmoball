@@ -156,6 +156,14 @@ public class Board extends JPanel{
                     }
                     componentMap[x][y] = boom;
                     componentList.add(boom);
+                } else if(nowComponent.equals("airflow")){
+                    XComponent airflow = new XAirflow(x,y,getThisBoard());
+                    if(airflow.is_collision(ball)>0){
+                        airflow.delete();
+                        return ;
+                    }
+                    componentMap[x][y] = airflow;
+                    componentList.add(airflow);
                 }
             }
             refresh(false);
@@ -188,7 +196,18 @@ public class Board extends JPanel{
 
     @Override public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for(XComponent component: componentList) component.paint(g);
+        ArrayList<XComponent> deleteList = new ArrayList<>();
+        for(XComponent component: componentList){
+            if(component.getIsDeleting()) deleteList.add(component);
+        }
+        for(XComponent component: deleteList){
+            componentList.remove(component);
+        }
+        for(XComponent component: componentList) {
+            if(component == null) continue;
+            if(component.getIsDeleting()) continue;
+            component.paint(g);
+        }
         if(ball != null) ball.paint(g);
     }
     public void refresh(boolean hasMove) {

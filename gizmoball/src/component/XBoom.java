@@ -84,7 +84,6 @@ public class XBoom extends XComponent{
             ball.setVx(-ball.getVx());
             ball.setVy(-ball.getVy());
             explodeStart();
-
         }
 
     }

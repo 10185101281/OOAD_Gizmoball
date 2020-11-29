@@ -63,6 +63,9 @@ public class UserPanel extends JFrame{
         timer = new Timer(1000/FRAMES_PER_SECOND, new RefreshBoard());
         timer.stop();
     }
+    public Timer getTimer(){
+        return timer;
+    }
     /**
      * @Author BaoLiang
      * @Date 2020/11/17 15:15
@@ -87,7 +90,7 @@ public class UserPanel extends JFrame{
             new Character("Venti", new JRadioButtonP("blackhole",XBlackHole.picture)),
             new Character("Klee", new JRadioButtonP("boom",XBoom.picture)),
             new Character("Qiqi", new JRadioButtonP("iceball")),
-            new Character("Xiao", new JRadioButtonP("Mask")),
+            new Character("Xiao", new JRadioButtonP("airflow",XAirflow.picture)),
             new Character("Ningguang", new JRadioButtonP("barrier")),
     };
     private String[] characterNames = new String[]{

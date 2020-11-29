@@ -19,7 +19,10 @@ public abstract class XComponent{
     Integer rate;
     Board board;
     boolean isSelected;
+    boolean isDeleting;
     protected String paintPicturePath;
+
+    public boolean getIsDeleting(){return isDeleting;}
 
     public XComponent(Integer x, Integer y, Board board){
         this.x = x; this.y = y;
@@ -27,6 +30,7 @@ public abstract class XComponent{
         rate = 1;
         angle = 0;
         isSelected = false;
+        isDeleting = false;
         this.board = board;
     }
     public void setSelected(boolean isSelected){
@@ -123,7 +127,8 @@ public abstract class XComponent{
                 board.updateComponentMap(tx, ty, null);
             }
         }
-        board.getComponentlist().remove(this);
+        isDeleting = true;
+        //board.getComponentlist().remove(this);
     }
 
     /**
