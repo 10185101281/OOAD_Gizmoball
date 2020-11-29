@@ -65,4 +65,46 @@ public class XBoom extends XComponent{
             }
         }
     }
+
+    @Override
+    public void react(BouncingBall ball) {
+        super.react(ball);
+        //控件圆心坐标
+        double center_x1 = x.doubleValue() + length.doubleValue()/2;
+        double center_y1 = y.doubleValue() + length.doubleValue()/2;
+        //小球圆心坐标
+        double center_x2 = ball.getX().doubleValue();
+        double center_y2 = ball.getY().doubleValue();
+        double distance = Math.sqrt(Math.pow(center_x1-center_x2,2)+Math.pow(center_y1-center_y2,2));
+        if(is_collision(ball)==1) {
+            Double new_x2 = center_x1 + (length / 2 + ball.getRadius()) / distance * (center_x2 - center_x1);
+            Double new_y2 = center_y1 + (length / 2 + ball.getRadius()) / distance * (center_y2 - center_y1);
+            ball.setX(new_x2.intValue());
+            ball.setY(new_y2.intValue());
+            ball.setVx(-ball.getVx());
+            ball.setVy(-ball.getVy());
+            explodeStart();
+
+        }
+
+    }
+
+    @Override
+    public Integer is_collision(BouncingBall ball) {
+        //控件圆心坐标
+        Integer center_x1 = x + length/2;
+        Integer center_y1 = y + length/2;
+        //小球圆心坐标
+        Integer center_x2 = ball.getX();
+        Integer center_y2 = ball.getY();
+
+        Integer radius = ball.getRadius();
+        //圆心间距离
+        double distance = Math.sqrt(Math.pow(center_x1-center_x2,2)+Math.pow(center_y1-center_y2,2));
+        if(distance<length/2+radius){
+           return 1;
+        }
+        return 0;
+    }
+
 }
