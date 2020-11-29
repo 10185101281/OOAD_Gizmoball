@@ -164,6 +164,14 @@ public class Board extends JPanel{
                     }
                     componentMap[x][y] = airflow;
                     componentList.add(airflow);
+                } else if(nowComponent.equals("iceball")) {
+                    XComponent iceball = new XIceball(x, y, getThisBoard());
+                    if (iceball.is_collision(ball) > 0) {
+                        iceball.delete();
+                        return;
+                    }
+                    componentMap[x][y] = iceball;
+                    componentList.add(iceball);
                 }
             }
             refresh(false);
