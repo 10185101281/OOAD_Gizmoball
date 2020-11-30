@@ -26,7 +26,7 @@ public class Board extends JPanel{
             new Color(0xBEBEBE),//灰烬之海
     };
     private BouncingBall ball;
-    private XBarrier barrier;
+    private XBarrier boardBarrier;
     private ArrayList<XComponent> componentList;
     private XComponent[][] componentMap;
     private String nowComponent;
@@ -112,6 +112,7 @@ public class Board extends JPanel{
     private MouseListener mouseListener = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
+
         }
 
         @Override
@@ -181,9 +182,24 @@ public class Board extends JPanel{
                         return;
                     }
                 } else if(nowComponent.equals("barrier")){
+                    if(boardBarrier != null) return ;
+                    if(componentMap[x+XComponent.base][y] != null) return ;
                     XComponent barrier = new XBarrier(x, y, getThisBoard());
+                    boardBarrier = (XBarrier)barrier;
                     if(barrier.is_collision(ball) > 0){
                         barrier.delete();
+                        return ;
+                    }
+                } else if(nowComponent.equals("straightPipe")){
+                    XComponent straightPipe = new XStraightPipe(x, y, getThisBoard());
+                    if(straightPipe.is_collision(ball) > 0){
+                        straightPipe.delete();
+                        return ;
+                    }
+                } else if(nowComponent.equals("curvedPipe")){
+                    XComponent curvedPipe = new XCurvedPipe(x, y, getThisBoard());
+                    if(curvedPipe.is_collision(ball) > 0){
+                        curvedPipe.delete();
                         return ;
                     }
                 }
@@ -194,12 +210,10 @@ public class Board extends JPanel{
         public void mouseReleased(MouseEvent e) {
 
         }
-
         @Override
         public void mouseEntered(MouseEvent e) {
 
         }
-
         @Override
         public void mouseExited(MouseEvent e) {
 

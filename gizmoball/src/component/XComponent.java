@@ -15,7 +15,7 @@ public abstract class XComponent{
     Integer y;
     Integer length;
     Integer angle;
-    Integer base = 40;//一个格子40像素
+    public static final Integer base = 40;//一个格子40像素
     Integer rate;
     Board board;
     boolean isSelected;
