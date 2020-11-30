@@ -84,6 +84,7 @@ public class XTriangle extends XComponent {
      */
     @Override
     public void react(BouncingBall ball) {
+        super.react(ball);
         if(is_collision(ball)==1){
             switch (boundEdge){
                 case 0:

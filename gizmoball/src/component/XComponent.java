@@ -160,6 +160,8 @@ public abstract class XComponent{
      * 碰撞后作出反应，改变小球状态
      */
     public void react(BouncingBall ball){
+        if(ball==null)
+            return;
 
     }
 
