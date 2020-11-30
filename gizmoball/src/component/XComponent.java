@@ -93,7 +93,6 @@ public abstract class XComponent{
         }
     }
 
-
     /**
      * @Author LiXiang, BaoLiang
      * @Date 2020/11/19 15:30
@@ -139,8 +138,6 @@ public abstract class XComponent{
      */
     public void rotate() { }
 
-
-
     /**
      * @param ball 小球
      * @Author LiXiang
@@ -149,11 +146,7 @@ public abstract class XComponent{
      * 碰撞后作出反应，改变小球状态
      */
     public void react(BouncingBall ball){
-        if(ball==null)
-            return;
-
+        if(ball==null) return;
     }
-
-    public abstract  Integer is_collision(BouncingBall ball);
-
+    public abstract Integer is_collision(BouncingBall ball);
 }
