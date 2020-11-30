@@ -4,6 +4,8 @@ import component.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -48,6 +50,7 @@ public class Board extends JPanel{
         selectedComponent = null;
         forbid = false;
         this.addMouseListener(mouseListener);
+        this.addKeyListener(keyListener);
     }
     /**
      * @Author BaoLiang
@@ -87,6 +90,23 @@ public class Board extends JPanel{
         this.nowComponent = nowComponent;
     }
 
+    private KeyListener keyListener = new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            int code = e.getKeyCode();
+            System.out.println(code);
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+
+        }
+    };
     private MouseListener mouseListener = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
