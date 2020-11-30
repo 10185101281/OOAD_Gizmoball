@@ -32,6 +32,8 @@ public abstract class XComponent{
         isSelected = false;
         isDeleting = false;
         this.board = board;
+        board.updateComponentMap(x, y, this);
+        board.addComponentToList(this);
     }
     public void setSelected(boolean isSelected){
         this.isSelected = isSelected;
@@ -53,6 +55,7 @@ public abstract class XComponent{
             System.out.println("File Not Found");
         }
     }
+
     /**
      * @Author LiXiang, BaoLiang
      * @Date 2020/11/19 15:30

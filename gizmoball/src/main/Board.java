@@ -87,6 +87,7 @@ public class Board extends JPanel{
 
     public BouncingBall getBall() { return ball; }
     public void updateComponentMap(int x, int y, XComponent xComponent){componentMap[x][y]=xComponent;}
+    public void addComponentToList(XComponent component){componentList.add(component);}
     public void setNowComponent(String nowComponent) {
         this.nowComponent = nowComponent;
     }
@@ -143,56 +144,48 @@ public class Board extends JPanel{
                         rectangle.delete();
                         return ;
                     }
-                    componentMap[x][y] = rectangle;
-                    componentList.add(rectangle);
                 } else if(nowComponent.equals("triangle")){
                     XComponent triangle = new XTriangle(x,y,getThisBoard());
                     if(triangle.is_collision(ball) > 0){
                         triangle.delete();
                         return ;
                     }
-                    componentMap[x][y] = triangle;
-                    componentList.add(triangle);
                 } else if(nowComponent.equals("circle")){
                     XComponent circle = new XCircle(x,y,getThisBoard());
                     if(circle.is_collision(ball) > 0){
                         circle.delete();
                         return ;
                     }
-                    componentMap[x][y] = circle;
-                    componentList.add(circle);
                 } else if(nowComponent.equals("blackhole")){
                     XComponent blackhole = new XBlackHole(x,y,getThisBoard());
                     if(blackhole.is_collision(ball) > 0){
                         blackhole.delete();
                         return ;
                     }
-                    componentMap[x][y] = blackhole;
-                    componentList.add(blackhole);
                 } else if(nowComponent.equals("boom")){
                     XComponent boom = new XBoom(x,y,getThisBoard());
                     if(boom.is_collision(ball)>0){
                         boom.delete();
                         return ;
                     }
-                    componentMap[x][y] = boom;
-                    componentList.add(boom);
                 } else if(nowComponent.equals("airflow")){
                     XComponent airflow = new XAirflow(x,y,getThisBoard());
                     if(airflow.is_collision(ball)>0){
                         airflow.delete();
                         return ;
                     }
-                    componentMap[x][y] = airflow;
-                    componentList.add(airflow);
                 } else if(nowComponent.equals("iceball")) {
                     XComponent iceball = new XIceball(x, y, getThisBoard());
                     if (iceball.is_collision(ball) > 0) {
                         iceball.delete();
                         return;
                     }
-                    componentMap[x][y] = iceball;
-                    componentList.add(iceball);
+                } else if(nowComponent.equals("barrier")){
+                    XComponent barrier = new XBarrier(x, y, getThisBoard());
+                    if(barrier.is_collision(ball) > 0){
+                        barrier.delete();
+                        return ;
+                    }
                 }
             }
             refresh(false);

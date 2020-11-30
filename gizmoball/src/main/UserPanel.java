@@ -91,7 +91,7 @@ public class UserPanel extends JFrame{
             new Character("Klee", new JRadioButtonP("boom",XBoom.picture)),
             new Character("Qiqi", new JRadioButtonP("iceball",XIceball.picture)),
             new Character("Xiao", new JRadioButtonP("airflow",XAirflow.picture)),
-            new Character("Ningguang", new JRadioButtonP("barrier")),
+            new Character("Ningguang", new JRadioButtonP("barrier",XBarrier.picture,140,70)),
     };
     private String[] characterNames = new String[]{
             "Venti", "Klee", "Qiqi","Xiao","Ningguang",
@@ -199,7 +199,7 @@ public class UserPanel extends JFrame{
         specialComponentPanel.add(specialComponentButton);
 
         JLabel specialComponent = characters[characterPointer].getComponent();
-        specialComponent.setPreferredSize(new Dimension(70, 70));
+        //specialComponent.setPreferredSize(new Dimension(70, 70));
         specialComponentPanel.add(specialComponent);
 
         avatarButton.addActionListener(new ActionListener() {

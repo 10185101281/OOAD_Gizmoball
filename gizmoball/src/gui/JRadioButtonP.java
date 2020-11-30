@@ -32,6 +32,13 @@ public class JRadioButtonP {
         jLabel = new JLabel(imageIcon);
         jLabel.setPreferredSize(new Dimension(70,70));
     }
+    public JRadioButtonP(String s, ImageIcon imageIcon, Integer width, Integer height){
+        jRadioButton = new JRadioButton();
+        jRadioButton.setActionCommand(s);
+        imageIcon.setImage(imageIcon.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
+        jLabel = new JLabel(imageIcon);
+        jLabel.setPreferredSize(new Dimension(width,height));
+    }
     public JRadioButton getjRadioButton(){
         return this.jRadioButton;
     }

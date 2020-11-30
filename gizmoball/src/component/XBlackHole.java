@@ -12,7 +12,7 @@ import java.awt.*;
  * @Version 1.0
  */
 public class XBlackHole extends XComponent{
-    public static final String picturePath = "gizmoball/src/picture/specialcomponent/blackhole.png";
+    public static final String picturePath = "gizmoball/src/picture/component/blackhole.png";
     public static final ImageIcon picture = new ImageIcon(picturePath);
     private boolean attracing=true;
     public XBlackHole(Integer x, Integer y, Board board){
