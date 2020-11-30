@@ -148,4 +148,9 @@ public class BouncingBall extends XComponent{
     public void delete(){
         board.setBall(null);
     }
+
+    @Override
+    public Integer is_collision(BouncingBall ball) {
+        return 0;
+    }
 }

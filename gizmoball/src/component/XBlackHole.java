@@ -75,6 +75,11 @@ public class XBlackHole extends XComponent{
 
     }
 
+    @Override
+    public Integer is_collision(BouncingBall ball) {
+        return 0;
+    }
+
     /**
      * @Author LiXiang
      * @Date 2020/11/27 14:00

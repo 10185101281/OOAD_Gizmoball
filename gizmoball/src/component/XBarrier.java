@@ -12,4 +12,10 @@ public class XBarrier extends XComponent{
         super(x, y, board);
         paintPicturePath = picturePath;
     }
+
+    @Override
+    public Integer is_collision(BouncingBall ball) {
+        return null;
+    }
+
 }

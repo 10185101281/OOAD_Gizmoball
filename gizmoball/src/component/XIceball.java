@@ -12,4 +12,9 @@ public class XIceball extends XComponent{
         super(x, y, board);
         paintPicturePath = picturePath;
     }
+
+    @Override
+    public Integer is_collision(BouncingBall ball) {
+        return 0;
+    }
 }

@@ -140,17 +140,6 @@ public abstract class XComponent{
     public void rotate() { }
 
 
-    /**
-     * @param ball 小球
-     * @Author LiXiang
-     * @Date 2020/11/20 10:00
-     * @Version 1.0
-     * 判断小球是否与自己碰撞
-     */
-    public void judge(BouncingBall ball){
-
-    }
-
 
     /**
      * @param ball 小球
@@ -165,8 +154,6 @@ public abstract class XComponent{
 
     }
 
-    public Integer is_collision(BouncingBall ball){
-        return 0;
-    }
+    public abstract  Integer is_collision(BouncingBall ball);
 
 }

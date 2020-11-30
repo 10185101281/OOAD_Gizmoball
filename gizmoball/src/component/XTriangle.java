@@ -67,15 +67,7 @@ public class XTriangle extends XComponent {
         rotPosition=(rotPosition+1)%4;
     }
 
-    /**
-     * @Author Kinghao
-     * @Date 2020/11/26 19:25
-     * @Version 1.0
-     */
-    @Override
-    public void judge(BouncingBall ball) {
 
-    }
 
     /**
      * @Author Kinghao

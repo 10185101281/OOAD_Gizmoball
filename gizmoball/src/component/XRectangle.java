@@ -18,8 +18,7 @@ public class XRectangle extends XComponent {
 
     @Override
     public void react(BouncingBall ball) {
-
-        super.judge(ball);
+        super.react(ball);
         //小球圆心的坐标
         Integer center_x = ball.getX();
         Integer center_y = ball.getY();
@@ -45,6 +44,7 @@ public class XRectangle extends XComponent {
         {
             ball.setY(center_y+(y+length-(center_y-radius)+1));
             ball.setVy(-ball.getVy());
+            System.out.println(ball.getX()+","+ball.getY());
         }
 
     }
@@ -72,7 +72,10 @@ public class XRectangle extends XComponent {
         }
         else if(center_y>=y+length&&center_y<=y+length+radius&&x<=center_x&&center_x<=x+length)//下边
         {
+            System.out.println("下边界"+(y+length));
+            System.out.println("下方"+ball.getX()+","+ball.getY());
             return 4;
+
         }
         return 0;
     }
