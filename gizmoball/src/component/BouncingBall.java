@@ -19,10 +19,10 @@ public class BouncingBall extends XComponent{
     private Integer radius;
 
     public Integer getX() {
-        return x;
+        return x+radius;
     }
     public Integer getY(){
-        return y;
+        return y+radius;
     }
     public Integer getRadius(){
         return radius;
