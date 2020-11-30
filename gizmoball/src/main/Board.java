@@ -26,6 +26,7 @@ public class Board extends JPanel{
             new Color(0xBEBEBE),//灰烬之海
     };
     private BouncingBall ball;
+    private XBarrier barrier;
     private ArrayList<XComponent> componentList;
     private XComponent[][] componentMap;
     private String nowComponent;
