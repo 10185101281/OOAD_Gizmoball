@@ -62,7 +62,7 @@ public class XTriangle extends XComponent {
                         ball.setVy(vx);
                     }else{
                         Integer vx=ball.getVx();
-                        ball.setVx(ball.getVy());
+                        ball.setVx(-ball.getVy());
                         ball.setVy(-vx);
                     }
                     break;
@@ -96,7 +96,7 @@ public class XTriangle extends XComponent {
                         //ball_x==x-2
                         &&ball_y>=y&&ball_y<y+length) {//纵向在范围内
                     boundEdge=1;//水平方向
-                    System.out.println("boundEdge1");
+                    System.out.println("case0--boundEdge1");
                     //ball.setX(x-radius);//放置到碰上时的位置
                 }
                 else if(ball_x>=x&&ball_x<x+length//下边
@@ -105,7 +105,7 @@ public class XTriangle extends XComponent {
                         &&ball_y-(y+length)<=1&&(y+length)<=ball_y
                 ){
                     boundEdge=2;//垂直方向
-                    System.out.println("boundEdge2");
+                    System.out.println("case0--boundEdge2");
                     //ball.setY(y+length+radius);
                 }
                 else if(//ball_y<ball_x-x+y//在斜边上方
@@ -118,7 +118,7 @@ public class XTriangle extends XComponent {
                     //Integer y_merge=(ball_x+ball_y-x+y)/2;
                     //ball.setX(x_merge+(int)(radius/Math.sqrt(2)-1));
                     //ball.setY(y_merge-(int)(radius/Math.sqrt(2)-1));
-                    System.out.println("boundEdge0");
+                    System.out.println("case0--boundEdge0");
                     boundEdge=0;
                     /**
                      * 用方程求解新的定位点，已知圆心应落在直线y-ball_y=x-ball_x上，设为(a,a-ball_x+ball_y)
@@ -135,36 +135,63 @@ public class XTriangle extends XComponent {
                 break;
             //顺时针旋转90度
             case 1:
-                if(ball_x>=x-radius&&ball_x<=x//横向碰左边
-                        &&ball_y>=y&&ball_y<y+length) {//纵向在范围内
-                    boundEdge=1;//水平方向
-                    System.out.println("boundEdge1");
-                    ball.setX(x-radius);//放置到碰上时的位置
+                if(ball_x>=x-4&&ball_x<=x
+                        &&ball_y>=y&&ball_y<y+length) {
+                    boundEdge=1;
+                    System.out.println("case1--boundEdge1");
                 }
                 else if(ball_x>=x&&ball_x<x+length
-                        &&y-ball_y<=radius&&y>=ball_y){
+                        &&ball_y<=y&&ball_y+2>=y){
                     boundEdge=2;
-                    ball.setY(y-radius);
+                    System.out.println("case1--boundEdge2");
+                    //ball.setY(y-radius);
                 }
-                else if(ball_y<ball_x-x+(y-length)//在斜边下方
-                        &&Math.abs(ball_x-ball_y-x+y-length)/Math.sqrt(2)<=radius){//距离小于半径
+                else if(ball_y>=-(ball_x-x-length)+y
+                            &&ball_y<=-(ball_x-x-length)+y+5&&ball_x>x&&ball_x<x+length){
                     boundEdge=0;
-                    /**
-                     * 用方程求解新的定位点，已知圆心应落在直线y-ball_y=-x+ball_x上，设为(a,-a+ball_x+ball_y)
-                     * 则|a+a-ball_x-ball_y-x+y-length|/sqrt(2)=radius
-                     * 根据在下方，开绝对值2*a=ball_x+ball_y+x-y+length-sqrt(2)*radius
-                     */
-//                    double tmpX=(ball_x+ball_y+x-y+length-Math.sqrt(2)*radius)/2.0;
-//                    double tmpY=-tmpX+ball_x+ball_y;
-//                    ball.setX((int)tmpX);
-//                    ball.setY((int)tmpY);
+                    System.out.println("case1--boundEdge0");
                 }else{
                     return 0;
                 }
                 break;
             case 2:
+                if(ball_x<=x+length+3&&ball_x>=x+length
+                        &&ball_y>=y&&ball_y<y+length) {
+                    boundEdge=1;
+                    System.out.println("case2--boundEdge1");
+                }
+                else if(ball_x>=x&&ball_x<x+length
+                        &&ball_y<=y&&ball_y+2>=y){
+                    boundEdge=2;
+                    System.out.println("case2--boundEdge2");
+                    //ball.setY(y-radius);
+                }
+                else if(ball_y>=ball_x-x+y&&ball_y<=ball_x-x+y+2&&ball_x>x&&ball_x<x+length){
+                    boundEdge=0;
+                    System.out.println("case2--boundEdge0");
+                }else{
+                    return 0;
+                }
                 break;
             case 3:
+                if(ball_x<=x+length+3&&ball_x>=x+length
+                        &&ball_y>=y&&ball_y<y+length) {
+                    boundEdge=1;
+                    System.out.println("case3--boundEdge1");
+                }
+                else if(ball_x>=x&&ball_x<x+length//下边
+                        &&ball_y-(y+length)<=1&&(y+length)<=ball_y
+                ){
+                    boundEdge=2;//垂直方向
+                    System.out.println("case3--boundEdge2");
+                    //ball.setY(y+length+radius);
+                }
+                else if(ball_y<=-(ball_x-x-length)+y
+                        &&ball_y>=-(ball_x-x-length)+y-4&&ball_x>x&&ball_x<x+length){
+                    boundEdge=0;
+                }else{
+                    return 0;
+                }
                 break;
             default:
                 throw new RuntimeException("Invalid Rotation");
