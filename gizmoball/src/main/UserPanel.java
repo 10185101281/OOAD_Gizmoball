@@ -245,7 +245,7 @@ public class UserPanel extends JFrame{
         JRadioButtonP rectangle = new JRadioButtonP("rectangle", XRectangle.picture);
         JRadioButtonP triangle = new JRadioButtonP("triangle",XTriangle.picture);
         JRadioButtonP circle = new JRadioButtonP("circle",XCircle.picture);
-        JRadioButtonP straightPipe = new JRadioButtonP("straightPipe");
+        JRadioButtonP straightPipe = new JRadioButtonP("straightPipe",XStraightPipe.picture);
         JRadioButtonP curvedPipe = new JRadioButtonP("curvedPipe");
         JRadioButtonP[] jRadioButtonGroups = new JRadioButtonP[]{
                 placement, rectangle,
