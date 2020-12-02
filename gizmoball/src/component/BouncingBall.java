@@ -42,11 +42,11 @@ public class BouncingBall extends XComponent{
         this.vy = vy;
     }
     public void setX(Integer x) {
-        this.x = x;
+        this.x = x-radius;
     }
 
     public void setY(Integer y) {
-        this.y = y;
+        this.y = y-radius;
     }
 
     private void randomAttributes(){

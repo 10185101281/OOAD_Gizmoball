@@ -27,8 +27,17 @@ public class XRectangle extends XComponent {
         Integer status = is_collision(ball);
         if(status==1)//左边
         {
+            System.out.println("边界："+x);
+            System.out.println("before:ball"+ball.getX()+","+ball.getY());
+            System.out.println("before2:ball"+center_x+","+center_y);
+
+            System.out.println(center_x+radius-x);
             ball.setX(center_x-(center_x+radius-x+1));
+            System.out.println("after:ball"+ball.getX()+","+ball.getY());
+            System.out.println("before:ball"+ball.getVx()+","+ball.getVy());
             ball.setVx(-ball.getVx());
+            System.out.println("after:ball"+ball.getVx()+","+ball.getVy());
+
         }
         else if(status==2)//右边
         {
@@ -57,23 +66,28 @@ public class XRectangle extends XComponent {
         Integer center_y = ball.getY();
         //小球半径
         Integer radius = ball.getRadius();
-        if(center_x>=x-radius&&center_x<=x&&y-radius<=center_y&&center_y<=y+length+radius)//左边
+        if(center_x>x-radius&&center_x<x&&y-radius<=center_y&&center_y<=y+length+radius)//左边
         {
+            System.out.println("左边");
             return 1;
         }
-        else if(center_x>=x+length&&center_x<=x+length+radius&&y-radius<=center_y&&center_y<=y+length+radius)//右边
+        else if(center_x>x+length&&center_x<x+length+radius&&y-radius<=center_y&&center_y<=y+length+radius)//右边
         {
+            System.out.println("右边");
             return 2;
         }
 
-        else if(center_y<=y&&center_y>=y-radius&&x<=center_x&&center_x<=x+length)//上边
+        else if(center_y<y&&center_y>y-radius&&x<=center_x&&center_x<=x+length)//上边
         {
+            System.out.println("上边");
             return 3;
         }
-        else if(center_y>=y+length&&center_y<=y+length+radius&&x<=center_x&&center_x<=x+length)//下边
+        else if(center_y>y+length&&center_y<y+length+radius&&x<=center_x&&center_x<=x+length)//下边
         {
-            System.out.println("下边界"+(y+length));
-            System.out.println("下方"+ball.getX()+","+ball.getY());
+            System.out.println("下边");
+
+           // System.out.println("下边界"+(y+length));
+           // System.out.println("下方"+ball.getX()+","+ball.getY());
             return 4;
 
         }
