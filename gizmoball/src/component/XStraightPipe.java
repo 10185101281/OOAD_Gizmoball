@@ -3,10 +3,15 @@ package component;
 import main.Board;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class XStraightPipe extends XComponent{
     public static final String picturePath = "gizmoball/src/picture/component/straightpipe.png";
     public static final ImageIcon picture = new ImageIcon(picturePath);
+
+    private String paintPicturePath1 = "gizmoball/src/picture/component/straightpipe-1.png";
+    private String paintPicturePath2 = "gizmoball/src/picture/component/straightpipe-2.png";
+    private String paintPicturePath3 = "gizmoball/src/picture/component/straightpipe-3.png";
     public XStraightPipe(Integer x,Integer y,Board board){
         super(x, y, board);
         paintPicturePath = picturePath;
@@ -87,4 +92,35 @@ public class XStraightPipe extends XComponent{
         return 0;
     }
 
+
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/30 13:30
+     * @Version 1.0
+     */
+    @Override
+    public void paint(Graphics g){
+        try {
+            Image image;
+            if(rotPosition == 0){
+                image = Toolkit.getDefaultToolkit().getImage(paintPicturePath);
+            } else if(rotPosition == 1){
+                image = Toolkit.getDefaultToolkit().getImage(paintPicturePath1);
+            } else if(rotPosition == 2){
+                image = Toolkit.getDefaultToolkit().getImage(paintPicturePath2);
+            } else {
+                image = Toolkit.getDefaultToolkit().getImage(paintPicturePath3);
+            }
+            g.drawImage(image, x, y,length,length,board);
+            if(isSelected){
+                Graphics2D g2 = (Graphics2D)g;
+                g2.setColor(Color.RED);
+                //BasicStroke s = new BasicStroke(2.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, new float[]{5.0f}, 0.0f);
+                g2.setStroke(new BasicStroke(3));
+                g2.drawRect(x,y,length,length);
+            }
+        } catch (Exception e) {
+            System.out.println("File Not Found");
+        }
+    }
 }

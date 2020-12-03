@@ -10,11 +10,7 @@ public class XTriangle extends XComponent {
     private String paintPicturePath2 = "gizmoball/src/picture/component/triangle-2.png";
     private String paintPicturePath3 = "gizmoball/src/picture/component/triangle-3.png";
     public static final ImageIcon picture = new ImageIcon(picturePath);
-    /**
-     * @variable rotPosition
-     * 记录三角形旋转到的位置，0~3对应直角顶点在左下，左上，右上，右下
-     */
-    private Integer rotPosition=0;
+
     /**
      * @variable boundEdge
      * 0~2对应斜边，水平边，垂直边

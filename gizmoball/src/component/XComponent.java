@@ -17,6 +17,13 @@ public abstract class XComponent{
     Integer angle;
     public static final Integer base = 40;//一个格子40像素
     Integer rate;
+
+    /**
+     * @variable rotPosition
+     * 记录旋转到的位置
+     */
+    Integer rotPosition;
+
     Board board;
     boolean isSelected;
     boolean isDeleting;
@@ -31,6 +38,7 @@ public abstract class XComponent{
         angle = 0;
         isSelected = false;
         isDeleting = false;
+        rotPosition = 0;
         this.board = board;
         board.updateComponentMap(x, y, this);
         board.addComponentToList(this);
