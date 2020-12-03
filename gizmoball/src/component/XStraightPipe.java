@@ -32,7 +32,7 @@ public class XStraightPipe extends XComponent{
 
             if(ball.getVy()!=0){
                 ball.setY(y+length/2);
-                ball.setVx(2);
+                ball.setVx(3);
                 ball.setVy(0);
             }
 
@@ -41,7 +41,7 @@ public class XStraightPipe extends XComponent{
 
             if(ball.getVy()!=0){
                 ball.setY(y+length/2);
-                ball.setVx(-2);
+                ball.setVx(-3);
                 ball.setVy(0);
             }
         }
