@@ -98,6 +98,15 @@ public class XStraightPipe extends XComponent{
      * @Date 2020/11/30 13:30
      * @Version 1.0
      */
+    public void rotate() {
+        rotPosition=(rotPosition+1)%4;
+    }
+
+    /**
+     * @Author BaoLiang
+     * @Date 2020/11/30 13:30
+     * @Version 1.0
+     */
     @Override
     public void paint(Graphics g){
         try {

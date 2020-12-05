@@ -117,14 +117,16 @@ public class BouncingBall extends XComponent{
             y = boardHeight-2*radius;
             vy = -vy;
         }
+
         g_count ++;
         f_count ++;
         if(g_count == 10) {
             vy++;
             g_count = 0;
         }
-        
+
         if(f_count == 500){
+            /*
             if(Math.abs(vy) >= Math.abs(vx)){
                 if(vy > 0) vy--;
                 else if(vy < 0) vy++;
@@ -132,6 +134,7 @@ public class BouncingBall extends XComponent{
                 if(vx > 0) vx--;
                 else if(vx < 0) vx++;
             }
+             */
             f_count = 0;
         }
     }
