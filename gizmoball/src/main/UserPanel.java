@@ -595,6 +595,7 @@ public class UserPanel extends JFrame{
         contentPane.setPreferredSize(new Dimension(1150,830));
 
         initBoardPanel();
+        //initKeyListener();
         initSideBarPanel();
         contentPane.add(boardPanel,BorderLayout.CENTER);
         contentPane.add(sideBarPanel,BorderLayout.EAST);

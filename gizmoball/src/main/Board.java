@@ -52,6 +52,7 @@ public class Board extends JPanel{
         forbid = false;
         this.addMouseListener(mouseListener);
         this.addKeyListener(keyListener);
+        requestFocus();
     }
     /**
      * @Author BaoLiang
@@ -72,6 +73,8 @@ public class Board extends JPanel{
         selectedComponent = null;
         forbid = false;
         this.addMouseListener(mouseListener);
+        this.addKeyListener(keyListener);
+        requestFocus();
     }
     public void setForbid(boolean forbid){this.forbid =  forbid;}
     public Integer getBoardWidth(){return boardWidth;}
@@ -101,7 +104,14 @@ public class Board extends JPanel{
         @Override
         public void keyPressed(KeyEvent e) {
             int code = e.getKeyCode();
-            System.out.println(code);
+            System.out.println("Key pressed..."+code);
+            //left 37, up 38, right 39, down 40
+            if(boardBarrier == null) return ;
+            if(code == 37) boardBarrier.move_left();
+            else if(code == 38) boardBarrier.move_up();
+            else if(code == 39) boardBarrier.move_right();
+            else if(code == 40) boardBarrier.move_down();
+            refresh(false);
         }
 
         @Override
@@ -109,6 +119,7 @@ public class Board extends JPanel{
 
         }
     };
+
     private MouseListener mouseListener = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -117,6 +128,7 @@ public class Board extends JPanel{
 
         @Override
         public void mousePressed(MouseEvent e) {
+            requestFocus();
             if(forbid) return ;
             if(selectedComponent != null){
                 selectedComponent.setSelected(false);
@@ -184,6 +196,7 @@ public class Board extends JPanel{
                 } else if(nowComponent.equals("barrier")){
                     if(boardBarrier != null) return ;
                     if(componentMap[x+XComponent.base][y] != null) return ;
+                    if(x+XComponent.base >= getBoardWidth()) return ;
                     XComponent barrier = new XBarrier(x, y, getThisBoard());
                     boardBarrier = (XBarrier)barrier;
                     if(barrier.is_collision(ball) > 0){

@@ -71,7 +71,6 @@ public class XAirflow extends XComponent{
 
     }
 
-
     /**
      * @Author BaoLiang
      * @Date 2020/11/30 13:30

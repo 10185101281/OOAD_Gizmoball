@@ -90,6 +90,104 @@ public class XBarrier extends XComponent{
 
     /**
      * @Author BaoLiang
+     * @Date 2020/12/5 9:00
+     * @Version 1.0
+     */
+    public void move_left(){
+        if(is_collision(board.getBall()) > 0) return ;
+        if(x == 0) return ;
+        x -= base;
+        for(int j=1; j<=rate; j++){
+            int tx = x;
+            int ty = y + (j-1)*base;
+            if(!board.componentMapIsEmpty(tx,ty)){
+                x += base;
+                return ;
+            }
+        }
+        for(int j=1; j<=rate; j++){
+            int tx1 = x, tx2 = x+(2*rate)*base;
+            int ty = y + (j-1)*base;
+            board.updateComponentMap(tx1,ty,this);
+            board.updateComponentMap(tx2,ty,null);
+        }
+    }
+    /**
+     * @Author BaoLiang
+     * @Date 2020/12/5 9:00
+     * @Version 1.0
+     */
+    public void move_up(){
+        if(is_collision(board.getBall()) > 0) return ;
+        if(y == 0) return ;
+        y -= base;
+        for(int i=1; i<=2*rate; i++){
+            int tx = x + (i-1)*base;
+            int ty = y;
+            if(!board.componentMapIsEmpty(tx,ty)){
+                y += base;
+                return ;
+            }
+        }
+        for(int i=1; i<=2*rate; i++){
+            int tx = x + (i-1)*base;
+            int ty1 = y, ty2 = y + rate*base;
+            board.updateComponentMap(tx,ty1,this);
+            board.updateComponentMap(tx,ty2,null);
+        }
+    }
+    /**
+     * @Author BaoLiang
+     * @Date 2020/12/5 9:00
+     * @Version 1.0
+     */
+    public void move_right(){
+        if(is_collision(board.getBall()) > 0) return ;
+        if(x+2*length == board.getBoardWidth()) return ;
+        x += base;
+        for(int j=1; j<=rate; j++){
+            int tx = x+(2*rate-1)*base;
+            int ty = y + (j-1)*base;
+            if(!board.componentMapIsEmpty(tx,ty)){
+                x -= base;
+                return ;
+            }
+        }
+        for(int j=1; j<=rate; j++){
+            int tx1 = x+(2*rate-1)*base, tx2 = x-base;
+            int ty = y + (j-1)*base;
+            board.updateComponentMap(tx1,ty,this);
+            board.updateComponentMap(tx2,ty,null);
+        }
+    }
+    /**
+     * @Author BaoLiang
+     * @Date 2020/12/5 9:00
+     * @Version 1.0
+     */
+    public void move_down(){
+        if(is_collision(board.getBall()) > 0) return ;
+        if(y+length == board.getBoardHeight()) return ;
+        y += base;
+        for(int i=1; i<=2*rate; i++){
+            int tx = x + (i-1)*base;
+            int ty = y + (rate-1)*base;
+            if(!board.componentMapIsEmpty(tx,ty)){
+                y -= base;
+                return ;
+            }
+        }
+        //System.out.println(x+","+y);
+        //System.out.println((y + (rate-1)*base)+" "+(y-base));
+        for(int i=1; i<=2*rate; i++){
+            int tx = x + (i-1)*base;
+            int ty1 = y + (rate-1)*base, ty2 = y-base;
+            board.updateComponentMap(tx,ty1,this);
+            board.updateComponentMap(tx,ty2,null);
+        }
+    }
+    /**
+     * @Author BaoLiang
      * @Date 2020/11/30 13:30
      * @Version 1.0
      * 绘画控件
@@ -105,7 +203,7 @@ public class XBarrier extends XComponent{
                 g2.setColor(Color.RED);
                 //BasicStroke s = new BasicStroke(2.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, new float[]{5.0f}, 0.0f);
                 g2.setStroke(new BasicStroke(3));
-                g2.drawRect(x,y,length,length);
+                g2.drawRect(x,y,2*length,length);
             }
         } catch (Exception e) {
             System.out.println("File Not Found");
