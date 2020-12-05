@@ -17,7 +17,7 @@ public class BouncingBall extends XComponent{
     public static ImageIcon picture = new ImageIcon(picturePath);
     private Integer vx, vy, ax, ay;
     private Integer radius;
-
+    private Integer count;
     public Integer getX() {
         return x+radius;
     }
@@ -62,12 +62,14 @@ public class BouncingBall extends XComponent{
         this.radius = 10;
         this.board = board;
         randomAttributes();
+        count = 0;
     }
     public BouncingBall(Integer x,Integer y,Board board){
         super(x, y,  board);
         this.radius = 10;
         this.board = board;
         randomAttributes();
+        count = 0;
     }
     public BouncingBall(Integer x,Integer y,Integer vx,Integer vy,Integer ax,Integer ay,Board board){
         super(x,y,board);
@@ -79,6 +81,7 @@ public class BouncingBall extends XComponent{
         this.ay = ay;
         this.radius = 10;
         this.board = board;
+        count = 0;
     }
 
     /**
@@ -95,8 +98,6 @@ public class BouncingBall extends XComponent{
        // System.out.println("Component finish");
         Integer boardWidth = board.getPreferredSize().width;
         Integer boardHeight = board.getPreferredSize().height;
-
-
 
         x += vx;
         if(x <= 0){
@@ -115,7 +116,11 @@ public class BouncingBall extends XComponent{
             y = boardHeight-2*radius;
             vy = -vy;
         }
-
+        count ++;
+        if(count == 10) {
+            vy++;
+            count = 0;
+        }
     }
 
     /**
