@@ -35,7 +35,7 @@ public class XStraightPipe extends XComponent{
         if(status==1)//left
         {
 
-            if(ball.getVy()!=0){
+            if(ball.getVy()>1){
                 ball.setY(y+length/2);
                 ball.setVx(3);
                 ball.setVy(0);
@@ -44,7 +44,7 @@ public class XStraightPipe extends XComponent{
         }
         else if(status==2){//right
 
-            if(ball.getVy()!=0){
+            if(ball.getVy()>1){
                 ball.setY(y+length/2);
                 ball.setVx(-3);
                 ball.setVy(0);
@@ -57,6 +57,9 @@ public class XStraightPipe extends XComponent{
         else if(status==4){//bottom
             ball.setY(y+length+radius+1);
             ball.setVy(-ball.getVy());
+        }else if(status==5){
+            ball.setY(y+length/2);
+            ball.setVy(0);
         }
 
     }
@@ -87,6 +90,8 @@ public class XStraightPipe extends XComponent{
         }
         else if(ball_y>y+length&&ball_y<y+length+radius&&x<=ball_x&&ball_x<=x+length){
             return 4;
+        }else if(ball_x>x&&ball_x<x+length&&ball_y>y&&ball_y<y+length){
+            return 5;
         }
 
         return 0;
