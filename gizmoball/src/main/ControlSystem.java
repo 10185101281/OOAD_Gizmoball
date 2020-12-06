@@ -5,7 +5,7 @@ import component.BouncingBall;
 import javax.swing.*;
 
 /**
- * @Author
+ * @Author BaoLiang
  * @Date 2020/11/17 9:30
  * @Version 1.0
  */
