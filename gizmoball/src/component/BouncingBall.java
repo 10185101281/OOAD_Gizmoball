@@ -59,14 +59,14 @@ public class BouncingBall extends XComponent{
         }
     }
     public BouncingBall(Board board){
-        super(400,400,board);
+        super(400,400,board, true);
         this.radius = 10;
         this.board = board;
         randomAttributes();
         g_count = f_count = 0;
     }
     public BouncingBall(Integer x,Integer y,Board board){
-        super(x, y,  board);
+        super(x, y,  board,true);
         this.radius = 10;
         this.board = board;
         randomAttributes();
@@ -155,6 +155,7 @@ public class BouncingBall extends XComponent{
      */
     @Override
     public void paint(Graphics g){
+        //System.out.println("ball paint");
         Image image;
         image = Toolkit.getDefaultToolkit().getImage(picturePath);
         g.drawImage(image, x, y,radius+radius,radius+radius,board);

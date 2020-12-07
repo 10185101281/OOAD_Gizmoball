@@ -245,6 +245,7 @@ public class Board extends JPanel{
 
     @Override public void paintComponent(Graphics g) {
         super.paintComponent(g);
+
         ArrayList<XComponent> deleteList = new ArrayList<>();
         for(XComponent component: componentList){
             if(component.getIsDeleting()) deleteList.add(component);
@@ -257,10 +258,14 @@ public class Board extends JPanel{
             if(component.getIsDeleting()) continue;
             component.paint(g);
         }
-        if(ball != null) ball.paint(g);
+        if(ball != null) {
+            //System.out.println("ball paint in Board");
+            ball.paint(g);
+        }
     }
     public void refresh(boolean hasMove) {
         if(hasMove&&ball!=null) ball.move();
+        //ball = null;
         repaint(0, 0, boardWidth, boardHeight);
     }
 }

@@ -43,6 +43,20 @@ public abstract class XComponent{
         board.updateComponentMap(x, y, this);
         board.addComponentToList(this);
     }
+
+    public XComponent(Integer x, Integer y, Board board, boolean isBall){
+        this.x = x; this.y = y;
+        length = base;
+        rate = 1;
+        angle = 0;
+        isSelected = false;
+        isDeleting = false;
+        rotPosition = 0;
+        this.board = board;
+        if(!isBall) board.updateComponentMap(x, y, this);
+        if(!isBall) board.addComponentToList(this);
+    }
+
     public void setSelected(boolean isSelected){
         this.isSelected = isSelected;
     }
